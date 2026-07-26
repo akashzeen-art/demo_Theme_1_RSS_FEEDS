@@ -18,6 +18,9 @@
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
