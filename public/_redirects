@@ -1,0 +1,5 @@
+# RSS proxy → Netlify function
+/api/rss  /.netlify/functions/rss  200!
+
+# SPA fallback (React Router)
+/*        /index.html              200

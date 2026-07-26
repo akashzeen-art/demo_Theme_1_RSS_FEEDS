@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StreamsIndia Showbiz</title>
+    <link>https://streamsindia.com/news</link>
+    <description>StreamsIndia Showbiz RSS feed</description>
+    <language>en</language>
+    <atom:link href="/feeds/news.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Evening Bulletin</title>
+      <link>/news</link>
+      <guid isPermaLink="false">si-news-41</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Showbiz</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/9ac5b5f9-d682-44a7-b877-772dec4b380d/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/41.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/9ac5b5f9-d682-44a7-b877-772dec4b380d/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>World Watch</title>
+      <link>/news</link>
+      <guid isPermaLink="false">si-news-42</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Showbiz</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/d1f6716d-b7b1-41c3-8e4a-fd7204a75a74/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/42.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/d1f6716d-b7b1-41c3-8e4a-fd7204a75a74/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Market Pulse</title>
+      <link>/news</link>
+      <guid isPermaLink="false">si-news-43</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Showbiz</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/e8ad8fc4-49fa-43ab-9fda-36916e56d066/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/43.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/e8ad8fc4-49fa-43ab-9fda-36916e56d066/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Tech Today</title>
+      <link>/news</link>
+      <guid isPermaLink="false">si-news-44</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Showbiz</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/ee836cdd-1c34-4b4d-843c-3d2c4be8e879/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/44.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/ee836cdd-1c34-4b4d-843c-3d2c4be8e879/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Sports Desk</title>
+      <link>/news</link>
+      <guid isPermaLink="false">si-news-45</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Showbiz</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/08ebb0ad-11cd-458a-823b-3e19382347aa/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/45.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/08ebb0ad-11cd-458a-823b-3e19382347aa/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>City Briefing</title>
+      <link>/news</link>
+      <guid isPermaLink="false">si-news-46</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Showbiz</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/7bd7696a-2b32-4542-ac63-73fe38a547fc/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/46.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/7bd7696a-2b32-4542-ac63-73fe38a547fc/play_480p.mp4" type="video/mp4"/>
+    </item>
+  </channel>
+</rss>

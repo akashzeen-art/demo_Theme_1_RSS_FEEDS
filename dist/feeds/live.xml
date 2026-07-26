@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StreamsIndia Live</title>
+    <link>https://streamsindia.com/live</link>
+    <description>StreamsIndia Live RSS feed</description>
+    <language>en</language>
+    <atom:link href="/feeds/live.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>StreamsIndia Live 1</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-hls-1</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL" medium="video" isLive="true"/>
+      <media:thumbnail url="/landscape_new_desicontent/51.png"/>
+      <enclosure url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL"/>
+    </item>
+    <item>
+      <title>StreamsIndia Live 2</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-hls-2</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8" type="application/x-mpegURL" medium="video" isLive="true"/>
+      <media:thumbnail url="/landscape_new_desicontent/52.png"/>
+      <enclosure url="https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8" type="application/x-mpegURL"/>
+    </item>
+    <item>
+      <title>Prime Stage Live</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-51</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/d1150337-4151-4343-826d-7311f5dbe500/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/51.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/d1150337-4151-4343-826d-7311f5dbe500/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Talk Nation</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-52</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/64ef26c1-c28b-4cd4-926e-7f878f62e2c1/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/52.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/64ef26c1-c28b-4cd4-926e-7f878f62e2c1/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Match Center</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-53</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/b9704452-fd1f-431d-a921-a0fa8187a170/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/53.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/b9704452-fd1f-431d-a921-a0fa8187a170/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Cooking Arena</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-54</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/292e7874-e83e-4818-a9fe-7d7775b096c2/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/54.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/292e7874-e83e-4818-a9fe-7d7775b096c2/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Comedy Night</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-55</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/0eacbf8f-3c0a-409b-8874-bb298c466933/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/55.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/0eacbf8f-3c0a-409b-8874-bb298c466933/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Newsroom Live</title>
+      <link>/live</link>
+      <guid isPermaLink="false">si-live-56</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Live</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/fc6a7905-ca95-44d9-a814-a101961bfb2b/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/56.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/fc6a7905-ca95-44d9-a814-a101961bfb2b/play_480p.mp4" type="video/mp4"/>
+    </item>
+  </channel>
+</rss>

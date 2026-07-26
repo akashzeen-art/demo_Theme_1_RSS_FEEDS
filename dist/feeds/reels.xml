@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StreamsIndia Reels</title>
+    <link>https://streamsindia.com/reels</link>
+    <description>StreamsIndia Reels RSS feed</description>
+    <language>en</language>
+    <atom:link href="/feeds/reels.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Twist Ending</title>
+      <link>/reels</link>
+      <guid isPermaLink="false">si-reels-71</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Reels</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/19507c09-9c6e-410c-b01c-ccd6d9423e12/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/71.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/19507c09-9c6e-410c-b01c-ccd6d9423e12/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Chase Scene Cut</title>
+      <link>/reels</link>
+      <guid isPermaLink="false">si-reels-72</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Reels</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/a0f4772a-4376-44b1-a458-b50eff38a0e0/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/72.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/a0f4772a-4376-44b1-a458-b50eff38a0e0/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Behind the Crime</title>
+      <link>/reels</link>
+      <guid isPermaLink="false">si-reels-73</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Reels</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/d72d661d-325f-4d19-b173-bf88746ddc7a/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/73.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/d72d661d-325f-4d19-b173-bf88746ddc7a/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Drama Teaser</title>
+      <link>/reels</link>
+      <guid isPermaLink="false">si-reels-74</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Reels</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/970a0093-5f14-4f29-bd36-c91b8565172a/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/74.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/970a0093-5f14-4f29-bd36-c91b8565172a/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Comedy Bit</title>
+      <link>/reels</link>
+      <guid isPermaLink="false">si-reels-75</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Reels</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/ec06e7f9-7dc5-43f3-960e-7bef831ec46c/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/75.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/ec06e7f9-7dc5-43f3-960e-7bef831ec46c/play_480p.mp4" type="video/mp4"/>
+    </item>
+    <item>
+      <title>Sports Slow-Mo</title>
+      <link>/reels</link>
+      <guid isPermaLink="false">si-reels-76</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+      <author>StreamsIndia Reels</author>
+      <media:content url="https://vz-012bcd01-e4e.b-cdn.net/9ea2a343-b279-4455-928c-5cc71bc00297/play_480p.mp4" type="video/mp4" medium="video"/>
+      <media:thumbnail url="/potrait_new_desicontent/76.png"/>
+      <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/9ea2a343-b279-4455-928c-5cc71bc00297/play_480p.mp4" type="video/mp4"/>
+    </item>
+  </channel>
+</rss>

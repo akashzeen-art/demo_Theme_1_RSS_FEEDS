@@ -1,0 +1,339 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* YouTube red + white theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 6%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 6%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 6%;
+
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 6%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 96%;
+    --ring: 0 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 6%;
+    --sidebar-primary: 0 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 6%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 0 100% 50%;
+
+    --yt-red: #ff0000;
+    --yt-red-hover: #cc0000;
+    --yt-white: #ffffff;
+    --yt-black: #0f0f0f;
+    --yt-gray: #f2f2f2;
+    --yt-border: #e5e5e5;
+
+    --cinema-red: #ff0000;
+    --cinema-red-deep: #cc0000;
+    --cinema-amber: #ff0000;
+    --cinema-rose: #ff4444;
+
+    --gradient-1: #ff0000;
+    --gradient-2: #cc0000;
+    --gradient-3: #ffffff;
+    --gradient-4: #ff0000;
+    --gradient-5: #cc0000;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-[#0f0f0f];
+    font-family: 'Roboto', 'DM Sans', system-ui, sans-serif;
+    background: #ffffff;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  #root {
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f2f2f2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ff0000;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #cc0000;
+  }
+
+  .reels-scroller::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', 'Bebas Neue', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  button, [role="button"], a {
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  ::selection {
+    background: #ff0000;
+    color: #fff;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    color: #ff0000;
+    background: none;
+    -webkit-text-fill-color: #ff0000;
+  }
+
+  .gradient-text-hero {
+    color: #ffffff;
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+  }
+
+  .glow-card {
+    @apply relative rounded-xl overflow-hidden border border-[#e5e5e5] bg-white;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .glow-card::before {
+    display: none;
+  }
+
+  .glow-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    border-color: #ff0000;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: #e5e5e5;
+  }
+
+  .btn-neon {
+    @apply relative overflow-hidden font-medium uppercase tracking-wider text-white;
+    background: #ff0000;
+    box-shadow: none;
+  }
+
+  .btn-neon:hover {
+    background: #cc0000;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn-neon::after {
+    display: none;
+  }
+
+  .play-pulse {
+    @apply relative;
+  }
+
+  .play-pulse::before,
+  .play-pulse::after {
+    display: none;
+  }
+
+  .accent-bar {
+    @apply h-1 rounded-full;
+    background: #ff0000;
+  }
+
+  .glass-panel {
+    @apply border border-[#e5e5e5] bg-white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  /* ── Comic background effects ── */
+  .comic-halftone {
+    background-image: radial-gradient(#111 1.1px, transparent 1.2px);
+    background-size: 14px 14px;
+    background-position: 0 0;
+    mask-image: radial-gradient(ellipse 90% 80% at 30% 20%, black 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 30% 20%, black 10%, transparent 70%);
+  }
+
+  .comic-halftone-red {
+    background-image: radial-gradient(#ff0000 1px, transparent 1.15px);
+    background-size: 18px 18px;
+    background-position: 9px 9px;
+    mask-image: radial-gradient(ellipse 80% 70% at 85% 75%, black 5%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 85% 75%, black 5%, transparent 65%);
+  }
+
+  .comic-slash {
+    background: repeating-linear-gradient(
+      -28deg,
+      transparent,
+      transparent 18px,
+      rgba(17, 17, 17, 0.04) 18px,
+      rgba(17, 17, 17, 0.04) 20px,
+      transparent 20px,
+      transparent 38px,
+      rgba(255, 0, 0, 0.05) 38px,
+      rgba(255, 0, 0, 0.05) 40px
+    );
+  }
+
+  .comic-burst {
+    clip-path: polygon(
+      50% 0%,
+      61% 22%,
+      85% 12%,
+      72% 35%,
+      98% 42%,
+      74% 52%,
+      88% 75%,
+      62% 68%,
+      50% 95%,
+      38% 68%,
+      12% 75%,
+      26% 52%,
+      2% 42%,
+      28% 35%,
+      15% 12%,
+      39% 22%
+    );
+    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+  }
+}
+
+@layer utilities {
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes shimmer-line {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes shimmer-sweep {
+    0% { transform: translateX(-100%); }
+    50%, 100% { transform: translateX(100%); }
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  .animate-float-orb {
+    animation: none;
+  }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+
+  .animate-gradient-x {
+    animation: none;
+  }
+
+  @keyframes comic-halftone-drift {
+    0% { background-position: 0 0, 9px 9px; }
+    100% { background-position: 14px 14px, 23px 23px; }
+  }
+
+  .comic-bg .comic-halftone {
+    animation: comic-halftone-drift 18s linear infinite;
+  }
+
+  @media (max-width: 640px) {
+    .comic-bg .comic-halftone,
+    .comic-bg .comic-halftone-red {
+      opacity: 0.2 !important;
+      animation: none;
+    }
+  }
+}
