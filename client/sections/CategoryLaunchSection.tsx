@@ -121,21 +121,21 @@ export function CategoryLaunchSection() {
  <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#ff0000]" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300" />
               </span>
-              <p className="text-[#ff0000] text-[10px] sm:text-xs uppercase tracking-[0.35em] font-medium">
+              <p className="text-cyan-300 text-[10px] sm:text-xs uppercase tracking-[0.35em] font-medium">
                 Live TV Guide
               </p>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-[#0f0f0f] leading-none">
-              Browse by <span className="text-[#ff0000]">Category</span>
+            <h2 className="text-4xl md:text-6xl font-bebas tracking-wide text-white leading-none">
+              Browse by <span className="text-cyan-300">Category</span>
             </h2>
-            <p className="text-[#606060] text-xs sm:text-sm mt-2 max-w-md">
+            <p className="text-white/55 text-xs sm:text-sm mt-2 max-w-md">
               Pick a world — each channel streams live feeds from StreamsIndia.
             </p>
-            <div className="h-0.5 w-24 mt-3 bg-[#ff0000]" />
+            <div className="h-0.5 w-24 mt-3 bg-cyan-300" />
           </div>
-          <p className="text-[10px] uppercase tracking-[0.3em] text-[#909090] font-medium">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-medium">
             {cards.length} Channels
           </p>
  </motion.div>

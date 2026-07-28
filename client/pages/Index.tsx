@@ -34,11 +34,11 @@ export default function Index() {
  }, []);
 
  const scrollToContent = () => {
- document.getElementById('rss-feeds')?.scrollIntoView({ behavior: 'smooth' });
+ document.getElementById('featured-section')?.scrollIntoView({ behavior: 'smooth' });
  };
 
  return (
- <div className="relative w-full overflow-x-hidden">
+ <div className="relative w-full overflow-x-hidden bg-[#07111f] text-white">
  <AnimatedBackground />
 
  <BurgerMenu />
@@ -67,45 +67,51 @@ export default function Index() {
  <div className="relative z-10 pt-[100px] sm:pt-[108px] lg:pt-16">
  <HeroSection onEnter={scrollToContent} />
 
- <CategoryLaunchSection />
-
- {/* RSS feeds — all categories */}
- <div id="rss-feeds" className="pt-2">
- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-2">
- <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-[#ff0000]">
- Live RSS Feeds
- </p>
- <h2 className="font-bebas text-3xl sm:text-5xl text-[#0f0f0f] tracking-wide leading-none mt-1">
- Watch by category
- </h2>
- </div>
- <HomeCategoryRssBlocks />
- </div>
-
- <SectionDivider colors="from-transparent via-red-500/50 to-transparent" />
-
- {/* Catalog rows */}
+ {/* My content first */}
  <div id="featured-section">
  <FeaturedSection />
  </div>
 
- <SectionDivider colors="from-transparent via-rose-500/40 to-transparent" />
+ <SectionDivider colors="from-transparent via-cyan-500/35 to-transparent" />
  <TopPicksSection />
- <SectionDivider colors="from-transparent via-amber-500/40 to-transparent" />
+ <SectionDivider colors="from-transparent via-teal-500/35 to-transparent" />
  <ActionSection />
- <SectionDivider colors="from-transparent via-orange-500/40 to-transparent" />
+ <SectionDivider colors="from-transparent via-sky-500/35 to-transparent" />
  <TrendingSection />
  <RomanceSection />
 
- <SectionDivider colors="from-transparent via-red-600/40 to-transparent" />
+ <SectionDivider colors="from-transparent via-cyan-500/35 to-transparent" />
  <MostWatchedSection />
  <ThrillerSection />
 
- <SectionDivider colors="from-transparent via-rose-500/40 to-transparent" />
+ <SectionDivider colors="from-transparent via-teal-500/35 to-transparent" />
  <BestOfWeekSection />
  <CriticsChoiceSection />
  <NewReleasesSection />
  <StaffPicksSection />
+
+ <SectionDivider colors="from-transparent via-white/10 to-transparent" />
+
+ <CategoryLaunchSection />
+
+ {/* RSS feeds lower on page */}
+ <div id="rss-feeds" className="pt-6 sm:pt-10">
+ <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+ <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-cyan-300">
+ Global Entertainment Feeds
+ </p>
+ <h2 className="font-bebas text-3xl sm:text-5xl text-white tracking-wide leading-none mt-1">
+ Watch by category
+ </h2>
+ <p className="mt-2 max-w-xl text-xs sm:text-sm text-white/55">
+ Your hardcoded catalog content appears first. These lower feed blocks are for global entertainment discovery around Hollywood, celebrity chatter, international fandom, Europe, Native voices and Latin pop culture.
+ </p>
+ <p className="mt-2 max-w-2xl text-[11px] sm:text-xs text-white/35 leading-relaxed">
+ Demo presentation only. RSS and live feed references here are for entertainment discovery and non-commercial showcase use, not positioned as owned or commercial editorial streams.
+ </p>
+ </div>
+ <HomeCategoryRssBlocks />
+ </div>
  <FooterSection />
  </div>
  </div>

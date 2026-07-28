@@ -6,16 +6,16 @@ import { Play, Plus, Star, X, Clock, Users, Utensils } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getCookVideo } from './cookVideos';
 const cards = [
- { id: '1', title: 'Pho Bo Noodle Soup', category: 'Vietnamese', duration: '60 min', students: '78K', rating: '9.7', img: '/Eatme Landscape/S14.png' },
- { id: '2', title: 'Baklava Masterclass', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/Eatme Landscape/S15.png' },
- { id: '3', title: 'Eggs Benedict', category: 'Breakfast', duration: '20 min', students: '92K', rating: '9.6', img: '/Eatme Landscape/P3.png' },
- { id: '4', title: 'Lamb Kofta Skewers', category: 'Middle East', duration: '35 min', students: '67K', rating: '9.5', img: '/Eatme Landscape/P4.png' },
- { id: '5', title: 'Tonkotsu Ramen', category: 'Japanese', duration: '120 min', students: '83K', rating: '9.9', img: '/Eatme Landscape/P5.png' },
- { id: '6', title: 'Bibimbap Bowl', category: 'Korean', duration: '35 min', students: '76K', rating: '9.7', img: '/Eatme Landscape/P6.png' },
- { id: '7', title: 'Focaccia Bread', category: 'Baking', duration: '180 min', students: '58K', rating: '9.6', img: '/Eatme Landscape/P7.png' },
- { id: '8', title: 'Tiramisu Masterclass', category: 'Dessert', duration: '45 min', students: '112K', rating: '9.8', img: '/Eatme Landscape/P8.png' },
- { id: '9', title: 'Mango Sticky Rice', category: 'Thai', duration: '30 min', students: '89K', rating: '9.7', img: '/Eatme Landscape/P9.png' },
- { id: '10', title: 'Cinnamon Rolls', category: 'Baking', duration: '150 min', students: '127K', rating: '9.8', img: '/Eatme Landscape/P10.png' },
+ { id: '1', title: 'Pho Bo Noodle Soup', category: 'Vietnamese', duration: '60 min', students: '78K', rating: '9.7', img: '/landscape_new_desicontent/14.png' },
+ { id: '2', title: 'Baklava Masterclass', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/landscape_new_desicontent/15.png' },
+ { id: '3', title: 'Eggs Benedict', category: 'Breakfast', duration: '20 min', students: '92K', rating: '9.6', img: '/landscape_new_desicontent/3.png' },
+ { id: '4', title: 'Lamb Kofta Skewers', category: 'Middle East', duration: '35 min', students: '67K', rating: '9.5', img: '/landscape_new_desicontent/4.png' },
+ { id: '5', title: 'Tonkotsu Ramen', category: 'Japanese', duration: '120 min', students: '83K', rating: '9.9', img: '/landscape_new_desicontent/5.png' },
+ { id: '6', title: 'Bibimbap Bowl', category: 'Korean', duration: '35 min', students: '76K', rating: '9.7', img: '/landscape_new_desicontent/6.png' },
+ { id: '7', title: 'Focaccia Bread', category: 'Baking', duration: '180 min', students: '58K', rating: '9.6', img: '/landscape_new_desicontent/7.png' },
+ { id: '8', title: 'Tiramisu Masterclass', category: 'Dessert', duration: '45 min', students: '112K', rating: '9.8', img: '/landscape_new_desicontent/8.png' },
+ { id: '9', title: 'Mango Sticky Rice', category: 'Thai', duration: '30 min', students: '89K', rating: '9.7', img: '/landscape_new_desicontent/9.png' },
+ { id: '10', title: 'Cinnamon Rolls', category: 'Baking', duration: '150 min', students: '127K', rating: '9.8', img: '/landscape_new_desicontent/10.png' },
 ];
 
 const catGrad: Record<string, string> = {

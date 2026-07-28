@@ -75,7 +75,7 @@ export function ActionSection() {
 
  <div>
  <p className="text-xs sm:text-sm font-orbitron uppercase tracking-widest text-red-400/60 mb-2">Darkness Falls</p>
- <h2 className="font-bebas font-black text-slate-900 leading-none" style={{ fontSize: 'clamp(3.5rem, 12vw, 7rem)' }}>
+<h2 className="font-bebas font-black text-white leading-none" style={{ fontSize: 'clamp(3.5rem, 12vw, 7rem)' }}>
  OPERATION<br />
  <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">NIGHTFALL</span>
  </h2>

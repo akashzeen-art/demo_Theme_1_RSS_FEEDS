@@ -51,7 +51,7 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     reels: {
       enabled: true,
       source: 'youtube',
-      channelName: 'StreamsIndia Reels',
+      channelName: 'Hollywood Shorts Radar',
       youtubeChannelId: 'UCX6OQ3DkcsbYNE6H8uQQuVA',
       preferLive: false,
       platformSnos: [71, 72, 73, 74, 75, 76],
@@ -68,7 +68,7 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     live: {
       enabled: true,
       source: 'youtube',
-      channelName: 'StreamsIndia Live',
+      channelName: 'Global Entertainment Live',
       youtubeChannelId: 'UCSJ4gkVC6NrvII8umztf0Ow',
       preferLive: true,
       platformSnos: [51, 52, 53, 54, 55, 56],
@@ -85,7 +85,7 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     sports: {
       enabled: true,
       source: 'youtube',
-      channelName: 'StreamsIndia Sports',
+      channelName: 'International Sports Pulse',
       youtubeChannelId: 'UCJ5v_MCY6GNUBTO8-D3XoAg',
       preferLive: false,
       platformSnos: [31, 32, 33, 34, 35, 36],
@@ -102,7 +102,7 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     movies: {
       enabled: true,
       source: 'youtube',
-      channelName: 'StreamsIndia Movies',
+      channelName: 'Hollywood Movie Stream',
       youtubeChannelId: 'UC3gNmTGu-TTbFPpfSs5kNkg',
       preferLive: false,
       platformSnos: [1, 2, 3, 4, 5, 6],
@@ -119,7 +119,7 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     webseries: {
       enabled: true,
       source: 'youtube',
-      channelName: 'StreamsIndia Series',
+      channelName: 'Global Series & Fandom',
       youtubeChannelId: 'UCq-Fj5jknLsUf-MWSy4_brA',
       preferLive: false,
       platformSnos: [13, 14, 15, 17, 18, 19],

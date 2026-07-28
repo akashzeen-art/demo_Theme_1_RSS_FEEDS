@@ -7,13 +7,13 @@ import { useRef, useState } from 'react';
 import { Play, ChefHat, Clock, Star, Users } from 'lucide-react';
 
 const COOK_THUMBS = [
- '/Eatme Landscape/F4.png',
- '/Eatme Landscape/F5.png',
- '/Eatme Landscape/F6.png',
+ '/landscape_new_desicontent/4.png',
+ '/landscape_new_desicontent/5.png',
+ '/landscape_new_desicontent/6.png',
 ];
 const COOK_BG = [
- '/Eatme Landscape/F7.png',
- '/Eatme Landscape/F8.png',
+ '/landscape_new_desicontent/7.png',
+ '/landscape_new_desicontent/8.png',
 ];
 const COOK_VIDEO = 'https://vz-a2c5d962-9e6.b-cdn.net/c8e7b52d-f116-4b28-a8b5-f5207f1fa29c/play_480p.mp4';
 

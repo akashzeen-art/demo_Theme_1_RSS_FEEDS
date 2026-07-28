@@ -25,9 +25,9 @@ export function ContentRow({ title, subtitle, items, ranked = false, landscape =
  transition={{ duration: 0.5 }}
  viewport={{ once: true }}
  >
-          <h2 className="text-2xl md:text-4xl font-bebas tracking-wide text-[#0f0f0f]">{title}</h2>
-          {subtitle && <p className="text-[#606060] text-xs sm:text-sm mt-1">{subtitle}</p>}
-          <div className="h-0.5 w-16 mt-2 bg-[#ff0000]" />
+          <h2 className="text-[1.55rem] sm:text-3xl md:text-[2.15rem] font-bebas tracking-wide text-white leading-none">{title}</h2>
+          {subtitle && <p className="text-white/55 text-[11px] sm:text-sm mt-1 leading-relaxed">{subtitle}</p>}
+          <div className="h-0.5 w-16 mt-2 bg-cyan-300" />
  </motion.div>
 
  <div className="overflow-x-auto pb-3 -mx-1 px-1 touch-pan-x" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}>
@@ -57,21 +57,21 @@ export function ContentRow({ title, subtitle, items, ranked = false, landscape =
  </span>
  )}
  <div
- className={`relative overflow-hidden rounded-lg ${
+ className={`relative overflow-hidden rounded-xl border border-white/10 bg-[#0b1728] ${
  landscape ? 'aspect-video' : 'aspect-[2/3]'
  }`}
  >
  <img
  src={landscape && item.landscape ? item.landscape : item.img}
  alt={item.title}
- className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+ className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
  loading="lazy"
  />
  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
  <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
  <div
  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center"
- style={{ background: '#ff0000' }}
+ style={{ background: '#22d3ee' }}
  >
  <Play size={16} className="text-white fill-white ml-0.5" />
  </div>
@@ -80,8 +80,8 @@ export function ContentRow({ title, subtitle, items, ranked = false, landscape =
  <span
  className={`absolute top-2 left-2 px-1.5 py-0.5 text-[9px] font-orbitron uppercase tracking-wider rounded ${
  item.badge === 'LIVE'
- ? 'bg-[#ff0000] text-white'
- : 'bg-white text-[#0f0f0f] border border-[#e5e5e5]'
+ ? 'bg-cyan-400 text-[#07111f]'
+ : 'bg-white/90 text-[#07111f] border border-white/20'
  }`}
  >
  {item.badge}
@@ -91,13 +91,13 @@ export function ContentRow({ title, subtitle, items, ranked = false, landscape =
  {item.duration}
  </span>
  </div>
- <div className="mt-1.5 px-0.5">
- <p className="text-[#0f0f0f] font-bebas text-sm leading-tight line-clamp-1">{item.title}</p>
- <div className="flex items-center gap-1.5 mt-0.5">
- <span className="text-[#ff0000] text-[9px] font-medium">{item.genre}</span>
- <span className="text-gray-600 text-[9px]">·</span>
- <Star size={9} className="text-[#ff0000] fill-[#ff0000]" />
- <span className="text-[#606060] text-[9px]">{item.rating}</span>
+ <div className="mt-2 px-0.5">
+ <p className="text-white font-bebas text-[13px] sm:text-sm leading-tight line-clamp-2 min-h-[2.2rem]">{item.title}</p>
+ <div className="flex items-center gap-1.5 mt-1">
+ <span className="text-cyan-300 text-[9px] sm:text-[10px] font-medium">{item.genre}</span>
+ <span className="text-white/25 text-[9px]">·</span>
+ <Star size={9} className="text-cyan-300 fill-cyan-300" />
+ <span className="text-white/55 text-[9px] sm:text-[10px]">{item.rating}</span>
  </div>
  </div>
  </motion.button>

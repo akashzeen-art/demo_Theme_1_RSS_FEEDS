@@ -102,9 +102,12 @@
   }
 
   body {
-    @apply bg-white text-[#0f0f0f];
+    @apply text-white;
     font-family: 'Roboto', 'DM Sans', system-ui, sans-serif;
-    background: #ffffff;
+    background:
+      radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 30%),
+      radial-gradient(circle at 85% 15%, rgba(59, 130, 246, 0.12), transparent 22%),
+      linear-gradient(180deg, #050b14 0%, #07111f 45%, #091525 100%);
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
     padding-left: env(safe-area-inset-left);
@@ -121,16 +124,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #f2f2f2;
+    background: #08111d;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #ff0000;
+    background: linear-gradient(180deg, #22d3ee, #3b82f6);
     border-radius: 6px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #cc0000;
+    background: linear-gradient(180deg, #67e8f9, #60a5fa);
   }
 
   .reels-scroller::-webkit-scrollbar {
@@ -160,7 +163,7 @@
   }
 
   ::selection {
-    background: #ff0000;
+    background: rgba(34, 211, 238, 0.35);
     color: #fff;
   }
 }
@@ -179,23 +182,28 @@
   }
 
   .glow-card {
-    @apply relative rounded-xl overflow-hidden border border-[#e5e5e5] bg-white;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    @apply relative rounded-xl overflow-hidden border border-white/10 bg-[#08111d]/80;
+    backdrop-filter: blur(16px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
   .glow-card::before {
-    display: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), transparent 40%, rgba(59, 130, 246, 0.08));
+    pointer-events: none;
   }
 
   .glow-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    border-color: #ff0000;
+    box-shadow: 0 16px 40px rgba(8, 15, 30, 0.38);
+    border-color: rgba(103, 232, 249, 0.35);
   }
 
   .section-divider {
     height: 1px;
-    background: #e5e5e5;
+    background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.5), transparent);
   }
 
   .btn-neon {
@@ -229,8 +237,9 @@
   }
 
   .glass-panel {
-    @apply border border-[#e5e5e5] bg-white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    @apply border border-white/10 bg-[#08111d]/75;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.26);
   }
 
   /* ── Comic background effects ── */

@@ -7,13 +7,13 @@ import { useRef, useState } from 'react';
 import { Play, Wind, Clock, Star, Users } from 'lucide-react';
 
 const YOGA_THUMBS = [
- '/Yoga landscape/S1.png',
- '/Yoga landscape/S2.png',
- '/Yoga landscape/S3.png',
+ '/landscape_new_desicontent/1.png',
+ '/landscape_new_desicontent/2.png',
+ '/landscape_new_desicontent/3.png',
 ];
 const YOGA_BG = [
- '/Yoga landscape/F5.png',
- '/Yoga landscape/F6.png',
+ '/landscape_new_desicontent/5.png',
+ '/landscape_new_desicontent/6.png',
 ];
 import { getYogaVideo } from './yogaVideos';
 const YOGA_VIDEO = getYogaVideo(0);

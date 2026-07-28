@@ -6,16 +6,16 @@ import { Play, Plus, Star, X, Clock, Users, ChefHat } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getCookVideo } from './cookVideos';
 const cards = [
- { id: '1', title: 'Grilled Salmon Platter', category: 'Seafood', duration: '25 min', students: '87K', rating: '9.8', img: '/Eatme Landscape/S4.png' },
- { id: '2', title: 'Mushroom Risotto', category: 'Italian', duration: '40 min', students: '72K', rating: '9.6', img: '/Eatme Landscape/S5.png' },
- { id: '3', title: 'Chicken Tikka Masala', category: 'Indian', duration: '45 min', students: '134K', rating: '9.9', img: '/Eatme Landscape/S6.png' },
- { id: '4', title: 'Beef Tacos al Pastor', category: 'Mexican', duration: '30 min', students: '96K', rating: '9.7', img: '/Eatme Landscape/S7.png' },
- { id: '5', title: 'Shakshuka Breakfast', category: 'Breakfast', duration: '20 min', students: '118K', rating: '9.8', img: '/Eatme Landscape/S8.png' },
- { id: '6', title: 'Lobster Bisque', category: 'Seafood', duration: '55 min', students: '54K', rating: '9.5', img: '/Eatme Landscape/S9.png' },
- { id: '7', title: 'Pad Thai Noodles', category: 'Thai', duration: '25 min', students: '109K', rating: '9.7', img: '/Eatme Landscape/S10.png' },
- { id: '8', title: 'Chocolate Lava Cake', category: 'Dessert', duration: '30 min', students: '143K', rating: '9.9', img: '/Eatme Landscape/S11.png' },
- { id: '9', title: 'Avocado Toast Deluxe', category: 'Healthy', duration: '15 min', students: '201K', rating: '9.6', img: '/Eatme Landscape/S12.png' },
- { id: '10', title: 'Beef Wellington', category: 'British', duration: '90 min', students: '61K', rating: '9.8', img: '/Eatme Landscape/S13.png' },
+ { id: '1', title: 'Grilled Salmon Platter', category: 'Seafood', duration: '25 min', students: '87K', rating: '9.8', img: '/landscape_new_desicontent/4.png' },
+ { id: '2', title: 'Mushroom Risotto', category: 'Italian', duration: '40 min', students: '72K', rating: '9.6', img: '/landscape_new_desicontent/5.png' },
+ { id: '3', title: 'Chicken Tikka Masala', category: 'Indian', duration: '45 min', students: '134K', rating: '9.9', img: '/landscape_new_desicontent/6.png' },
+ { id: '4', title: 'Beef Tacos al Pastor', category: 'Mexican', duration: '30 min', students: '96K', rating: '9.7', img: '/landscape_new_desicontent/7.png' },
+ { id: '5', title: 'Shakshuka Breakfast', category: 'Breakfast', duration: '20 min', students: '118K', rating: '9.8', img: '/landscape_new_desicontent/8.png' },
+ { id: '6', title: 'Lobster Bisque', category: 'Seafood', duration: '55 min', students: '54K', rating: '9.5', img: '/landscape_new_desicontent/9.png' },
+ { id: '7', title: 'Pad Thai Noodles', category: 'Thai', duration: '25 min', students: '109K', rating: '9.7', img: '/landscape_new_desicontent/10.png' },
+ { id: '8', title: 'Chocolate Lava Cake', category: 'Dessert', duration: '30 min', students: '143K', rating: '9.9', img: '/landscape_new_desicontent/11.png' },
+ { id: '9', title: 'Avocado Toast Deluxe', category: 'Healthy', duration: '15 min', students: '201K', rating: '9.6', img: '/landscape_new_desicontent/12.png' },
+ { id: '10', title: 'Beef Wellington', category: 'British', duration: '90 min', students: '61K', rating: '9.8', img: '/landscape_new_desicontent/13.png' },
 ];
 
 const catGrad: Record<string, string> = {

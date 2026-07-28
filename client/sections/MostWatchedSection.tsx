@@ -32,8 +32,8 @@ export function MostWatchedSection() {
  transition={{ duration: 0.6 }} viewport={{ once: true }}>
  <Eye className="w-6 h-6 md:w-8 md:h-8 text-orange-400" />
  <div>
- <h2 className="text-3xl md:text-5xl font-bebas font-black text-slate-900">👁️ Most Watched</h2>
- <p className="text-slate-500 text-xs sm:text-sm mt-1">Titles our community can't stop watching</p>
+<h2 className="text-3xl md:text-5xl font-bebas font-black text-white">👁️ Most Watched</h2>
+<p className="text-white/55 text-xs sm:text-sm mt-1">Titles our community can't stop watching</p>
  <div className="w-16 h-1 bg-orange-400 rounded-full mt-1" />
  </div>
  </motion.div>
@@ -48,7 +48,7 @@ export function MostWatchedSection() {
  transition={{ duration: 0.4, delay: i * 0.05 }}
  viewport={{ once: true }}
  onClick={() => setActiveVideo({ url: getVideo(i + 23), title: item.title, thumb: item.img })}>
- <span className="absolute -left-2 bottom-[calc(2.5rem+1.5rem)] sm:bottom-[calc(3rem+1.5rem)] text-6xl sm:text-8xl font-black text-slate-900/10 select-none leading-none z-10">{item.rank}</span>
+<span className="absolute -left-2 bottom-[calc(2.5rem+1.5rem)] sm:bottom-[calc(3rem+1.5rem)] text-6xl sm:text-8xl font-black text-white/10 select-none leading-none z-10">{item.rank}</span>
  <div className="relative h-44 sm:h-60 md:h-72 rounded-xl overflow-hidden">
  <img src={item.img} alt={item.title}
  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -61,7 +61,7 @@ export function MostWatchedSection() {
  <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/70 rounded text-[9px] font-orbitron text-white">{item.duration}</div>
  </div>
  <div className="mt-1.5 px-0.5">
- <p className="text-slate-900 font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
+<p className="text-white font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
  <div className="flex items-center gap-1.5 mt-0.5">
  <span className="text-orange-400 text-[9px] font-orbitron">{item.genre}</span>
  <span className="text-gray-600 text-[9px]">·</span>

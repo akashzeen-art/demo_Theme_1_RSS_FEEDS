@@ -7,44 +7,44 @@ import { getYogaVideo } from './yogaVideos';
 
 // Portrait items 1–10
 const PORTRAIT_1 = [
- { title: 'Morning Vinyasa Flow', genre: 'Yoga', rating: '4.9', duration: '32 min', img: '/Yoga Portrait/1.png', vi: 0 },
- { title: 'Yin & Restore', genre: 'Yoga', rating: '4.8', duration: '45 min', img: '/Yoga Portrait/2.png', vi: 1 },
- { title: 'Power Core Flow', genre: 'Yoga', rating: '4.9', duration: '40 min', img: '/Yoga Portrait/3.png', vi: 2 },
- { title: 'Ashtanga Fundamentals', genre: 'Yoga', rating: '4.7', duration: '50 min', img: '/Yoga Portrait/4.png', vi: 3 },
- { title: 'Breathwork & Pranayama', genre: 'Meditation', rating: '4.9', duration: '30 min', img: '/Yoga Portrait/5.png', vi: 4 },
- { title: 'Kundalini Awakening', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/Yoga Portrait/6.png', vi: 5 },
- { title: 'Hatha Yoga Basics', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/Yoga Portrait/7.png', vi: 6 },
- { title: 'Restorative Deep Stretch',genre: 'Yoga', rating: '4.8', duration: '60 min', img: '/Yoga Portrait/8.png', vi: 7 },
- { title: 'Guided Meditation', genre: 'Meditation', rating: '4.9', duration: '25 min', img: '/Yoga Portrait/9.png', vi: 8 },
- { title: 'Prenatal Yoga', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/Yoga Portrait/10.png', vi: 9 },
+ { title: 'Morning Vinyasa Flow', genre: 'Yoga', rating: '4.9', duration: '32 min', img: '/potrait_new_desicontent/1.png', vi: 0 },
+ { title: 'Yin & Restore', genre: 'Yoga', rating: '4.8', duration: '45 min', img: '/potrait_new_desicontent/2.png', vi: 1 },
+ { title: 'Power Core Flow', genre: 'Yoga', rating: '4.9', duration: '40 min', img: '/potrait_new_desicontent/3.png', vi: 2 },
+ { title: 'Ashtanga Fundamentals', genre: 'Yoga', rating: '4.7', duration: '50 min', img: '/potrait_new_desicontent/4.png', vi: 3 },
+ { title: 'Breathwork & Pranayama', genre: 'Meditation', rating: '4.9', duration: '30 min', img: '/potrait_new_desicontent/5.png', vi: 4 },
+ { title: 'Kundalini Awakening', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/potrait_new_desicontent/6.png', vi: 5 },
+ { title: 'Hatha Yoga Basics', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/potrait_new_desicontent/7.png', vi: 6 },
+ { title: 'Restorative Deep Stretch',genre: 'Yoga', rating: '4.8', duration: '60 min', img: '/potrait_new_desicontent/8.png', vi: 7 },
+ { title: 'Guided Meditation', genre: 'Meditation', rating: '4.9', duration: '25 min', img: '/potrait_new_desicontent/9.png', vi: 8 },
+ { title: 'Prenatal Yoga', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/potrait_new_desicontent/10.png', vi: 9 },
 ];
 
 // Portrait items 11–20
 const PORTRAIT_2 = [
- { title: 'Sunrise Vinyasa', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/Yoga Portrait/11.png', vi: 10 },
- { title: 'Deep Yin Flow', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/Yoga Portrait/12.png', vi: 11 },
- { title: 'Power Core Yoga', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/Yoga Portrait/13.png', vi: 12 },
- { title: 'Breathwork Mastery', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/Yoga Portrait/14.png', vi: 13 },
- { title: 'Ashtanga Series', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/Yoga Portrait/15.png', vi: 14 },
- { title: 'Kundalini Flow', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/Yoga Portrait/16.png', vi: 15 },
- { title: 'Breathwork & Pranayama II',genre:'Meditation', rating: '4.7', duration: '30 min', img: '/Yoga Portrait/17.png', vi: 16 },
- { title: 'Restorative Yoga', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/Yoga Portrait/18.png', vi: 17 },
- { title: 'Ashtanga Advanced', genre: 'Yoga', rating: '4.6', duration: '50 min', img: '/Yoga Portrait/19.png', vi: 18 },
- { title: 'Morning Meditation', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/Yoga Portrait/20.png', vi: 19 },
+ { title: 'Sunrise Vinyasa', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/potrait_new_desicontent/11.png', vi: 10 },
+ { title: 'Deep Yin Flow', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/potrait_new_desicontent/12.png', vi: 11 },
+ { title: 'Power Core Yoga', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/potrait_new_desicontent/13.png', vi: 12 },
+ { title: 'Breathwork Mastery', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/potrait_new_desicontent/14.png', vi: 13 },
+ { title: 'Ashtanga Series', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/potrait_new_desicontent/15.png', vi: 14 },
+ { title: 'Kundalini Flow', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/potrait_new_desicontent/16.png', vi: 15 },
+ { title: 'Breathwork & Pranayama II',genre:'Meditation', rating: '4.7', duration: '30 min', img: '/potrait_new_desicontent/17.png', vi: 16 },
+ { title: 'Restorative Yoga', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/potrait_new_desicontent/18.png', vi: 17 },
+ { title: 'Ashtanga Advanced', genre: 'Yoga', rating: '4.6', duration: '50 min', img: '/potrait_new_desicontent/19.png', vi: 18 },
+ { title: 'Morning Meditation', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/potrait_new_desicontent/20.png', vi: 19 },
 ];
 
 // Portrait items 21–30
 const PORTRAIT_3 = [
- { title: 'Vinyasa Sunrise II', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/Yoga Portrait/21.png', vi: 20 },
- { title: 'Deep Yin Restore', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/Yoga Portrait/22.png', vi: 21 },
- { title: 'Core Power Blast', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/Yoga Portrait/23.png', vi: 22 },
- { title: 'Breathwork Journey', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/Yoga Portrait/24.png', vi: 23 },
- { title: 'Ashtanga Flow II', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/Yoga Portrait/25.png', vi: 24 },
- { title: 'Kundalini Awakening II', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/Yoga Portrait/26.png', vi: 25 },
- { title: 'Hatha Basics II', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/Yoga Portrait/27.png', vi: 26 },
- { title: 'Restorative Stretch', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/Yoga Portrait/28.png', vi: 27 },
- { title: 'Guided Breathwork', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/Yoga Portrait/29.png', vi: 28 },
- { title: 'Prenatal Flow', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/Yoga Portrait/30.png', vi: 29 },
+ { title: 'Vinyasa Sunrise II', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/potrait_new_desicontent/21.png', vi: 20 },
+ { title: 'Deep Yin Restore', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/potrait_new_desicontent/22.png', vi: 21 },
+ { title: 'Core Power Blast', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/potrait_new_desicontent/23.png', vi: 22 },
+ { title: 'Breathwork Journey', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/potrait_new_desicontent/24.png', vi: 23 },
+ { title: 'Ashtanga Flow II', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/potrait_new_desicontent/25.png', vi: 24 },
+ { title: 'Kundalini Awakening II', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/potrait_new_desicontent/26.png', vi: 25 },
+ { title: 'Hatha Basics II', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/potrait_new_desicontent/27.png', vi: 26 },
+ { title: 'Restorative Stretch', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/potrait_new_desicontent/28.png', vi: 27 },
+ { title: 'Guided Breathwork', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/potrait_new_desicontent/29.png', vi: 28 },
+ { title: 'Prenatal Flow', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/potrait_new_desicontent/30.png', vi: 29 },
 ];
 
 const genreColor: Record<string, string> = {

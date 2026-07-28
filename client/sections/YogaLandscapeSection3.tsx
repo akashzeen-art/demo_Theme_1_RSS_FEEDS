@@ -51,7 +51,7 @@ function LandscapeRow({ cards, viOffset }: { cards: typeof LANDSCAPE_1; viOffset
  <div className="flex gap-4 sm:gap-5">
  {cards.map((card, i) => {
  const gradient = catGrad[card.category] ?? 'from-emerald-500 to-teal-400';
- const img = `/Yoga landscape/S${card.id}.png`;
+ const img = `/landscape_new_desicontent/${card.id}.png`;
  return (
  <motion.div key={card.id}
  className="relative flex-shrink-0 w-64 sm:w-80 md:w-96 group cursor-pointer rounded-2xl overflow-hidden"

@@ -135,13 +135,13 @@ export function RssLivePanel({
                 Live Feed
               </span>
             </div>
-            <h2 className="font-bebas text-[2rem] sm:text-5xl text-[#0f0f0f] tracking-wide leading-none">
+            <h2 className="font-bebas text-[2rem] sm:text-5xl text-white tracking-wide leading-none">
               {category.title}
             </h2>
-            <p className="mt-1.5 text-[#606060] text-xs sm:text-sm line-clamp-2">
+            <p className="mt-1.5 text-white/55 text-xs sm:text-sm line-clamp-2">
               {category.subtitle} · {category.channelName}
             </p>
-            <div className="h-0.5 w-16 mt-2 bg-[#ff0000]" />
+            <div className="h-0.5 w-16 mt-2 bg-cyan-300" />
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -165,7 +165,7 @@ export function RssLivePanel({
           </div>
         </motion.div>
 
-        <div className="rounded-2xl border border-[#e5e5e5] bg-white overflow-hidden">
+        <div className="rounded-2xl border border-white/10 bg-[#0b1728]/90 overflow-hidden backdrop-blur-sm">
           <div className="grid lg:grid-cols-5 gap-0">
             <div className="lg:col-span-3 p-0 sm:p-4">
               {!visible || (loading && !playerSrc) ? (
@@ -197,23 +197,26 @@ export function RssLivePanel({
 
               <div className="mt-0 px-3 sm:px-0 sm:mt-3 pt-3 sm:pt-0 flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="font-bebas text-lg sm:text-xl text-[#0f0f0f] leading-tight line-clamp-2">
+                  <p className="font-bebas text-lg sm:text-xl text-white leading-tight line-clamp-2">
                     {selected?.title || 'Select a feed item'}
                   </p>
-                  <p className="text-[10px] text-[#909090] font-medium mt-1 uppercase tracking-wider">
+                  <p className="text-[10px] text-white/45 font-medium mt-1 uppercase tracking-wider">
                     {selected?.isLive || selected?.provider === 'live'
                       ? 'On air · Live stream'
                       : selected
                         ? `${formatDate(selected.pubDate)} · ${selected.author || category.channelName}`
                         : 'Live feed'}
                   </p>
+                  <p className="mt-2 text-[10px] leading-relaxed text-white/30 max-w-xl">
+                    Entertainment-discovery feed for non-commercial demo use, leaning toward Hollywood, celebrity chatter and international pop-culture viewpoints.
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-2 border-t lg:border-t-0 lg:border-l border-[#e5e5e5] max-h-[240px] sm:max-h-[320px] lg:max-h-[520px] overflow-y-auto overflow-x-hidden bg-white overscroll-contain">
-              <div className="sticky top-0 z-10 px-3 sm:px-4 py-2.5 sm:py-3 bg-[#f9f9f9] border-b border-[#e5e5e5] flex items-center justify-between">
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#606060]">
+            <div className="lg:col-span-2 border-t lg:border-t-0 lg:border-l border-white/10 max-h-[240px] sm:max-h-[320px] lg:max-h-[520px] overflow-y-auto overflow-x-hidden bg-[#0a1422] overscroll-contain">
+              <div className="sticky top-0 z-10 px-3 sm:px-4 py-2.5 sm:py-3 bg-[#0d1828] border-b border-white/10 flex items-center justify-between">
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/45">
                   Feed · {items.length || '…'}
                 </p>
                 {loading && <Loader2 size={14} className="text-[#ff0000] animate-spin" />}
@@ -249,10 +252,10 @@ export function RssLivePanel({
                             }
                           }}
                           className={`w-full flex gap-3 p-3 text-left transition-colors ${
-                            active ? 'bg-[#fff0f0]' : 'hover:bg-[#f9f9f9]'
+                            active ? 'bg-cyan-400/10' : 'hover:bg-white/5'
                           }`}
                         >
-                          <div className="relative w-20 sm:w-28 aspect-video rounded-md overflow-hidden shrink-0 bg-[#f2f2f2]">
+                          <div className="relative w-20 sm:w-28 aspect-video rounded-md overflow-hidden shrink-0 bg-[#111827]">
                             <img
                               src={item.thumbnail}
                               alt=""
@@ -260,7 +263,7 @@ export function RssLivePanel({
                               loading="lazy"
                             />
                             {live && (
-                              <span className="absolute top-1 left-1 text-[8px] font-bold uppercase bg-[#ff0000] px-1.5 py-0.5 rounded text-white">
+                              <span className="absolute top-1 left-1 text-[8px] font-bold uppercase bg-cyan-400 px-1.5 py-0.5 rounded text-[#07111f]">
                                 Live
                               </span>
                             )}
@@ -270,20 +273,20 @@ export function RssLivePanel({
                               </span>
                             )}
                             {active && (
-                              <div className="absolute inset-0 flex items-center justify-center bg-[#ff0000]/35">
+                              <div className="absolute inset-0 flex items-center justify-center bg-cyan-400/25">
                                 <Play size={16} className="text-white fill-white" />
                               </div>
                             )}
                           </div>
                           <div className="min-w-0 py-0.5">
                             <p
-                              className={`text-sm leading-snug line-clamp-2 ${
-                                active ? 'text-[#ff0000] font-medium' : 'text-[#0f0f0f]'
+                              className={`text-[13px] sm:text-sm leading-snug line-clamp-2 ${
+                                active ? 'text-cyan-300 font-medium' : 'text-white/90'
                               }`}
                             >
                               {item.title}
                             </p>
-                            <p className="text-[10px] text-[#909090] mt-1">
+                            <p className="text-[10px] text-white/40 mt-1">
                               {live
                                 ? 'On air'
                                 : item.provider === 'platform'
