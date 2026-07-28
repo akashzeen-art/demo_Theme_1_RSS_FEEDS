@@ -83,7 +83,7 @@ export function ThrillerSection() {
 
  <div>
  <p className="text-xs sm:text-sm font-orbitron uppercase tracking-widest text-blue-400/60 mb-2">Inside the Mind</p>
- <h2 className="font-bebas font-black text-slate-900 leading-none" style={{ fontSize: 'clamp(3.5rem, 12vw, 7rem)' }}>
+<h2 className="font-bebas font-black text-white leading-none" style={{ fontSize: 'clamp(3.5rem, 12vw, 7rem)' }}>
  DANGEROUS<br />
  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
  MINDS

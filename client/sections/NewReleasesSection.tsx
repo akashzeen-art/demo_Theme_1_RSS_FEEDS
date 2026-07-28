@@ -26,8 +26,8 @@ export function NewReleasesSection() {
  transition={{ duration: 0.6 }} viewport={{ once: true }}>
  <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-amber-400" />
  <div>
- <h2 className="text-3xl md:text-5xl font-bebas font-black text-slate-900">🆕 New Releases</h2>
- <p className="text-slate-500 text-xs sm:text-sm mt-1">Fresh titles just dropped</p>
+<h2 className="text-3xl md:text-5xl font-bebas font-black text-white">🆕 New Releases</h2>
+<p className="text-white/55 text-xs sm:text-sm mt-1">Fresh titles just dropped</p>
  <div className="w-16 h-1 bg-amber-400 rounded-full mt-1" />
  </div>
  </motion.div>
@@ -53,7 +53,7 @@ export function NewReleasesSection() {
  <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/70 rounded text-[9px] font-orbitron text-white">{item.duration}</div>
  </div>
  <div className="mt-1.5 px-0.5">
- <p className="text-slate-900 font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
+<p className="text-white font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
  <div className="flex items-center gap-1.5 mt-0.5">
  <Star size={9} className="fill-yellow-400 text-yellow-400 shrink-0" />
  <span className="text-yellow-400 text-[10px] font-orbitron">{item.rating}</span>
