@@ -51,8 +51,8 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     reels: {
       enabled: true,
       source: 'youtube',
-      channelName: 'Rotten Tomatoes Trailers',
-      youtubeChannelId: 'UCi8e0iOVk1fEOogdfu4YgfA',
+      channelName: 'TrailerSpot',
+      youtubeChannelId: 'UCiCSDcAcGDvD_v0TQQ8nxJg',
       preferLive: false,
       platformSnos: [71, 72, 73, 74, 75, 76],
       platformTitles: [
@@ -68,8 +68,8 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     live: {
       enabled: true,
       source: 'youtube',
-      channelName: 'Collider Interviews',
-      youtubeChannelId: 'UC5KD40UCDRUbR-od7sp9cuA',
+      channelName: 'TVLine',
+      youtubeChannelId: 'UCL4NqoTi6xcQT4IzUzBwsLg',
       preferLive: false,
       platformSnos: [51, 52, 53, 54, 55, 56],
       platformTitles: [
@@ -85,8 +85,8 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     sports: {
       enabled: true,
       source: 'youtube',
-      channelName: 'Screen Rant',
-      youtubeChannelId: 'UC2iUwfYi_1FCGGqhOUNx-iA',
+      channelName: 'i-D',
+      youtubeChannelId: 'UC9ISPZsMaBi5mutsgX6LC1g',
       preferLive: false,
       platformSnos: [31, 32, 33, 34, 35, 36],
       platformTitles: [
@@ -102,8 +102,8 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     movies: {
       enabled: true,
       source: 'youtube',
-      channelName: 'FilmSelect Trailer',
-      youtubeChannelId: 'UCT0hbLDa-unWsnZ6Rjzkfug',
+      channelName: 'JoBlo Movie Network',
+      youtubeChannelId: 'UCRX7UEyE8kp35mPrgC2sosA',
       preferLive: false,
       platformSnos: [1, 2, 3, 4, 5, 6],
       platformTitles: [
@@ -119,8 +119,8 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     webseries: {
       enabled: true,
       source: 'youtube',
-      channelName: 'TV Promos',
-      youtubeChannelId: 'UCDR8cvjALazMm2j9hOar8_g',
+      channelName: 'KinoCheck',
+      youtubeChannelId: 'UCOL10n-as9dXO2qtjjFUQbQ',
       preferLive: false,
       platformSnos: [13, 14, 15, 17, 18, 19],
       platformTitles: [

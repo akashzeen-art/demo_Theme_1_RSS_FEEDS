@@ -60,7 +60,7 @@ const META: Record<
 > = {
   reels: {
     title: 'Reels',
-    subtitle: 'Hollywood trailer cuts, viral promo clips and studio hype moments',
+    subtitle: 'Common trailer cuts, promo edits and simple Hollywood short-form moments',
     path: '/reels',
     accent: 'from-rose-600 to-orange-500',
     badge: 'Shorts',
@@ -68,7 +68,7 @@ const META: Record<
   },
   live: {
     title: 'Live',
-    subtitle: 'Hollywood interviews, cast conversations and premiere-day entertainment coverage',
+    subtitle: 'Cast chats, TV interviews and everyday entertainment coverage',
     path: '/live',
     accent: 'from-red-600 to-rose-700',
     badge: 'On Air',
@@ -76,7 +76,7 @@ const META: Record<
   },
   sports: {
     title: 'Sports',
-    subtitle: 'Hollywood fandom, franchise debates and blockbuster pop-culture coverage',
+    subtitle: 'Entertainment chats, pop-culture moments and lighter fandom coverage',
     path: '/sports',
     accent: 'from-emerald-600 to-teal-500',
     badge: 'Arena',
@@ -84,7 +84,7 @@ const META: Record<
   },
   movies: {
     title: 'Movies',
-    subtitle: 'Hollywood trailers, premiere drops and blockbuster big-screen moments',
+    subtitle: 'Hollywood movie clips, simple trailers and common cinema updates',
     path: '/movies',
     accent: 'from-red-700 to-amber-600',
     badge: 'Cinema',
@@ -92,7 +92,7 @@ const META: Record<
   },
   webseries: {
     title: 'Web Series',
-    subtitle: 'TV promos, streaming series teasers and binge-worthy web show drops',
+    subtitle: 'Series teasers, TV promos and regular streaming-show updates',
     path: '/webseries',
     accent: 'from-orange-600 to-red-600',
     badge: 'Series',
