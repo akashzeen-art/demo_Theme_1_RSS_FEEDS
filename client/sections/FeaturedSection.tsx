@@ -72,7 +72,7 @@ export function FeaturedSection() {
 
  {/* Player */}
  <div className="lg:col-span-3">
- <div className="relative rounded-xl overflow-hidden bg-gray-900 glow-card" style={{ aspectRatio: '16/9' }}>
+ <div className="relative rounded-xl overflow-hidden bg-gray-900 glow-card" style={{ aspectRatio: '1350/760' }}>
 
  {/* Thumbnail */}
  <AnimatePresence mode="wait" custom={direction}>
@@ -153,8 +153,8 @@ export function FeaturedSection() {
  <motion.button key={v.id}
  onClick={() => { go(i); openFlow(v); }}
  className={`flex-shrink-0 snap-start flex items-center gap-3 p-2.5 sm:p-3 rounded-xl text-left transition-all w-64 sm:w-72 lg:w-full ${i === active ? 'bg-white/8 border border-white/20' : 'border border-transparent hover:bg-white/5 hover:border-white/10'}`}>
- <div className="relative w-16 h-11 sm:w-20 sm:h-14 rounded-lg overflow-hidden flex-shrink-0">
- <img src={v.thumbnail} alt={v.title} className="w-full h-full object-cover" />
+ <div className="relative w-16 sm:w-20 aspect-[1350/760] rounded-lg overflow-hidden flex-shrink-0">
+ <img src={v.thumbnail} alt={v.title} className="w-full h-full object-cover object-center" />
  <div className="absolute inset-0 /30" />
  {/* Play icon overlay */}
  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

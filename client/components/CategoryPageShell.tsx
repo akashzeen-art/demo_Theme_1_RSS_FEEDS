@@ -32,14 +32,14 @@ export function CategoryPageShell({
  }, []);
 
  return (
- <div className="relative min-h-screen w-full overflow-x-hidden text-gray-200">
+ <div className="relative min-h-screen w-full overflow-x-hidden text-white bg-[#050b14]">
  <AnimatedBackground />
  <BurgerMenu />
  <CategoryNav />
 
  <div className="fixed top-0 left-0 right-0 h-1 z-[95] origin-left overflow-hidden">
  <div
-          className="h-full bg-[#ff0000] transition-transform duration-150"
+          className="h-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.6)] transition-transform duration-150"
  style={{ transform: `scaleX(${scrollProgress / 100})`, transformOrigin: 'left' }}
  />
  </div>
@@ -47,7 +47,7 @@ export function CategoryPageShell({
  {scrollProgress > 20 && (
  <button
  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-40 w-12 h-12 rounded-full text-white flex items-center justify-center transition-transform hover:scale-110 bg-[#ff0000]"
+          className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-40 w-12 h-12 rounded-full text-[#07111f] flex items-center justify-center transition-transform hover:scale-110 bg-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.4)]"
  aria-label="Scroll to top"
  >
  <ChevronUp size={18} />
@@ -59,19 +59,19 @@ export function CategoryPageShell({
  {heroImage && (
  <div className="absolute inset-0 opacity-40">
  <img src={heroImage} alt="" className="w-full h-full object-cover" />
- <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent" />
- <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/40" />
+ <div className="absolute inset-0 bg-gradient-to-r from-[#050b14] via-[#07111f]/85 to-transparent" />
+ <div className="absolute inset-0 bg-gradient-to-t from-[#050b14] via-transparent to-[#050b14]/40" />
  </div>
  )}
           <div className="relative max-w-7xl mx-auto py-8 sm:py-12">
-            <p className="text-[#ff0000] text-[10px] sm:text-xs uppercase tracking-[0.35em] mb-3 font-medium">
+            <p className="text-cyan-300 text-[10px] sm:text-xs uppercase tracking-[0.35em] mb-3 font-medium">
               {badge}
             </p>
-            <h1 className="font-bebas text-5xl sm:text-7xl md:text-8xl tracking-wide text-[#0f0f0f] leading-none">
+            <h1 className="font-bebas text-5xl sm:text-7xl md:text-8xl tracking-wide text-white leading-none">
               {title}
             </h1>
-            <p className="mt-3 text-[#606060] max-w-xl text-sm sm:text-base">{subtitle}</p>
-            <div className="h-1 w-20 mt-5 bg-[#ff0000] rounded-full" />
+            <p className="mt-3 text-white/55 max-w-xl text-sm sm:text-base">{subtitle}</p>
+            <div className="h-1 w-20 mt-5 bg-cyan-400 rounded-full shadow-[0_0_12px_rgba(34,211,238,0.45)]" />
           </div>
  </header>
 

@@ -67,7 +67,7 @@ function normalizeItems(
         link: link || `https://www.youtube.com/watch?v=${ytId}`,
         thumbnail:
           String(x.thumbnail || '') ||
-          `https://i.ytimg.com/vi/${ytId}/hqdefault.png`,
+          `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`,
         pubDate: String(x.pubDate || ''),
         author: String(x.author || fallbackAuthor),
         embedUrl: youtubeEmbedUrl(ytId, true),

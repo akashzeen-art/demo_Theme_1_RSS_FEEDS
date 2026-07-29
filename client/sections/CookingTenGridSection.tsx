@@ -87,13 +87,13 @@ export function CookingTenGridSection() {
  transition={{ duration: 0.4, delay: i * 0.03 }}
  viewport={{ once: true }}
  className="relative group cursor-pointer rounded-xl overflow-hidden"
- style={{ aspectRatio: '3/4' }}
+ style={{ aspectRatio: '1350/760' }}
  whileHover={{ scale: 1.06, zIndex: 20 }}
  whileTap={{ scale: 0.97 }}
  onClick={() => setActiveVideo({ url: getCookVideo(parseInt(card.id) - 1), title: card.title, thumb: card.img })}
  >
  <img src={card.img} alt={card.title}
- className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
 
  {/* Hover border glow */}

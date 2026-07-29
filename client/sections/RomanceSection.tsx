@@ -94,10 +94,10 @@ export function RomanceSection() {
  <p className="text-white text-lg sm:text-2xl font-bebas font-black leading-none">9.9 ★</p>
  </motion.div>
 
- <div className="relative rounded-2xl overflow-hidden group cursor-pointer mt-3 mr-2 sm:mt-0 sm:mr-0"
+ <div className="relative rounded-2xl overflow-hidden group cursor-pointer mt-3 mr-2 sm:mt-0 sm:mr-0" style={{ aspectRatio: '1350/760' }}
  onClick={() => setFlowVideo({ url: VIDEOS[vidIdx], title: 'Dangerous Alliance', thumb: THUMB })}>
  <img src={THUMB} alt="Dangerous Alliance"
- className="w-full h-56 sm:h-80 md:h-[460px] object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+ className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
  <div className="absolute inset-0 rounded-2xl border border-red-500/20 group-hover:border-red-500/60 transition-colors duration-500" />
  <div className="absolute inset-0 flex items-center justify-center">

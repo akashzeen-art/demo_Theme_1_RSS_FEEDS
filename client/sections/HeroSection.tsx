@@ -1,10 +1,16 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronLeft, ChevronRight, Star, Clock } from 'lucide-react';
-import { StreamPlayer } from '@/components/StreamPlayer';
-import { LIVE_STREAMS, MOVIES_TRENDING, WEBSERIES_NEW, type ContentItem, resolveVideo } from '@/lib/catalog';
+import {
+  LIVE_STREAMS,
+  MOVIES_TRENDING,
+  WEBSERIES_NEW,
+  type ContentItem,
+  landscapeThumb,
+  portraitThumb,
+} from '@/lib/catalog';
 
-const FALLBACK_SLIDE_MS = 90000;
+const SLIDE_MS = 6000;
 
 const HERO_ITEMS: Array<ContentItem & { blurb: string }> = [
   {
@@ -13,7 +19,7 @@ const HERO_ITEMS: Array<ContentItem & { blurb: string }> = [
   },
   {
     ...MOVIES_TRENDING[0],
-    blurb: 'A hardcoded featured stage with direct video playback from your StreamsIndia library.',
+    blurb: 'A hardcoded featured stage with cinematic posters from your StreamsIndia library.',
   },
   {
     ...WEBSERIES_NEW[0],
@@ -37,7 +43,7 @@ interface HeroSectionProps {
   onEnter?: () => void;
 }
 
-/** Dark cinematic hero driven by hardcoded catalog content */
+/** Dark cinematic hero — thumbnails only (portrait mobile / landscape desktop) */
 export function HeroSection({ onEnter }: HeroSectionProps) {
   const [itemIdx, setItemIdx] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -47,31 +53,19 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
   const current = items[itemIdx] ?? items[0];
   const displayTitle = current.title;
   const currentIsLive = current.badge === 'LIVE' || current.duration === 'LIVE';
-  const playerSrc = resolveVideo(current);
 
-  const goPrev = () => {
-    setItemIdx((i) => (i - 1 + items.length) % items.length);
-  };
-
-  const goNext = () => {
-    setItemIdx((i) => (i + 1) % items.length);
-  };
-
-  const handleVideoEnded = () => {
-    if (currentIsLive || items.length <= 1) return;
-    setProgress(0);
-    setItemIdx((i) => (i + 1) % items.length);
-  };
+  const goPrev = () => setItemIdx((i) => (i - 1 + items.length) % items.length);
+  const goNext = () => setItemIdx((i) => (i + 1) % items.length);
 
   useEffect(() => {
-    if (paused || currentIsLive || items.length <= 1) return;
+    if (paused || items.length <= 1) return;
     setProgress(0);
     const start = performance.now();
     let raf = 0;
     const tick = (now: number) => {
-      const soft = Math.min(0.95, (now - start) / FALLBACK_SLIDE_MS);
-      setProgress((prev) => (prev > soft ? prev : soft));
-      if (now - start >= FALLBACK_SLIDE_MS) {
+      const ratio = Math.min(1, (now - start) / SLIDE_MS);
+      setProgress(ratio);
+      if (ratio >= 1) {
         setItemIdx((i) => (i + 1) % items.length);
         return;
       }
@@ -79,27 +73,33 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [itemIdx, paused, items.length, currentIsLive]);
+  }, [itemIdx, paused, items.length]);
 
-  const backdrop = useMemo(
-    () => current.landscape || `/Landscape-New-Desi/${current.videoSno}.jpg`,
+  const landscapeSrc = useMemo(
+    () => current.landscape || landscapeThumb(current.videoSno),
+    [current]
+  );
+  const portraitSrc = useMemo(
+    () => current.img || portraitThumb(current.videoSno),
     [current]
   );
 
-  const getHeroThumb = (item: ContentItem) =>
-    item.landscape || item.img || `/Landscape-New-Desi/${item.videoSno}.jpg`;
+  const getLandscape = (item: ContentItem) =>
+    item.landscape || landscapeThumb(item.videoSno);
+  const getPortrait = (item: ContentItem) =>
+    item.img || portraitThumb(item.videoSno);
 
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <AnimatePresence mode="sync">
           <motion.img
-            key={backdrop}
-            src={backdrop}
+            key={landscapeSrc}
+            src={landscapeSrc}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 1.1, rotate: -1 }}
-            animate={{ opacity: 0.24, scale: 1.08, rotate: 0 }}
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 0.22, scale: 1.06 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.75 }}
           />
@@ -148,7 +148,9 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
                 {current.blurb}
               </p>
               <div className="mt-3 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-white/55">
-                <span className="inline-flex items-center gap-1.5"><Clock size={12} /> {current.duration}</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock size={12} /> {current.duration}
+                </span>
                 <span>{current.genre}</span>
                 <span>Rating {current.rating}</span>
               </div>
@@ -166,6 +168,7 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
           </motion.div>
         </div>
 
+        {/* Main hero thumbnail — portrait on mobile, landscape on desktop */}
         <motion.div
           className="relative mx-1 sm:mx-2"
           initial={{ opacity: 0, y: 28, scale: 0.97 }}
@@ -176,21 +179,55 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
         >
           <div className="absolute -inset-1 rounded-[1.25rem] bg-gradient-to-r from-cyan-500/40 via-transparent to-blue-500/35 blur-sm pointer-events-none" />
 
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
-            {playerSrc ? (
-              <StreamPlayer
-                src={playerSrc}
-                title={displayTitle}
-                onEnded={handleVideoEnded}
-                onProgress={(ratio) => {
-                  if (!paused) setProgress(ratio);
-                }}
-              />
-            ) : (
-              <div className="aspect-video bg-[#111] flex items-center justify-center">
-                <Play size={32} className="text-white/60" />
-              </div>
-            )}
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b1728] shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+            {/* Mobile: portrait 1080×1350 */}
+            <div className="relative aspect-[4/5] sm:hidden">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={`m-${portraitSrc}`}
+                  src={portraitSrc}
+                  alt={displayTitle}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.45 }}
+                  onError={(e) => {
+                    e.currentTarget.src = portraitThumb(1);
+                  }}
+                />
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Desktop/tablet: landscape 1350×760 */}
+            <div className="relative hidden sm:block aspect-[1350/760]">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={`d-${landscapeSrc}`}
+                  src={landscapeSrc}
+                  alt={displayTitle}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.45 }}
+                  onError={(e) => {
+                    e.currentTarget.src = landscapeThumb(1);
+                  }}
+                />
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+            </div>
+
+            <div className="absolute inset-x-0 bottom-0 z-20 p-4 sm:p-6 pointer-events-none">
+              <p className="font-bebas text-xl sm:text-3xl text-white leading-none drop-shadow-lg line-clamp-2">
+                {displayTitle}
+              </p>
+              <p className="mt-1 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-white/60">
+                {current.genre} · {current.duration}
+              </p>
+            </div>
 
             {items.length > 1 && (
               <>
@@ -216,20 +253,19 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
             )}
           </div>
 
-          {items.length > 1 && !currentIsLive && (
+          {items.length > 1 && (
             <div className="mt-3 sm:mt-4 relative">
               <div className="h-2 rounded-full overflow-hidden bg-white/10">
                 <motion.div
                   className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-400"
-                  style={{
-                    width: `${progress * 100}%`,
-                  }}
+                  style={{ width: `${progress * 100}%` }}
                 />
               </div>
             </div>
           )}
         </motion.div>
 
+        {/* Thumbnail strip — portrait mobile / landscape desktop */}
         <div
           className="mt-5 sm:mt-7 flex gap-2.5 sm:gap-4 overflow-x-auto pb-2 sm:pb-3 pt-1 -mx-1 px-1 touch-pan-x"
           style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
@@ -244,7 +280,7 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
                 type="button"
                 onClick={() => setItemIdx(i)}
                 aria-label={item.title}
-                className={`relative flex-shrink-0 w-[112px] sm:w-[152px] aspect-video overflow-hidden rounded-xl border transition-all ${
+                className={`relative flex-shrink-0 overflow-hidden rounded-xl border transition-all w-[92px] aspect-[4/5] sm:w-[168px] sm:aspect-[1350/760] ${
                   active
                     ? 'border-cyan-400 ring-2 ring-cyan-400/30 z-10 opacity-100'
                     : 'border-white/10 opacity-85 hover:opacity-100'
@@ -258,15 +294,24 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: 'spring', stiffness: 320, damping: 22 }}
               >
+                {/* Mobile portrait */}
                 <img
-                  src={getHeroThumb(item)}
+                  src={getPortrait(item)}
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover object-center sm:hidden"
                   loading="lazy"
                   onError={(e) => {
-                    const target = e.currentTarget;
-                    if (target.src.endsWith(item.img)) return;
-                    target.src = item.img;
+                    e.currentTarget.src = portraitThumb(1);
+                  }}
+                />
+                {/* Desktop landscape */}
+                <img
+                  src={getLandscape(item)}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover object-center hidden sm:block"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = landscapeThumb(1);
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

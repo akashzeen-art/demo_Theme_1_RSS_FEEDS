@@ -84,12 +84,12 @@ export function UniverseSection() {
  transition={{ duration: 0.5, delay: i * 0.06 }}
  viewport={{ once: true }}
  className="relative group cursor-pointer rounded-xl overflow-hidden"
- style={{ aspectRatio: '2/3' }}
+ style={{ aspectRatio: '1080/1350' }}
  whileHover={{ scale: 1.04, zIndex: 10 }}
  whileTap={{ scale: 0.97 }}
  onClick={() => setActiveVideo({ url: getVideo(parseInt(card.id) + 86), title: card.title, thumb: card.thumbnail })}
  >
- <img src={card.thumbnail} alt={card.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+ <img src={card.thumbnail} alt={card.title} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
  {/* Glow border */}

@@ -48,10 +48,10 @@ export function ThrillerSection() {
  <p className="text-white text-lg sm:text-2xl font-bebas font-black leading-none">9.9 ★</p>
  </motion.div>
 
- <div className="relative rounded-2xl overflow-hidden group cursor-pointer mt-3 ml-2 sm:mt-0 sm:ml-0"
+ <div className="relative rounded-2xl overflow-hidden group cursor-pointer mt-3 ml-2 sm:mt-0 sm:ml-0" style={{ aspectRatio: '1350/760' }}
  onClick={() => setFlowVideo({ url: VIDEOS[vidIdx], title: 'Dangerous Minds', thumb: THUMB })}>
  <img src={THUMB} alt="Dangerous Minds"
- className="w-full h-56 sm:h-80 md:h-[460px] object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+ className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent" />
  <div className="absolute inset-0 rounded-2xl border border-blue-500/20 group-hover:border-blue-500/60 transition-colors duration-500" />
  <div className="absolute inset-0 flex items-center justify-center">

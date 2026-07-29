@@ -102,7 +102,11 @@ export function RssLivePanel({
   }, [category.id]);
 
   useEffect(() => {
-    if (!selectedId && items[0]) setSelectedId(items[0].id);
+    if (!items.length) return;
+    // Keep selection in sync with feed; default to first item
+    if (!selectedId || !items.some((i) => i.id === selectedId)) {
+      setSelectedId(items[0].id);
+    }
   }, [items, selectedId]);
 
   const selected = items.find((i) => i.id === selectedId) ?? items[0] ?? null;
@@ -148,7 +152,7 @@ export function RssLivePanel({
             <button
               type="button"
               onClick={reload}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-[10px] font-medium uppercase tracking-wider border border-[#e5e5e5] bg-white text-[#0f0f0f] hover:border-[#ff0000] transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-[10px] font-medium uppercase tracking-wider border border-white/15 bg-white/5 text-white hover:border-cyan-400/50 transition-all"
             >
               <RefreshCw size={12} className={loading ? 'animate-spin' : ''} />
               Refresh
@@ -169,13 +173,13 @@ export function RssLivePanel({
           <div className="grid lg:grid-cols-5 gap-0">
             <div className="lg:col-span-3 p-0 sm:p-4">
               {!visible || (loading && !playerSrc) ? (
-                <div className="aspect-video min-h-[200px] sm:rounded-xl border-0 sm:border border-[#e5e5e5] bg-[#f2f2f2] flex items-center justify-center">
-                  <Loader2 className="w-8 h-8 text-[#ff0000] animate-spin" />
+                <div className="aspect-video min-h-[200px] sm:rounded-xl border-0 sm:border border-white/10 bg-[#111827] flex items-center justify-center">
+                  <Loader2 className="w-8 h-8 text-cyan-300 animate-spin" />
                 </div>
               ) : error && !playerSrc ? (
-                <div className="aspect-video min-h-[200px] sm:rounded-xl border-0 sm:border border-[#ff0000]/40 bg-[#fff5f5] flex flex-col items-center justify-center gap-3 px-6 text-center">
-                  <AlertCircle className="text-[#ff0000]" size={28} />
-                  <p className="text-[#0f0f0f] text-sm">{error}</p>
+                <div className="aspect-video min-h-[200px] sm:rounded-xl border-0 sm:border border-red-500/40 bg-[#1a1020] flex flex-col items-center justify-center gap-3 px-6 text-center">
+                  <AlertCircle className="text-red-400" size={28} />
+                  <p className="text-white/80 text-sm">{error}</p>
                   <button
                     type="button"
                     onClick={reload}
@@ -185,7 +189,7 @@ export function RssLivePanel({
                   </button>
                 </div>
               ) : playerSrc ? (
-                <div className="overflow-hidden border-0 sm:border sm:border-[#e5e5e5] sm:rounded-xl bg-black">
+                <div className="overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-black">
                   <StreamPlayer
                     key={playerSrc}
                     src={playerSrc}
@@ -234,7 +238,7 @@ export function RssLivePanel({
                   </button>
                 </div>
               ) : (
-                <ul className="divide-y divide-[#e5e5e5]">
+                <ul className="divide-y divide-white/10">
                   {items.map((item, i) => {
                     const active = selected?.id === item.id;
                     const live = item.isLive || item.provider === 'live';
@@ -255,12 +259,18 @@ export function RssLivePanel({
                             active ? 'bg-cyan-400/10' : 'hover:bg-white/5'
                           }`}
                         >
-                          <div className="relative w-20 sm:w-28 aspect-video rounded-md overflow-hidden shrink-0 bg-[#111827]">
+                          <div className="relative w-20 sm:w-28 aspect-[1350/760] rounded-md overflow-hidden shrink-0 bg-[#111827]">
                             <img
                               src={item.thumbnail}
                               alt=""
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover object-center"
                               loading="lazy"
+                              onError={(e) => {
+                                const t = e.currentTarget;
+                                if (t.dataset.fallback === '1') return;
+                                t.dataset.fallback = '1';
+                                t.style.opacity = '0.35';
+                              }}
                             />
                             {live && (
                               <span className="absolute top-1 left-1 text-[8px] font-bold uppercase bg-cyan-400 px-1.5 py-0.5 rounded text-[#07111f]">

@@ -11,6 +11,7 @@ import {
  type LucideIcon,
 } from 'lucide-react';
 import { getEnabledRssCategories, type RssCategoryId } from '@/lib/rssFeeds';
+import { portraitThumb } from '@/lib/catalog';
 
 const ICONS: Record<RssCategoryId | 'home', LucideIcon> = {
  home: Home,
@@ -42,7 +43,7 @@ const HOME_CARD = {
 };
 
 function thumbSrc(sno: number) {
- return `/Potrait-New_desi/${sno}.jpg`;
+  return portraitThumb(sno);
 }
 
 function CategoryThumbCollage({
@@ -61,7 +62,7 @@ function CategoryThumbCollage({
  <img
  src={thumbSrc(hero)}
  alt={title}
- className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+ className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
  loading="lazy"
  />
 
@@ -79,7 +80,7 @@ function CategoryThumbCollage({
  <img
  src={thumbSrc(sno)}
  alt=""
- className="w-full h-full object-cover"
+ className="w-full h-full object-cover object-center"
  loading="lazy"
  />
  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
@@ -156,7 +157,7 @@ export function CategoryLaunchSection() {
  >
  <a
  href={cat.path}
-                  className="relative block aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden border border-[#e5e5e5] bg-white transition-all duration-300 hover:border-[#ff0000] hover:shadow-md hover:-translate-y-0.5"
+                  className="relative block aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 bg-[#0b1728] transition-all duration-300 hover:border-cyan-400/50 hover:shadow-md hover:-translate-y-0.5"
  >
  <CategoryThumbCollage snos={thumbs} title={cat.title} />
 

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Play, Star, Clock, Users, Sparkles, Wind } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getYogaVideo } from './yogaVideos';
+import { landscapeThumb } from '@/lib/catalog';
 
 const catGrad: Record<string, string> = {
  Yoga: 'from-emerald-500 to-teal-400',
@@ -51,11 +52,11 @@ function LandscapeRow({ cards, viOffset }: { cards: typeof LANDSCAPE_1; viOffset
  <div className="flex gap-4 sm:gap-5">
  {cards.map((card, i) => {
  const gradient = catGrad[card.category] ?? 'from-emerald-500 to-teal-400';
- const img = `/Landscape-New-Desi/${card.id}.jpg`;
+ const img = landscapeThumb(card.id);
  return (
  <motion.div key={card.id}
  className="relative flex-shrink-0 w-64 sm:w-80 md:w-96 group cursor-pointer rounded-2xl overflow-hidden"
- style={{ aspectRatio: '16/9' }}
+ style={{ aspectRatio: '1350/760' }}
  initial={{ opacity: 0, x: 30 }}
  whileInView={{ opacity: 1, x: 0 }}
  transition={{ duration: 0.4, delay: i * 0.05 }}
@@ -63,7 +64,7 @@ function LandscapeRow({ cards, viOffset }: { cards: typeof LANDSCAPE_1; viOffset
  whileHover={{ scale: 1.03, zIndex: 10 }}
  onClick={() => setActiveVideo({ url: getYogaVideo(viOffset + i), title: card.title, thumb: img })}>
  <img src={img} alt={card.title}
- className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
  <div className={`absolute top-3 left-3 px-2.5 py-1 text-[10px] font-orbitron font-bold uppercase bg-gradient-to-r ${gradient} text-white rounded-full`}>
  {card.category}

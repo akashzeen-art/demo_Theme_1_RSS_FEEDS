@@ -41,9 +41,9 @@ export function NewReleasesSection() {
  transition={{ duration: 0.4, delay: i * 0.04 }}
  viewport={{ once: true }}
  onClick={() => setActiveVideo({ url: getCookVideo(i + 22), title: item.title, thumb: item.img })}>
- <div className="relative rounded-xl overflow-hidden bg-gray-900" style={{ aspectRatio: '2/3' }}>
+ <div className="relative rounded-xl overflow-hidden bg-gray-900" style={{ aspectRatio: '1080/1350' }}>
  <img src={item.img} alt={item.title}
- className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />
  <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-amber-400 text-black text-[9px] font-black uppercase rounded font-orbitron">NEW</div>
  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
  <div className="w-10 h-10 rounded-full bg-amber-500/80 flex items-center justify-center shadow-lg">

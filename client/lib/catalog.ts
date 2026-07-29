@@ -47,8 +47,16 @@ const THUMB_NAMES = [
   'UNKNOWN ENEMY EP3.jpg','WANTED BY DARKNESS.jpg','WANTED FOR REVENGE.jpg',
 ];
 
-function thumbName(sno: number): string {
-  return THUMB_NAMES[(sno - 1) % THUMB_NAMES.length];
+export function thumbName(sno: number): string {
+  return THUMB_NAMES[((Math.max(1, sno) - 1) % THUMB_NAMES.length)];
+}
+
+export function portraitThumb(sno: number): string {
+  return `/Potrait-New_desi/${thumbName(sno)}`;
+}
+
+export function landscapeThumb(sno: number): string {
+  return `/Landscape-New-Desi/${thumbName(sno)}`;
 }
 
 function item(
@@ -60,15 +68,14 @@ function item(
   sno: number,
   badge?: string
 ): ContentItem {
-  const fn = thumbName(sno);
   return {
     id,
     title,
     genre,
     rating,
     duration,
-    img: `/Potrait-New_desi/${fn}`,
-    landscape: `/Landscape-New-Desi/${fn}`,
+    img: portraitThumb(sno),
+    landscape: landscapeThumb(sno),
     videoSno: sno,
     badge,
   };

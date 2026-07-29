@@ -32,11 +32,11 @@ export function TrendingSection() {
  transition={{ duration: 0.6 }} viewport={{ once: true }}>
  <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-cyan-400 animate-pulse" />
  <div>
- <h2 className="text-3xl md:text-5xl font-bebas font-black">
- <span className="gradient-text">🎬 Trending Now</span>
+ <h2 className="text-3xl md:text-5xl font-bebas font-black text-white">
+ 🎬 Trending Now
  </h2>
- <p className="text-slate-500 text-xs sm:text-sm mt-1">Most watched titles this week</p>
- <div className="accent-bar w-20 mt-2" />
+ <p className="text-white/55 text-xs sm:text-sm mt-1">Most watched titles this week</p>
+ <div className="h-0.5 w-20 mt-2 bg-cyan-300" />
  </div>
  </motion.div>
 
@@ -50,10 +50,10 @@ export function TrendingSection() {
  transition={{ duration: 0.4, delay: i * 0.05 }}
  viewport={{ once: true }}
  onClick={() => setActiveVideo({ url: getVideo(i + 13), title: item.title, thumb: item.img })}>
- <span className="absolute -left-2 bottom-[calc(2.5rem+1.5rem)] sm:bottom-[calc(3rem+1.5rem)] text-6xl sm:text-8xl font-black text-slate-900/10 select-none leading-none z-10">{item.rank}</span>
- <div className="relative h-44 sm:h-60 md:h-72 rounded-xl overflow-hidden">
+ <span className="absolute -left-2 bottom-[calc(2.5rem+1.5rem)] sm:bottom-[calc(3rem+1.5rem)] text-6xl sm:text-8xl font-black text-white/10 select-none leading-none z-10">{item.rank}</span>
+ <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#0b1728]">
  <img src={item.img} alt={item.title}
- className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
  <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg play-pulse"
@@ -66,11 +66,11 @@ export function TrendingSection() {
  </div>
  {/* Below thumbnail info */}
  <div className="mt-1.5 px-0.5">
- <p className="text-slate-900 font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
+ <p className="text-white font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
  <div className="flex items-center gap-1.5 mt-0.5">
- <span className="text-red-400 text-[9px] font-orbitron">{item.genre}</span>
- <span className="text-gray-600 text-[9px]">·</span>
- <span className="text-gray-400 text-[9px] font-orbitron">{item.duration}</span>
+ <span className="text-cyan-300 text-[9px] font-orbitron">{item.genre}</span>
+ <span className="text-white/25 text-[9px]">·</span>
+ <span className="text-white/45 text-[9px] font-orbitron">{item.duration}</span>
  </div>
  </div>
  </motion.div>

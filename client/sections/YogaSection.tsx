@@ -123,10 +123,10 @@ export function YogaSection() {
  <p className="text-white text-lg sm:text-2xl font-bebas font-black leading-none">4.9 ★</p>
  </motion.div>
 
- <div className="relative rounded-2xl overflow-hidden group cursor-pointer mt-3 mr-2 sm:mt-0 sm:mr-0"
+ <div className="relative rounded-2xl overflow-hidden group cursor-pointer mt-3 mr-2 sm:mt-0 sm:mr-0" style={{ aspectRatio: '1350/760' }}
  onClick={() => setFlowVideo({ url: YOGA_VIDEO, title: "Yoga Session", thumb: YOGA_THUMBS[thumbIdx] })}>
  <img src={YOGA_THUMBS[thumbIdx]} alt="Yoga"
- className="w-full h-56 sm:h-80 md:h-[480px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+ className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
  />
  {playing && <video src={YOGA_VIDEO} autoPlay loop muted playsInline controlsList="nodownload noremoteplayback" disablePictureInPicture onContextMenu={(e) => e.preventDefault()} className="absolute inset-0 w-full h-full object-cover" />}
  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />

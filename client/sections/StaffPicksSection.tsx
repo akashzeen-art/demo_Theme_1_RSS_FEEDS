@@ -53,9 +53,9 @@ export function StaffPicksSection() {
  viewport={{ once: true }}
  onClick={() => setActiveVideo({ url: getVideo(i + 53), title: item.title, thumb: item.img })}>
 <span className="absolute -left-2 bottom-[calc(2.5rem+1.5rem)] sm:bottom-[calc(3rem+1.5rem)] text-6xl sm:text-8xl font-black text-white/10 select-none leading-none z-10">{item.rank}</span>
- <div className="relative h-44 sm:h-60 md:h-72 rounded-xl overflow-hidden">
+ <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#0b1728]">
  <img src={item.img} alt={item.title}
- className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
  {item.rank <= 3 && (
  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-rose-400 flex items-center justify-center">

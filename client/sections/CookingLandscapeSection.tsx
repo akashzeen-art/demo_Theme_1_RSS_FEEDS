@@ -56,7 +56,7 @@ export function CookingLandscapeSection() {
  return (
  <motion.div key={card.id}
  className="relative flex-shrink-0 w-64 sm:w-80 md:w-96 group cursor-pointer rounded-2xl overflow-hidden"
- style={{ aspectRatio: '16/9' }}
+ style={{ aspectRatio: '1350/760' }}
  initial={{ opacity: 0, x: 30 }}
  whileInView={{ opacity: 1, x: 0 }}
  transition={{ duration: 0.4, delay: i * 0.05 }}
@@ -64,7 +64,7 @@ export function CookingLandscapeSection() {
  whileHover={{ scale: 1.03, zIndex: 10 }}
  onClick={() => setActiveVideo({ url: getCookVideo(parseInt(card.id) - 1), title: card.title, thumb: card.img })}>
  <img src={card.img} alt={card.title}
- className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
  <div className={`absolute top-3 left-3 px-2.5 py-1 text-[10px] font-orbitron font-bold uppercase bg-gradient-to-r ${gradient} text-white rounded-full`}>
  {card.category}

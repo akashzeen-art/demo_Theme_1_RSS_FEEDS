@@ -85,8 +85,8 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     sports: {
       enabled: true,
       source: 'youtube',
-      channelName: 'i-D',
-      youtubeChannelId: 'UC9ISPZsMaBi5mutsgX6LC1g',
+      channelName: 'Bleacher Report',
+      youtubeChannelId: 'UCO7BZhCe-EJxXIOU_O53n9g',
       preferLive: false,
       platformSnos: [31, 32, 33, 34, 35, 36],
       platformTitles: [
@@ -119,8 +119,8 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
     webseries: {
       enabled: true,
       source: 'youtube',
-      channelName: 'KinoCheck',
-      youtubeChannelId: 'UCOL10n-as9dXO2qtjjFUQbQ',
+      channelName: 'TV Promos',
+      youtubeChannelId: 'UCDR8cvjALazMm2j9hOar8_g',
       preferLive: false,
       platformSnos: [13, 14, 15, 17, 18, 19],
       platformTitles: [

@@ -65,9 +65,9 @@ function PortraitRow({ items, accentColor = 'bg-emerald-500' }: { items: typeof 
  transition={{ duration: 0.4, delay: i * 0.05 }}
  viewport={{ once: true }}
  onClick={() => setActiveVideo({ url: getYogaVideo(item.vi), title: item.title, thumb: item.img })}>
- <div className="relative h-44 sm:h-60 md:h-72 rounded-xl overflow-hidden">
+ <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#0b1728]">
  <img src={item.img} alt={item.title}
- className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
  <div className={`w-12 h-12 rounded-full ${accentColor}/80 flex items-center justify-center shadow-lg`}>

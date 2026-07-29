@@ -54,9 +54,9 @@ export function TopPicksSection() {
  viewport={{ once: true }}
  onClick={() => setActiveVideo({ url: getVideo(i + 1), title: item.title, thumb: item.img })}>
  {/* Thumbnail */}
- <div className="relative rounded-xl overflow-hidden bg-gray-900 glow-card" style={{ aspectRatio: '2/3' }}>
+ <div className="relative rounded-xl overflow-hidden bg-gray-900 glow-card" style={{ aspectRatio: '1080/1350' }}>
  <img src={item.img} alt={item.title}
- className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+ className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
  <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg play-pulse"

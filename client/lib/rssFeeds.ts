@@ -9,6 +9,7 @@ import {
   type PlatformCategoryRss,
 } from '@/config/platformRss.config';
 import { getVideo } from '@/sections/desiVideos';
+import { landscapeThumb, portraitThumb } from '@/lib/catalog';
 
 export type RssCategoryId =
   | 'reels'
@@ -76,7 +77,7 @@ const META: Record<
   },
   sports: {
     title: 'Sports',
-    subtitle: 'Entertainment chats, pop-culture moments and lighter fandom coverage',
+    subtitle: 'Sports highlights, arena moments and lighter fandom coverage',
     path: '/sports',
     accent: 'from-emerald-600 to-teal-500',
     badge: 'Arena',
@@ -146,7 +147,7 @@ export function buildLiveStreamItems(category: RssFeedConfig): RssVideoItem[] {
     link: category.path,
     thumbnail:
       stream.thumbnail ||
-      `/Landscape-New-Desi/${category.sno}.jpg`,
+      landscapeThumb(category.sno),
     pubDate: new Date().toISOString(),
     author: category.channelName,
     embedUrl: stream.url,
@@ -172,7 +173,7 @@ export function buildPlatformFeedItems(
       id: `si-${category.id}-${sno}`,
       title,
       link: category.path,
-      thumbnail: `/Potrait-New_desi/${sno}.jpg`,
+      thumbnail: portraitThumb(sno),
       pubDate: new Date().toISOString(),
       author: category.channelName,
       embedUrl: video || '',
