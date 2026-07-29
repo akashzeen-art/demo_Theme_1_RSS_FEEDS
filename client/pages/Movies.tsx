@@ -9,7 +9,7 @@ export default function Movies() {
  badge="Cinema"
  title="Movies"
  subtitle="Blockbusters, thrillers and must-watch films — plus live RSS trailers & clips."
- heroImage="/landscape_new_desicontent/1.png"
+ heroImage="/Landscape-New-Desi/ADVENTURE KE RAAZ.jpg"
  >
  <CategorySisterLinks current="movies" />
  <CategoryPageRss categoryId="movies" />

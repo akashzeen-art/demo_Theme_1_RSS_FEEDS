@@ -7,13 +7,13 @@ import { useRef, useState } from 'react';
 import { Play, ChefHat, Clock, Star, Users } from 'lucide-react';
 
 const COOK_THUMBS = [
- '/landscape_new_desicontent/4.png',
- '/landscape_new_desicontent/5.png',
- '/landscape_new_desicontent/6.png',
+ '/Landscape-New-Desi/BLACK DIARY SECRETS  EP1.jpg',
+ '/Landscape-New-Desi/BLACK DIARY SECRETS  EP2.jpg',
+ '/Landscape-New-Desi/BLACK SIGNAL.jpg',
 ];
 const COOK_BG = [
- '/landscape_new_desicontent/7.png',
- '/landscape_new_desicontent/8.png',
+ '/Landscape-New-Desi/DANGEROUS ALLIANCE.jpg',
+ '/Landscape-New-Desi/DANGEROUS MINDS EP1.jpg',
 ];
 const COOK_VIDEO = 'https://vz-a2c5d962-9e6.b-cdn.net/c8e7b52d-f116-4b28-a8b5-f5207f1fa29c/play_480p.mp4';
 

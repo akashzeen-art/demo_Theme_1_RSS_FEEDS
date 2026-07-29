@@ -9,7 +9,7 @@ export default function Live() {
       badge="On Air"
       title="Live Stream"
       subtitle="Entertainment live sessions, concerts and on-platform streams."
-      heroImage="/landscape_new_desicontent/51.png"
+      heroImage="/Landscape-New-Desi/THE MISSING LINK.jpg"
     >
       <CategorySisterLinks current="live" />
       <CategoryPageRss categoryId="live" />

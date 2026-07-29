@@ -21,6 +21,36 @@ export const CATEGORIES = [
   { label: 'Web Series', path: '/webseries', icon: 'series' },
 ] as const;
 
+const THUMB_NAMES = [
+  'ADVENTURE KE RAAZ.jpg','BEYOND SUSPICION EP1.jpg','BEYOND SUSPICION EP2.jpg',
+  'BLACK DIARY SECRETS  EP1.jpg','BLACK DIARY SECRETS  EP2.jpg','BLACK SIGNAL.jpg',
+  'DANGEROUS ALLIANCE.jpg','DANGEROUS MINDS EP1.jpg','DANGEROUS MINDS EP2.jpg',
+  'DANGEROUS MINDS EP3.jpg','DANGEROUS MINDS EP4.jpg','DANGEROUS TERRITORY.jpg',
+  'DARK CITY FILES.jpg','DEAD END MISSON.jpg','ESCAPE BEYOND FEAR EP1.jpg',
+  'ESCAPE BEYOND FEAR EP2.jpg','ESCAPE BEYOND FEAR EP3.jpg','ESCAPE FROM NOWHERE.jpg',
+  'ESCAPE PLAN 302.jpg','ESCAPE ROUT 21.jpg','FATAL CONNECTIONS EP1.jpg',
+  'FATAL CONNECTIONS EP2.jpg','FATAL CONNECTIONS EP3.jpg','FINAL COUNTDOWN.jpg',
+  'FINAL WITNESS.jpg','HER STORY.jpg','KILLER INSTINCT.jpg','LAST MISSION ALIVE.jpg',
+  'MIDNIGHT ESCAPE.jpg','MISSSION DARKNIGHT.jpg','MYSTERY JUNCTION.jpg',
+  'OPERATION NIGHTFALL.jpg','RAAZ BEYOND FEAR.jpg','RAAZ, REVENGE & MAFIA EP1.jpg',
+  'RAAZ, REVENGE & MAFIA EP2.jpg','ROGUE MISSON.jpg','SCILENT CHASE.jpg',
+  'SCILENT TRIGGER.jpg','SECRET NIGHTS.jpg','SHADOW PROTOCOL.jpg',
+  'THE CRIME CIRCLE.jpg','THE DARK NETWORK.jpg','THE DIARY SECRETS.jpg',
+  'THE FINAL DHOKHA.jpg','THE FINAL SECRET.jpg','THE FITNESS TRAP.jpg',
+  'THE FORBIDDEN FILES.jpg','THE HIDDEN ENEMY.jpg','THE HIDDEN TRUTH.jpg',
+  'THE LAST DEAL.jpg','THE MISSING LINK.jpg','THE MISSING WITNESS.jpg',
+  'THE SECRET MISSION.jpg','THE SECRET ORDER.jpg','THE SECRET ROUT EP 1.jpg',
+  'THE SECRET ROUT EP 2.jpg','THE SECRET SYNDICATE.jpg','THE SHADOW GAME EP1.jpg',
+  'THE SHADOW GAME EP2.jpg','THE SHADOW GAME EP3.jpg','THE SHADOW GAME EP4.jpg',
+  'THE UNKNOWN TARGET.jpg','THE WANTED TARGET.jpg','UNDERGROUND WARRIORS EP1.jpg',
+  'UNDERGROUND WARRIORS EP2.jpg','UNKNOWN ENEMY EP1.jpg','UNKNOWN ENEMY EP2.jpg',
+  'UNKNOWN ENEMY EP3.jpg','WANTED BY DARKNESS.jpg','WANTED FOR REVENGE.jpg',
+];
+
+function thumbName(sno: number): string {
+  return THUMB_NAMES[(sno - 1) % THUMB_NAMES.length];
+}
+
 function item(
   id: number,
   title: string,
@@ -30,14 +60,15 @@ function item(
   sno: number,
   badge?: string
 ): ContentItem {
+  const fn = thumbName(sno);
   return {
     id,
     title,
     genre,
     rating,
     duration,
-    img: `/potrait_new_desicontent/${sno}.png`,
-    landscape: `/landscape_new_desicontent/${sno}.png`,
+    img: `/Potrait-New_desi/${fn}`,
+    landscape: `/Landscape-New-Desi/${fn}`,
     videoSno: sno,
     badge,
   };

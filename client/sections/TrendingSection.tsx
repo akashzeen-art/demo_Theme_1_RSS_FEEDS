@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'Fatal Connections Ep3', genre: 'Thriller', rating: '4.9', duration: '41 min', img: '/potrait_new_desicontent/13.png' },
- { rank: 2, title: 'The Hidden Enemy', genre: 'Action', rating: '4.8', duration: '46 min', img: '/potrait_new_desicontent/14.png' },
- { rank: 3, title: 'Escape From Nowhere', genre: 'Thriller', rating: '4.9', duration: '43 min', img: '/potrait_new_desicontent/15.png' },
- { rank: 4, title: 'The Final Secret', genre: 'Mystery', rating: '4.7', duration: '50 min', img: '/potrait_new_desicontent/16.png' },
- { rank: 5, title: 'The Secret Order', genre: 'Crime', rating: '4.9', duration: '48 min', img: '/potrait_new_desicontent/17.png' },
- { rank: 6, title: 'The Final Dhokha', genre: 'Drama', rating: '4.8', duration: '44 min', img: '/potrait_new_desicontent/18.png' },
- { rank: 7, title: 'Black Diary Secrets Ep1', genre: 'Thriller', rating: '4.7', duration: '37 min', img: '/potrait_new_desicontent/19.png' },
- { rank: 8, title: 'Black Diary Secrets Ep2', genre: 'Thriller', rating: '4.8', duration: '40 min', img: '/potrait_new_desicontent/20.png' },
- { rank: 9, title: 'Final Witness', genre: 'Crime', rating: '4.9', duration: '45 min', img: '/potrait_new_desicontent/21.png' },
- { rank: 10, title: 'The Missing Link', genre: 'Mystery', rating: '4.6', duration: '42 min', img: '/potrait_new_desicontent/22.png' },
+ { rank: 1, title: 'Fatal Connections Ep3', genre: 'Thriller', rating: '4.9', duration: '41 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP3.jpg' },
+ { rank: 2, title: 'The Hidden Enemy', genre: 'Action', rating: '4.8', duration: '46 min', img: '/Potrait-New_desi/THE HIDDEN ENEMY.jpg' },
+ { rank: 3, title: 'Escape From Nowhere', genre: 'Thriller', rating: '4.9', duration: '43 min', img: '/Potrait-New_desi/ESCAPE FROM NOWHERE.jpg' },
+ { rank: 4, title: 'The Final Secret', genre: 'Mystery', rating: '4.7', duration: '50 min', img: '/Potrait-New_desi/THE FINAL SECRET.jpg' },
+ { rank: 5, title: 'The Secret Order', genre: 'Crime', rating: '4.9', duration: '48 min', img: '/Potrait-New_desi/THE SECRET ORDER.jpg' },
+ { rank: 6, title: 'The Final Dhokha', genre: 'Drama', rating: '4.8', duration: '44 min', img: '/Potrait-New_desi/THE FINAL DHOKHA.jpg' },
+ { rank: 7, title: 'Black Diary Secrets Ep1', genre: 'Thriller', rating: '4.7', duration: '37 min', img: '/Potrait-New_desi/BLACK DIARY SECRETS  EP1.jpg' },
+ { rank: 8, title: 'Black Diary Secrets Ep2', genre: 'Thriller', rating: '4.8', duration: '40 min', img: '/Potrait-New_desi/BLACK DIARY SECRETS  EP2.jpg' },
+ { rank: 9, title: 'Final Witness', genre: 'Crime', rating: '4.9', duration: '45 min', img: '/Potrait-New_desi/FINAL WITNESS.jpg' },
+ { rank: 10, title: 'The Missing Link', genre: 'Mystery', rating: '4.6', duration: '42 min', img: '/Potrait-New_desi/THE MISSING LINK.jpg' },
 ];
 
 export function TrendingSection() {

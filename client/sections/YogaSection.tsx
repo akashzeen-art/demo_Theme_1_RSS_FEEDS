@@ -7,13 +7,13 @@ import { useRef, useState } from 'react';
 import { Play, Wind, Clock, Star, Users } from 'lucide-react';
 
 const YOGA_THUMBS = [
- '/landscape_new_desicontent/1.png',
- '/landscape_new_desicontent/2.png',
- '/landscape_new_desicontent/3.png',
+ '/Landscape-New-Desi/ADVENTURE KE RAAZ.jpg',
+ '/Landscape-New-Desi/BEYOND SUSPICION EP1.jpg',
+ '/Landscape-New-Desi/BEYOND SUSPICION EP2.jpg',
 ];
 const YOGA_BG = [
- '/landscape_new_desicontent/5.png',
- '/landscape_new_desicontent/6.png',
+ '/Landscape-New-Desi/BLACK DIARY SECRETS  EP2.jpg',
+ '/Landscape-New-Desi/BLACK SIGNAL.jpg',
 ];
 import { getYogaVideo } from './yogaVideos';
 const YOGA_VIDEO = getYogaVideo(0);

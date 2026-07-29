@@ -9,7 +9,7 @@ export default function Sports() {
  badge="Arena"
  title="Sports"
  subtitle="Live matches, highlights and iconic sporting moments — with live RSS streams."
- heroImage="/landscape_new_desicontent/31.png"
+ heroImage="/Landscape-New-Desi/MYSTERY JUNCTION.jpg"
  >
  <CategorySisterLinks current="sports" />
  <CategoryPageRss categoryId="sports" />

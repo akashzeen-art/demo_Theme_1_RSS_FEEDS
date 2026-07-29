@@ -6,16 +6,16 @@ import { Play, Plus, Star, X, Clock, Users, ChefHat } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getCookVideo } from './cookVideos';
 const cards = [
- { id: '1', title: 'Grilled Salmon Platter', category: 'Seafood', duration: '25 min', students: '87K', rating: '9.8', img: '/landscape_new_desicontent/4.png' },
- { id: '2', title: 'Mushroom Risotto', category: 'Italian', duration: '40 min', students: '72K', rating: '9.6', img: '/landscape_new_desicontent/5.png' },
- { id: '3', title: 'Chicken Tikka Masala', category: 'Indian', duration: '45 min', students: '134K', rating: '9.9', img: '/landscape_new_desicontent/6.png' },
- { id: '4', title: 'Beef Tacos al Pastor', category: 'Mexican', duration: '30 min', students: '96K', rating: '9.7', img: '/landscape_new_desicontent/7.png' },
- { id: '5', title: 'Shakshuka Breakfast', category: 'Breakfast', duration: '20 min', students: '118K', rating: '9.8', img: '/landscape_new_desicontent/8.png' },
- { id: '6', title: 'Lobster Bisque', category: 'Seafood', duration: '55 min', students: '54K', rating: '9.5', img: '/landscape_new_desicontent/9.png' },
- { id: '7', title: 'Pad Thai Noodles', category: 'Thai', duration: '25 min', students: '109K', rating: '9.7', img: '/landscape_new_desicontent/10.png' },
- { id: '8', title: 'Chocolate Lava Cake', category: 'Dessert', duration: '30 min', students: '143K', rating: '9.9', img: '/landscape_new_desicontent/11.png' },
- { id: '9', title: 'Avocado Toast Deluxe', category: 'Healthy', duration: '15 min', students: '201K', rating: '9.6', img: '/landscape_new_desicontent/12.png' },
- { id: '10', title: 'Beef Wellington', category: 'British', duration: '90 min', students: '61K', rating: '9.8', img: '/landscape_new_desicontent/13.png' },
+ { id: '1', title: 'Grilled Salmon Platter', category: 'Seafood', duration: '25 min', students: '87K', rating: '9.8', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP1.jpg' },
+ { id: '2', title: 'Mushroom Risotto', category: 'Italian', duration: '40 min', students: '72K', rating: '9.6', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP2.jpg' },
+ { id: '3', title: 'Chicken Tikka Masala', category: 'Indian', duration: '45 min', students: '134K', rating: '9.9', img: '/Landscape-New-Desi/BLACK SIGNAL.jpg' },
+ { id: '4', title: 'Beef Tacos al Pastor', category: 'Mexican', duration: '30 min', students: '96K', rating: '9.7', img: '/Landscape-New-Desi/DANGEROUS ALLIANCE.jpg' },
+ { id: '5', title: 'Shakshuka Breakfast', category: 'Breakfast', duration: '20 min', students: '118K', rating: '9.8', img: '/Landscape-New-Desi/DANGEROUS MINDS EP1.jpg' },
+ { id: '6', title: 'Lobster Bisque', category: 'Seafood', duration: '55 min', students: '54K', rating: '9.5', img: '/Landscape-New-Desi/DANGEROUS MINDS EP2.jpg' },
+ { id: '7', title: 'Pad Thai Noodles', category: 'Thai', duration: '25 min', students: '109K', rating: '9.7', img: '/Landscape-New-Desi/DANGEROUS MINDS EP3.jpg' },
+ { id: '8', title: 'Chocolate Lava Cake', category: 'Dessert', duration: '30 min', students: '143K', rating: '9.9', img: '/Landscape-New-Desi/DANGEROUS MINDS EP4.jpg' },
+ { id: '9', title: 'Avocado Toast Deluxe', category: 'Healthy', duration: '15 min', students: '201K', rating: '9.6', img: '/Landscape-New-Desi/DANGEROUS TERRITORY.jpg' },
+ { id: '10', title: 'Beef Wellington', category: 'British', duration: '90 min', students: '61K', rating: '9.8', img: '/Landscape-New-Desi/DARK CITY FILES.jpg' },
 ];
 
 const catGrad: Record<string, string> = {

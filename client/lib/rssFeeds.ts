@@ -146,7 +146,7 @@ export function buildLiveStreamItems(category: RssFeedConfig): RssVideoItem[] {
     link: category.path,
     thumbnail:
       stream.thumbnail ||
-      `/landscape_new_desicontent/${category.sno}.png`,
+      `/Landscape-New-Desi/${category.sno}.jpg`,
     pubDate: new Date().toISOString(),
     author: category.channelName,
     embedUrl: stream.url,
@@ -172,7 +172,7 @@ export function buildPlatformFeedItems(
       id: `si-${category.id}-${sno}`,
       title,
       link: category.path,
-      thumbnail: `/potrait_new_desicontent/${sno}.png`,
+      thumbnail: `/Potrait-New_desi/${sno}.jpg`,
       pubDate: new Date().toISOString(),
       author: category.channelName,
       embedUrl: video || '',

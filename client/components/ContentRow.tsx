@@ -58,7 +58,7 @@ export function ContentRow({ title, subtitle, items, ranked = false, landscape =
  )}
  <div
  className={`relative overflow-hidden rounded-xl border border-white/10 bg-[#0b1728] ${
- landscape ? 'aspect-video' : 'aspect-[2/3]'
+ landscape ? 'aspect-[1350/760]' : 'aspect-[4/5]'
  }`}
  >
  <img

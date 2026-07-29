@@ -6,18 +6,18 @@ import { Heart, Play, X, Star } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 const cards = [
- { id: '1', title: 'Code Red Mafia', thumbnail: '/potrait_new_desicontent/87.png', category: 'Crime', year: '2024', rating: '9.9' },
- { id: '2', title: 'Blackmail Junction', thumbnail: '/potrait_new_desicontent/88.png', category: 'Thriller', year: '2024', rating: '9.7' },
- { id: '3', title: 'The Unofficial Network', thumbnail: '/potrait_new_desicontent/89.png', category: 'Mystery', year: '2024', rating: '9.8' },
- { id: '4', title: 'Shadow Operation', thumbnail: '/potrait_new_desicontent/90.png', category: 'Action', year: '2024', rating: '9.6' },
- { id: '5', title: 'Chase to Danger Ep1', thumbnail: '/potrait_new_desicontent/91.png', category: 'Thriller', year: '2024', rating: '9.7' },
- { id: '6', title: 'Chase to Danger Ep2', thumbnail: '/potrait_new_desicontent/92.png', category: 'Thriller', year: '2024', rating: '9.5' },
- { id: '7', title: 'Chase to Danger Ep3', thumbnail: '/potrait_new_desicontent/93.png', category: 'Thriller', year: '2024', rating: '9.9' },
- { id: '8', title: 'Chase to Danger Ep4', thumbnail: '/potrait_new_desicontent/94.png', category: 'Thriller', year: '2024', rating: '9.8' },
- { id: '9', title: 'Dark Evidence', thumbnail: '/potrait_new_desicontent/95.png', category: 'Crime', year: '2024', rating: '9.6' },
- { id: '10', title: 'The Last Truth Ep1', thumbnail: '/potrait_new_desicontent/96.png', category: 'Drama', year: '2024', rating: '9.7' },
- { id: '11', title: 'The Last Truth Ep2', thumbnail: '/potrait_new_desicontent/97.png', category: 'Drama', year: '2024', rating: '9.8' },
- { id: '12', title: 'Crime Syndicate', thumbnail: '/potrait_new_desicontent/98.png', category: 'Crime', year: '2024', rating: '9.5' },
+ { id: '1', title: 'Code Red Mafia', thumbnail: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP3.jpg', category: 'Crime', year: '2024', rating: '9.9' },
+ { id: '2', title: 'Blackmail Junction', thumbnail: '/Potrait-New_desi/ESCAPE FROM NOWHERE.jpg', category: 'Thriller', year: '2024', rating: '9.7' },
+ { id: '3', title: 'The Unofficial Network', thumbnail: '/Potrait-New_desi/ESCAPE PLAN 302.jpg', category: 'Mystery', year: '2024', rating: '9.8' },
+ { id: '4', title: 'Shadow Operation', thumbnail: '/Potrait-New_desi/ESCAPE ROUT 21.jpg', category: 'Action', year: '2024', rating: '9.6' },
+ { id: '5', title: 'Chase to Danger Ep1', thumbnail: '/Potrait-New_desi/FATAL CONNECTIONS EP1.jpg', category: 'Thriller', year: '2024', rating: '9.7' },
+ { id: '6', title: 'Chase to Danger Ep2', thumbnail: '/Potrait-New_desi/FATAL CONNECTIONS EP2.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
+ { id: '7', title: 'Chase to Danger Ep3', thumbnail: '/Potrait-New_desi/FATAL CONNECTIONS EP3.jpg', category: 'Thriller', year: '2024', rating: '9.9' },
+ { id: '8', title: 'Chase to Danger Ep4', thumbnail: '/Potrait-New_desi/FINAL COUNTDOWN.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
+ { id: '9', title: 'Dark Evidence', thumbnail: '/Potrait-New_desi/FINAL WITNESS.jpg', category: 'Crime', year: '2024', rating: '9.6' },
+ { id: '10', title: 'The Last Truth Ep1', thumbnail: '/Potrait-New_desi/HER STORY.jpg', category: 'Drama', year: '2024', rating: '9.7' },
+ { id: '11', title: 'The Last Truth Ep2', thumbnail: '/Potrait-New_desi/KILLER INSTINCT.jpg', category: 'Drama', year: '2024', rating: '9.8' },
+ { id: '12', title: 'Crime Syndicate', thumbnail: '/Potrait-New_desi/LAST MISSION ALIVE.jpg', category: 'Crime', year: '2024', rating: '9.5' },
 ];
 
 const catGrad: Record<string, string> = {

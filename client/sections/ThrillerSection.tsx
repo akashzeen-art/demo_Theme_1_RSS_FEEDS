@@ -5,8 +5,8 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { useRef, useState } from 'react';
 import { Eye, Play, Clock, Star, Users } from 'lucide-react';
 
-const THUMB = '/landscape_new_desicontent/29.png';
-const BG = '/landscape_new_desicontent/29.png';
+const THUMB = '/Landscape-New-Desi/MIDNIGHT ESCAPE.jpg';
+const BG = '/Landscape-New-Desi/MIDNIGHT ESCAPE.jpg';
 const VIDEOS = [
  'https://vz-32907a33-0f1.b-cdn.net/47ba2b6c-3128-4ecc-a1a6-1f346031ce8c/play_480p.mp4',
  'https://vz-32907a33-0f1.b-cdn.net/0ac3ec22-9eb5-4f74-8509-1387ca471cb4/play_480p.mp4',

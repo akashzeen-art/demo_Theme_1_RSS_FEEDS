@@ -82,12 +82,12 @@ export function HeroSection({ onEnter }: HeroSectionProps) {
   }, [itemIdx, paused, items.length, currentIsLive]);
 
   const backdrop = useMemo(
-    () => current.landscape || `/landscape_new_desicontent/${current.videoSno}.png`,
+    () => current.landscape || `/Landscape-New-Desi/${current.videoSno}.jpg`,
     [current]
   );
 
   const getHeroThumb = (item: ContentItem) =>
-    item.landscape || item.img || `/landscape_new_desicontent/${item.videoSno}.png`;
+    item.landscape || item.img || `/Landscape-New-Desi/${item.videoSno}.jpg`;
 
   return (
     <section className="relative w-full overflow-hidden">

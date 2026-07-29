@@ -42,7 +42,7 @@ const HOME_CARD = {
 };
 
 function thumbSrc(sno: number) {
- return `/potrait_new_desicontent/${sno}.png`;
+ return `/Potrait-New_desi/${sno}.jpg`;
 }
 
 function CategoryThumbCollage({

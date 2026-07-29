@@ -6,18 +6,18 @@ import { Heart, Play, X, Star } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 const cards = [
- { id: '1', title: 'Hidden Fear Ep3', category: 'Thriller', rating: '9.8', img: '/potrait_new_desicontent/75.png' },
- { id: '2', title: 'Hidden Fear Ep4', category: 'Thriller', rating: '9.6', img: '/potrait_new_desicontent/76.png' },
- { id: '3', title: 'The Silent Hunt', category: 'Action', rating: '9.7', img: '/potrait_new_desicontent/77.png' },
- { id: '4', title: 'The Last Chance', category: 'Drama', rating: '9.5', img: '/potrait_new_desicontent/78.png' },
- { id: '5', title: 'Shadow Force', category: 'Action', rating: '9.9', img: '/potrait_new_desicontent/79.png' },
- { id: '6', title: 'Crimewave', category: 'Crime', rating: '9.4', img: '/potrait_new_desicontent/80.png' },
- { id: '7', title: 'Mystery Avenue', category: 'Mystery', rating: '9.7', img: '/potrait_new_desicontent/81.png' },
- { id: '8', title: 'Dangerous Destination Ep1',category: 'Thriller', rating: '9.8', img: '/potrait_new_desicontent/82.png' },
- { id: '9', title: 'Dangerous Destination Ep2',category: 'Thriller', rating: '9.6', img: '/potrait_new_desicontent/83.png' },
- { id: '10', title: 'Dangerous Destination Ep3',category: 'Thriller', rating: '9.5', img: '/potrait_new_desicontent/84.png' },
- { id: '11', title: 'Dangerous Destination Ep4',category: 'Thriller', rating: '9.9', img: '/potrait_new_desicontent/85.png' },
- { id: '12', title: 'Killer Wali Raat', category: 'Crime', rating: '9.7', img: '/potrait_new_desicontent/86.png' },
+ { id: '1', title: 'Hidden Fear Ep3', category: 'Thriller', rating: '9.8', img: '/Potrait-New_desi/BLACK DIARY SECRETS  EP2.jpg' },
+ { id: '2', title: 'Hidden Fear Ep4', category: 'Thriller', rating: '9.6', img: '/Potrait-New_desi/BLACK SIGNAL.jpg' },
+ { id: '3', title: 'The Silent Hunt', category: 'Action', rating: '9.7', img: '/Potrait-New_desi/DANGEROUS ALLIANCE.jpg' },
+ { id: '4', title: 'The Last Chance', category: 'Drama', rating: '9.5', img: '/Potrait-New_desi/DANGEROUS MINDS EP1.jpg' },
+ { id: '5', title: 'Shadow Force', category: 'Action', rating: '9.9', img: '/Potrait-New_desi/DANGEROUS MINDS EP2.jpg' },
+ { id: '6', title: 'Crimewave', category: 'Crime', rating: '9.4', img: '/Potrait-New_desi/DANGEROUS MINDS EP3.jpg' },
+ { id: '7', title: 'Mystery Avenue', category: 'Mystery', rating: '9.7', img: '/Potrait-New_desi/DANGEROUS MINDS EP4.jpg' },
+ { id: '8', title: 'Dangerous Destination Ep1',category: 'Thriller', rating: '9.8', img: '/Potrait-New_desi/DANGEROUS TERRITORY.jpg' },
+ { id: '9', title: 'Dangerous Destination Ep2',category: 'Thriller', rating: '9.6', img: '/Potrait-New_desi/DARK CITY FILES.jpg' },
+ { id: '10', title: 'Dangerous Destination Ep3',category: 'Thriller', rating: '9.5', img: '/Potrait-New_desi/DEAD END MISSON.jpg' },
+ { id: '11', title: 'Dangerous Destination Ep4',category: 'Thriller', rating: '9.9', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP1.jpg' },
+ { id: '12', title: 'Killer Wali Raat', category: 'Crime', rating: '9.7', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP2.jpg' },
 ];
 
 const catGrad: Record<string, string> = {
