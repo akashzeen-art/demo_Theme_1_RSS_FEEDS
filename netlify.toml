@@ -13,6 +13,13 @@
   status = 200
   force = true
 
+# Article HTML proxy for in-app iframes
+[[redirects]]
+  from = "/api/article"
+  to = "/.netlify/functions/article"
+  status = 200
+  force = true
+
 # SPA client-side routes
 [[redirects]]
   from = "/*"

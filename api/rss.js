@@ -16,6 +16,49 @@ function decodeXml(s) {
     .replace(/&#39;/g, "'");
 }
 
+function isImageUrl(url) {
+  if (!url) return false;
+  const clean = String(url).split('#')[0].split('?')[0];
+  return /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(clean);
+}
+
+function isVideoUrl(url) {
+  if (!url) return false;
+  return (
+    /\.m3u8(\?|$)/i.test(url) ||
+    /\.(mp4|webm)(\?|$)/i.test(url) ||
+    /youtube\.com\/(watch|embed|shorts)/i.test(url) ||
+    /youtu\.be\//i.test(url)
+  );
+}
+
+function extractThumb(chunk, enclosure) {
+  const mediaContent =
+    (chunk.match(/<media:content[^>]*url="([^"]+)"[^>]*medium="image"[^>]*/i) || [])[1] ||
+    (chunk.match(/<media:content[^>]*medium="image"[^>]*url="([^"]+)"/i) || [])[1] ||
+    (chunk.match(/<media:content[^>]*url="([^"]+)"/i) || [])[1] ||
+    '';
+  const mediaThumb =
+    (chunk.match(/<media:thumbnail[^>]*url="([^"]+)"/i) || [])[1] ||
+    (chunk.match(/<itunes:image[^>]*href="([^"]+)"/i) || [])[1] ||
+    '';
+  const desc =
+    (chunk.match(/<description[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i) || [])[1] ||
+    (chunk.match(/<content:encoded[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/i) || [])[1] ||
+    (chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i) || [])[1] ||
+    '';
+  const descImg =
+    (desc.match(/<img[^>]+src=["']([^"']+)["']/i) || [])[1] ||
+    '';
+  const candidates = [mediaThumb, mediaContent, enclosure, descImg]
+    .map((u) => decodeXml(String(u || '').trim()))
+    .filter(Boolean);
+  for (const u of candidates) {
+    if (isImageUrl(u)) return u;
+  }
+  return candidates[0] || '/logo.png';
+}
+
 function parseYoutubeAtom(xml, limit = 12) {
   const entries = xml.split('<entry>').slice(1);
   const items = [];
@@ -75,14 +118,13 @@ function parseGenericRss(xml, limit = 12) {
       (chunk.match(/<link>([^<]*)<\/link>/) || [])[1] ||
       (chunk.match(/<guid[^>]*>([^<]*)<\/guid>/) || [])[1] ||
       '';
-    const enclosure =
+    const enclosureRaw =
       (chunk.match(/<enclosure[^>]*url="([^"]+)"/) || [])[1] ||
       (chunk.match(/<media:content[^>]*url="([^"]+)"/) || [])[1] ||
       '';
-    const thumb =
-      (chunk.match(/<media:thumbnail[^>]*url="([^"]+)"/) || [])[1] ||
-      (chunk.match(/<itunes:image[^>]*href="([^"]+)"/) || [])[1] ||
-      '/logo.png';
+    const enclosure = decodeXml(enclosureRaw.trim());
+    const articleLink = decodeXml(String(link || '').trim());
+    const thumb = extractThumb(chunk, enclosure);
     const pubDate =
       (chunk.match(/<pubDate>([^<]*)<\/pubDate>/) || [])[1] ||
       (chunk.match(/<published>([^<]*)<\/published>/) || [])[1] ||
@@ -93,7 +135,7 @@ function parseGenericRss(xml, limit = 12) {
       'StreamsIndia';
 
     const ytId =
-      (link.match(/[?&]v=([\w-]{11})/) || [])[1] ||
+      (articleLink.match(/[?&]v=([\w-]{11})/) || [])[1] ||
       (enclosure.match(/[?&]v=([\w-]{11})/) || [])[1];
 
     if (ytId) {
@@ -107,7 +149,9 @@ function parseGenericRss(xml, limit = 12) {
         embedUrl: `https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=1&autoplay=1&mute=1`,
       });
     } else {
-      const media = enclosure || link;
+      if (!articleLink && !enclosure) continue;
+      const playable = isVideoUrl(enclosure) && !isImageUrl(enclosure);
+      const media = playable ? enclosure : articleLink || enclosure;
       if (!media) continue;
       const live =
         /\.m3u8(\?|$)/i.test(media) ||
@@ -116,7 +160,7 @@ function parseGenericRss(xml, limit = 12) {
       items.push({
         id: `rss-${items.length}-${decodeXml(titleRaw).slice(0, 20).replace(/\W+/g, '-')}`,
         title: decodeXml(titleRaw.trim()),
-        link: link || media,
+        link: articleLink || media,
         thumbnail: thumb,
         pubDate,
         author: decodeXml(author),
@@ -170,17 +214,26 @@ export default async function handler(request) {
       try {
         const parsed = new URL(feedUrlParam);
         if (!/^https?:$/.test(parsed.protocol)) throw new Error('bad protocol');
+        const host = parsed.hostname.replace(/^www\./, '');
+        // Live Feeds are rss.app only
+        if (host !== 'rss.app') {
+          return json(
+            { status: 'error', message: 'Only rss.app feed URLs are allowed' },
+            400
+          );
+        }
         feedUrl = parsed.toString();
-      } catch {
+      } catch (e) {
+        if (e && e.message === 'Only rss.app feed URLs are allowed') throw e;
         return json({ status: 'error', message: 'Invalid feedUrl' }, 400);
       }
     } else if (/^UC[\w-]{20,}$/.test(channelId)) {
-      feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-    } else {
       return json(
-        { status: 'error', message: 'Provide channelId (UC…) or feedUrl' },
+        { status: 'error', message: 'YouTube channel RSS disabled — use rss.app feedUrl only' },
         400
       );
+    } else {
+      return json({ status: 'error', message: 'feedUrl (rss.app) is required' }, 400);
     }
 
     const upstream = await fetch(feedUrl, {

@@ -7,16 +7,33 @@ import {
   AlertCircle,
   ChevronRight,
   RefreshCw,
+  ExternalLink,
 } from 'lucide-react';
 import { type RssFeedConfig, type RssVideoItem } from '@/lib/rssFeeds';
 import { fetchCategoryRss } from '@/lib/fetchRss';
-import { StreamPlayer } from '@/components/StreamPlayer';
+import { StreamPlayer, isDirectVideo, isHls } from '@/components/StreamPlayer';
 
 function formatDate(iso: string) {
   if (!iso) return '';
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return '';
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+function isImageUrl(url: string) {
+  if (!url) return false;
+  const clean = url.split('#')[0].split('?')[0];
+  return /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(clean);
+}
+
+function isPlayableEmbed(url: string | null | undefined) {
+  if (!url || isImageUrl(url)) return false;
+  return (
+    isDirectVideo(url) ||
+    isHls(url) ||
+    /youtube\.com\/(embed|watch|shorts)/i.test(url) ||
+    /youtu\.be\//i.test(url)
+  );
 }
 
 function useCategoryRss(categoryId: string, enabled: boolean, limit = 12) {
@@ -77,6 +94,7 @@ export function RssLivePanel({
   // Load immediately so remote RSS appears without waiting to scroll
   const [visible, setVisible] = useState(true);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [frameReady, setFrameReady] = useState(false);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -111,6 +129,16 @@ export function RssLivePanel({
 
   const selected = items.find((i) => i.id === selectedId) ?? items[0] ?? null;
   const playerSrc = selected?.embedUrl || null;
+  const canPlay = isPlayableEmbed(playerSrc);
+  const articleHref = selected?.link || (!canPlay ? playerSrc : null);
+  const articleFrameSrc = articleHref
+    ? `/api/article?url=${encodeURIComponent(articleHref)}`
+    : null;
+  const hasContent = Boolean(selected && (canPlay || articleFrameSrc || selected.thumbnail));
+
+  useEffect(() => {
+    setFrameReady(false);
+  }, [articleFrameSrc]);
 
   return (
     <section
@@ -172,11 +200,11 @@ export function RssLivePanel({
         <div className="rounded-2xl border border-white/10 bg-[#0b1728]/90 overflow-hidden backdrop-blur-sm">
           <div className="grid lg:grid-cols-5 gap-0">
             <div className="lg:col-span-3 p-0 sm:p-4">
-              {!visible || (loading && !playerSrc) ? (
+              {!visible || (loading && !hasContent) ? (
                 <div className="aspect-video min-h-[200px] sm:rounded-xl border-0 sm:border border-white/10 bg-[#111827] flex items-center justify-center">
                   <Loader2 className="w-8 h-8 text-cyan-300 animate-spin" />
                 </div>
-              ) : error && !playerSrc ? (
+              ) : error && !hasContent ? (
                 <div className="aspect-video min-h-[200px] sm:rounded-xl border-0 sm:border border-red-500/40 bg-[#1a1020] flex flex-col items-center justify-center gap-3 px-6 text-center">
                   <AlertCircle className="text-red-400" size={28} />
                   <p className="text-white/80 text-sm">{error}</p>
@@ -188,13 +216,73 @@ export function RssLivePanel({
                     Retry Feed
                   </button>
                 </div>
-              ) : playerSrc ? (
+              ) : canPlay && playerSrc ? (
                 <div className="overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-black">
                   <StreamPlayer
                     key={playerSrc}
                     src={playerSrc}
                     title={selected?.title || category.title}
                     className="!rounded-none"
+                  />
+                </div>
+              ) : selected && articleFrameSrc ? (
+                <div className="relative overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-[#111827]">
+                  <div className="h-[min(68vh,620px)] min-h-[280px] sm:min-h-[360px] relative">
+                    {!frameReady && (
+                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-[#111827]">
+                        {selected.thumbnail ? (
+                          <img
+                            src={selected.thumbnail}
+                            alt=""
+                            className="absolute inset-0 w-full h-full object-cover opacity-30"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        ) : null}
+                        <Loader2 className="relative w-8 h-8 text-cyan-300 animate-spin" />
+                        <p className="relative text-[10px] uppercase tracking-wider text-white/50">
+                          Loading article…
+                        </p>
+                      </div>
+                    )}
+                    <iframe
+                      key={articleFrameSrc}
+                      src={articleFrameSrc}
+                      title={selected.title || 'Article'}
+                      className="absolute inset-0 w-full h-full border-0 bg-white"
+                      loading="eager"
+                      referrerPolicy="no-referrer"
+                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
+                      onLoad={() => setFrameReady(true)}
+                    />
+                  </div>
+                  {articleHref ? (
+                    <div className="flex items-center justify-between gap-3 px-3 py-2 border-t border-white/10 bg-[#0a1422]">
+                      <p className="text-[10px] text-white/40 uppercase tracking-wider truncate">
+                        In-app article view
+                      </p>
+                      <a
+                        href={articleHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 shrink-0 text-[10px] font-medium uppercase tracking-wider text-cyan-300 hover:text-cyan-200"
+                      >
+                        Open original
+                        <ExternalLink size={12} />
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
+              ) : selected ? (
+                <div className="relative overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-[#111827] aspect-video min-h-[200px]">
+                  <img
+                    src={selected.thumbnail || '/logo.png'}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = '/logo.png';
+                    }}
                   />
                 </div>
               ) : null}

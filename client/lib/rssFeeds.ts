@@ -5,11 +5,14 @@
 
 import {
   PLATFORM_RSS_CONFIG,
+  isRssAppFeedUrl,
   type LiveStreamItem,
   type PlatformCategoryRss,
 } from '@/config/platformRss.config';
 import { getVideo } from '@/sections/desiVideos';
 import { landscapeThumb, portraitThumb } from '@/lib/catalog';
+
+export { isRssAppFeedUrl };
 
 export type RssCategoryId =
   | 'reels'
@@ -61,7 +64,7 @@ const META: Record<
 > = {
   reels: {
     title: 'Reels',
-    subtitle: 'Common trailer cuts, promo edits and simple Hollywood short-form moments',
+    subtitle: 'Live discovery feed powered by rss.app',
     path: '/reels',
     accent: 'from-rose-600 to-orange-500',
     badge: 'Shorts',
@@ -69,7 +72,7 @@ const META: Record<
   },
   live: {
     title: 'Live',
-    subtitle: 'Cast chats, TV interviews and everyday entertainment coverage',
+    subtitle: 'Live discovery feed powered by rss.app',
     path: '/live',
     accent: 'from-red-600 to-rose-700',
     badge: 'On Air',
@@ -77,7 +80,7 @@ const META: Record<
   },
   sports: {
     title: 'Sports',
-    subtitle: 'Sports highlights, arena moments and lighter fandom coverage',
+    subtitle: 'Live discovery feed powered by rss.app',
     path: '/sports',
     accent: 'from-emerald-600 to-teal-500',
     badge: 'Arena',
@@ -85,7 +88,7 @@ const META: Record<
   },
   movies: {
     title: 'Movies',
-    subtitle: 'Hollywood movie clips, simple trailers and common cinema updates',
+    subtitle: 'Live discovery feed powered by rss.app',
     path: '/movies',
     accent: 'from-red-700 to-amber-600',
     badge: 'Cinema',
@@ -93,7 +96,7 @@ const META: Record<
   },
   webseries: {
     title: 'Web Series',
-    subtitle: 'Series teasers, TV promos and regular streaming-show updates',
+    subtitle: 'Live discovery feed powered by rss.app',
     path: '/webseries',
     accent: 'from-orange-600 to-red-600',
     badge: 'Series',
@@ -108,8 +111,8 @@ function buildCategory(id: RssCategoryId): RssFeedConfig {
     id,
     ...meta,
     enabled: cfg.enabled,
-    source: cfg.source,
-    channelId: cfg.youtubeChannelId || `platform-${id}`,
+    source: 'rss',
+    channelId: `rssapp-${id}`,
     channelName: cfg.channelName || PLATFORM_RSS_CONFIG.brand,
     rssUrl: cfg.rssUrl,
     preferLive: Boolean(cfg.preferLive),

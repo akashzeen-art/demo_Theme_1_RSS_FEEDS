@@ -7,6 +7,7 @@ import {
   buildLiveStreamItems,
   buildPlatformFeedItems,
   getRssCategory,
+  isRssAppFeedUrl,
   isYoutubeChannelId,
   youtubeEmbedUrl,
   youtubeRssUrl,
@@ -29,6 +30,22 @@ function isLiveMedia(url: string) {
   return /\.m3u8(\?|$)/i.test(url) || /islive=true/i.test(url);
 }
 
+function isImageUrl(url: string) {
+  if (!url) return false;
+  const clean = url.split('#')[0].split('?')[0];
+  return /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(clean);
+}
+
+function isPlayableMedia(url: string) {
+  if (!url || isImageUrl(url)) return false;
+  return (
+    isLiveMedia(url) ||
+    /\.(mp4|webm)(\?|$)/i.test(url) ||
+    /youtube\.com\/(watch|embed|shorts)/i.test(url) ||
+    /youtu\.be\//i.test(url)
+  );
+}
+
 function decodeXml(s: string) {
   return s
     .replace(/&amp;/g, '&')
@@ -36,6 +53,31 @@ function decodeXml(s: string) {
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'");
+}
+
+function extractThumbFromChunk(chunk: string, enclosure: string) {
+  const mediaContent =
+    chunk.match(/<media:content[^>]*url="([^"]+)"[^>]*medium="image"[^>]*/i)?.[1] ||
+    chunk.match(/<media:content[^>]*medium="image"[^>]*url="([^"]+)"/i)?.[1] ||
+    chunk.match(/<media:content[^>]*url="([^"]+)"/i)?.[1] ||
+    '';
+  const mediaThumb =
+    chunk.match(/<media:thumbnail[^>]*url="([^"]+)"/i)?.[1] ||
+    chunk.match(/<itunes:image[^>]*href="([^"]+)"/i)?.[1] ||
+    '';
+  const desc =
+    chunk.match(/<description[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i)?.[1] ||
+    chunk.match(/<content:encoded[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/i)?.[1] ||
+    chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i)?.[1] ||
+    '';
+  const descImg = desc.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] || '';
+  const candidates = [mediaThumb, mediaContent, enclosure, descImg]
+    .map((u) => decodeXml(String(u || '').trim()))
+    .filter(Boolean);
+  for (const u of candidates) {
+    if (isImageUrl(u)) return u;
+  }
+  return candidates[0] || '/logo.png';
 }
 
 /** Normalize any API / parsed item into RssVideoItem */
@@ -47,17 +89,20 @@ function normalizeItems(
 
   for (const x of raw) {
     const title = String(x.title || 'Untitled');
-    const link = String(x.link || '');
-    const enclosure = String(
-      (x as { enclosure?: string }).enclosure || x.embedUrl || ''
+    const link = decodeXml(String(x.link || '').trim());
+    const enclosure = decodeXml(
+      String((x as { enclosure?: string }).enclosure || x.embedUrl || '').trim()
     );
-    const media = enclosure || link;
-    if (!media && !x.id) continue;
+    let thumb = decodeXml(String(x.thumbnail || '').trim());
+    if (isImageUrl(enclosure) && (!thumb || thumb === '/logo.png')) {
+      thumb = enclosure;
+    }
+    if (!thumb) thumb = '/logo.png';
 
     const ytId =
       (typeof x.id === 'string' && /^[\w-]{11}$/.test(x.id) ? x.id : null) ||
       link.match(/[?&]v=([\w-]{11})(?:&|$)/)?.[1] ||
-      media.match(/(?:youtube\.com\/(?:embed|shorts)\/|youtu\.be\/)([\w-]{11})/)?.[1] ||
+      enclosure.match(/(?:youtube\.com\/(?:embed|shorts)\/|youtu\.be\/)([\w-]{11})/)?.[1] ||
       null;
 
     if (ytId) {
@@ -66,7 +111,7 @@ function normalizeItems(
         title,
         link: link || `https://www.youtube.com/watch?v=${ytId}`,
         thumbnail:
-          String(x.thumbnail || '') ||
+          (thumb && thumb !== '/logo.png' ? thumb : '') ||
           `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`,
         pubDate: String(x.pubDate || ''),
         author: String(x.author || fallbackAuthor),
@@ -77,7 +122,10 @@ function normalizeItems(
       continue;
     }
 
-    if (!media) continue;
+    const playable = isPlayableMedia(enclosure);
+    const media = playable ? enclosure : link || enclosure;
+    if (!media && !x.id) continue;
+
     const live = Boolean(x.isLive) || isLiveMedia(media);
     items.push({
       id: String(
@@ -86,7 +134,7 @@ function normalizeItems(
       ),
       title,
       link: link || media,
-      thumbnail: String(x.thumbnail || '/logo.png'),
+      thumbnail: thumb,
       pubDate: String(x.pubDate || ''),
       author: String(x.author || fallbackAuthor),
       embedUrl: media,
@@ -120,14 +168,13 @@ export function parseRssXml(
       chunk.match(/<link>([^<]*)<\/link>/)?.[1] ||
       chunk.match(/<guid[^>]*>([^<]*)<\/guid>/)?.[1] ||
       '';
-    const enclosure =
+    const enclosureRaw =
       chunk.match(/<enclosure[^>]*url="([^"]+)"/)?.[1] ||
       chunk.match(/<media:content[^>]*url="([^"]+)"/)?.[1] ||
       '';
-    const thumb =
-      chunk.match(/<media:thumbnail[^>]*url="([^"]+)"/)?.[1] ||
-      chunk.match(/<itunes:image[^>]*href="([^"]+)"/)?.[1] ||
-      '/logo.png';
+    const enclosure = decodeXml(enclosureRaw.trim());
+    const articleLink = decodeXml(link.trim());
+    const thumb = extractThumbFromChunk(chunk, enclosure);
     const pubDate =
       chunk.match(/<pubDate>([^<]*)<\/pubDate>/)?.[1] ||
       chunk.match(/<published>([^<]*)<\/published>/)?.[1] ||
@@ -140,6 +187,7 @@ export function parseRssXml(
       chunk.match(/<guid[^>]*>([^<]*)<\/guid>/)?.[1] ||
       chunk.match(/<yt:videoId>([\w-]{11})<\/yt:videoId>/)?.[1] ||
       '';
+    const playable = isPlayableMedia(enclosure);
     const mediaLive =
       /isLive="true"/i.test(chunk) ||
       /type="application\/x-mpegURL"/i.test(chunk) ||
@@ -148,8 +196,8 @@ export function parseRssXml(
     raw.push({
       id: guid || undefined,
       title: decodeXml(titleRaw.trim()),
-      link,
-      embedUrl: enclosure || link,
+      link: articleLink,
+      embedUrl: playable ? enclosure : articleLink || enclosure,
       thumbnail: thumb,
       pubDate,
       author: decodeXml(author),
@@ -355,7 +403,7 @@ export async function fetchChannelRss(
 }
 
 /**
- * Primary loader — live MRSS + liveStreams + platform catalog fallback.
+ * Primary loader — rss.app feeds ONLY.
  */
 export async function fetchCategoryRss(
   categoryId: string,
@@ -366,34 +414,35 @@ export async function fetchCategoryRss(
     throw new Error('Category feed disabled or missing');
   }
 
+  if (!isRssAppFeedUrl(category.rssUrl)) {
+    throw new Error(
+      `Paste a valid rss.app feed URL for “${category.title}” in platformRss.config.ts (https://rss.app/feeds/….xml)`
+    );
+  }
+
   let remote: RssVideoItem[] = [];
   let remoteError: string | null = null;
 
   try {
-    if (category.source === 'rss' && category.rssUrl) {
-      remote = await loadRemoteFeed(
-        `rss:${category.rssUrl}`,
-        { feedUrl: category.rssUrl, author: category.channelName },
-        limit
-      );
-    } else if (
-      category.source === 'youtube' &&
-      isYoutubeChannelId(category.channelId)
-    ) {
-      remote = await loadRemoteFeed(
-        `yt:${category.channelId}`,
-        { channelId: category.channelId, author: category.channelName },
-        limit
-      );
-    }
+    remote = await loadRemoteFeed(
+      `rssapp:${category.rssUrl}`,
+      { feedUrl: category.rssUrl!, author: category.channelName },
+      limit
+    );
   } catch (e) {
-    remoteError = e instanceof Error ? e.message : 'Remote RSS failed';
+    remoteError = e instanceof Error ? e.message : 'rss.app feed failed';
     remote = [];
   }
 
-  const merged = mergeCategoryFeed(category, remote, limit);
-  if (merged.length) return merged;
-  throw new Error(remoteError || `${category.title} feed unavailable`);
+  // Live Feed panels show rss.app items only (no YouTube channel / catalog fill)
+  if (remote.length) {
+    return dedupeByEmbed(remote).slice(0, limit);
+  }
+
+  throw new Error(
+    remoteError ||
+      `${category.title} rss.app feed unavailable — check the feed URL in platformRss.config.ts`
+  );
 }
 
 export type { RssFeedConfig };

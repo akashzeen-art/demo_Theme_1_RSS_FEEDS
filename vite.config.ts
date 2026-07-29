@@ -23,6 +23,47 @@ function decodeXml(s: string) {
     .replace(/&#39;/g, "'");
 }
 
+function isImageUrl(url: string) {
+  if (!url) return false;
+  const clean = String(url).split("#")[0].split("?")[0];
+  return /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(clean);
+}
+
+function isVideoUrl(url: string) {
+  if (!url) return false;
+  return (
+    /\.m3u8(\?|$)/i.test(url) ||
+    /\.(mp4|webm)(\?|$)/i.test(url) ||
+    /youtube\.com\/(watch|embed|shorts)/i.test(url) ||
+    /youtu\.be\//i.test(url)
+  );
+}
+
+function extractThumb(chunk: string, enclosure: string) {
+  const mediaContent =
+    chunk.match(/<media:content[^>]*url="([^"]+)"[^>]*medium="image"[^>]*/i)?.[1] ||
+    chunk.match(/<media:content[^>]*medium="image"[^>]*url="([^"]+)"/i)?.[1] ||
+    chunk.match(/<media:content[^>]*url="([^"]+)"/i)?.[1] ||
+    "";
+  const mediaThumb =
+    chunk.match(/<media:thumbnail[^>]*url="([^"]+)"/i)?.[1] ||
+    chunk.match(/<itunes:image[^>]*href="([^"]+)"/i)?.[1] ||
+    "";
+  const desc =
+    chunk.match(/<description[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i)?.[1] ||
+    chunk.match(/<content:encoded[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/i)?.[1] ||
+    chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i)?.[1] ||
+    "";
+  const descImg = desc.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] || "";
+  const candidates = [mediaThumb, mediaContent, enclosure, descImg]
+    .map((u) => decodeXml(String(u || "").trim()))
+    .filter(Boolean);
+  for (const u of candidates) {
+    if (isImageUrl(u)) return u;
+  }
+  return candidates[0] || "/logo.png";
+}
+
 function parseYoutubeAtom(xml: string, limit = 12): RssItem[] {
   const entries = xml.split("<entry>").slice(1);
   const items: RssItem[] = [];
@@ -86,14 +127,13 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
       chunk.match(/<link>([^<]*)<\/link>/)?.[1] ||
       chunk.match(/<guid[^>]*>([^<]*)<\/guid>/)?.[1] ||
       "";
-    const enclosure =
+    const enclosureRaw =
       chunk.match(/<enclosure[^>]*url="([^"]+)"/)?.[1] ||
       chunk.match(/<media:content[^>]*url="([^"]+)"/)?.[1] ||
       "";
-    const thumb =
-      chunk.match(/<media:thumbnail[^>]*url="([^"]+)"/)?.[1] ||
-      chunk.match(/<itunes:image[^>]*href="([^"]+)"/)?.[1] ||
-      "/logo.png";
+    const enclosure = decodeXml(enclosureRaw.trim());
+    const articleLink = decodeXml(String(link || "").trim());
+    const thumb = extractThumb(chunk, enclosure);
     const pubDate =
       chunk.match(/<pubDate>([^<]*)<\/pubDate>/)?.[1] ||
       chunk.match(/<published>([^<]*)<\/published>/)?.[1] ||
@@ -104,7 +144,7 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
       "StreamsIndia";
 
     const ytId =
-      link.match(/[?&]v=([\w-]{11})/)?.[1] ||
+      articleLink.match(/[?&]v=([\w-]{11})/)?.[1] ||
       enclosure.match(/[?&]v=([\w-]{11})/)?.[1];
 
     if (ytId) {
@@ -118,7 +158,9 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
         embedUrl: `https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=0&autoplay=1&mute=1`,
       });
     } else {
-      const media = enclosure || link;
+      if (!articleLink && !enclosure) continue;
+      const playable = isVideoUrl(enclosure) && !isImageUrl(enclosure);
+      const media = playable ? enclosure : articleLink || enclosure;
       if (!media) continue;
       const live =
         /\.m3u8(\?|$)/i.test(media) ||
@@ -127,7 +169,7 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
       items.push({
         id: `rss-${items.length}-${decodeXml(titleRaw).slice(0, 20).replace(/\W+/g, "-")}`,
         title: decodeXml(titleRaw.trim()),
-        link: link || media,
+        link: articleLink || media,
         thumbnail: thumb,
         pubDate,
         author: decodeXml(author),
@@ -158,6 +200,18 @@ async function handleRssApi(
       try {
         const parsed = new URL(feedUrlParam);
         if (!/^https?:$/.test(parsed.protocol)) throw new Error("bad protocol");
+        const host = parsed.hostname.replace(/^www\./, "");
+        if (host !== "rss.app") {
+          res.statusCode = 400;
+          res.setHeader("Content-Type", "application/json");
+          res.end(
+            JSON.stringify({
+              status: "error",
+              message: "Only rss.app feed URLs are allowed",
+            })
+          );
+          return;
+        }
         feedUrl = parsed.toString();
       } catch {
         res.statusCode = 400;
@@ -165,15 +219,13 @@ async function handleRssApi(
         res.end(JSON.stringify({ status: "error", message: "Invalid feedUrl" }));
         return;
       }
-    } else if (/^UC[\w-]{20,}$/.test(channelId)) {
-      feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
     } else {
       res.statusCode = 400;
       res.setHeader("Content-Type", "application/json");
       res.end(
         JSON.stringify({
           status: "error",
-          message: "Provide channelId (UC…) or feedUrl",
+          message: "feedUrl (rss.app) is required",
         })
       );
       return;
@@ -218,17 +270,153 @@ async function handleRssApi(
   }
 }
 
+const ARTICLE_MAX_BYTES = 1_800_000;
+
+function isBlockedArticleHost(hostname: string) {
+  const h = String(hostname || "")
+    .toLowerCase()
+    .replace(/^\[|\]$/g, "");
+  if (!h || h === "localhost" || h.endsWith(".local") || h.endsWith(".internal")) {
+    return true;
+  }
+  if (h === "::1" || h === "0.0.0.0") return true;
+  if (/^127\./.test(h) || /^10\./.test(h) || /^192\.168\./.test(h)) return true;
+  if (/^172\.(1[6-9]|2\d|3[0-1])\./.test(h)) return true;
+  if (/^169\.254\./.test(h) || /^100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])\./.test(h)) {
+    return true;
+  }
+  return false;
+}
+
+function rewriteArticleHtml(html: string, sourceUrl: string) {
+  const origin = new URL(sourceUrl).origin;
+  let out = String(html || "");
+  out = out.replace(
+    /<meta[^>]+http-equiv=["']?Content-Security-Policy["']?[^>]*>/gi,
+    ""
+  );
+  out = out.replace(
+    /<meta[^>]+http-equiv=["']?X-Frame-Options["']?[^>]*>/gi,
+    ""
+  );
+  const inject = [
+    `<base href="${origin}/">`,
+    '<meta name="referrer" content="no-referrer">',
+    "<style>html,body{scroll-behavior:smooth}</style>",
+  ].join("");
+  if (/<head[^>]*>/i.test(out)) {
+    out = out.replace(/<head[^>]*>/i, (m) => `${m}${inject}`);
+  } else {
+    out = `${inject}${out}`;
+  }
+  return out;
+}
+
+function articleErrorHtml(message: string) {
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Article</title>
+<style>body{margin:0;font-family:system-ui,sans-serif;background:#0b1728;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px;text-align:center}
+p{opacity:.75;max-width:28rem;line-height:1.5}</style></head>
+<body><div><h1 style="font-size:1.1rem;margin:0 0 8px">Unable to load article</h1><p>${message}</p></div></body></html>`;
+}
+
+async function handleArticleApi(
+  reqUrl: string,
+  res: { statusCode: number; setHeader: (k: string, v: string) => void; end: (b: string) => void }
+) {
+  try {
+    const u = new URL(reqUrl, "http://localhost");
+    const target = (u.searchParams.get("url") || "").trim();
+    if (!target) {
+      res.statusCode = 400;
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.end(articleErrorHtml("Missing url parameter"));
+      return;
+    }
+
+    let parsed: URL;
+    try {
+      parsed = new URL(target);
+    } catch {
+      res.statusCode = 400;
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.end(articleErrorHtml("Invalid article URL"));
+      return;
+    }
+
+    if (!/^https?:$/.test(parsed.protocol) || isBlockedArticleHost(parsed.hostname)) {
+      res.statusCode = 400;
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.end(articleErrorHtml("That article URL is not allowed"));
+      return;
+    }
+
+    const upstream = await fetch(parsed.toString(), {
+      redirect: "follow",
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (compatible; StreamsIndia/1.0; +https://streamsindia.com)",
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+      },
+    });
+
+    if (!upstream.ok) {
+      res.statusCode = 502;
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.end(articleErrorHtml(`Publisher returned ${upstream.status}`));
+      return;
+    }
+
+    const ctype = (upstream.headers.get("content-type") || "").toLowerCase();
+    if (ctype && !ctype.includes("text/html") && !ctype.includes("application/xhtml")) {
+      res.statusCode = 415;
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.end(articleErrorHtml("URL is not an HTML article page"));
+      return;
+    }
+
+    const buf = Buffer.from(await upstream.arrayBuffer());
+    if (buf.byteLength > ARTICLE_MAX_BYTES) {
+      res.statusCode = 413;
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.end(articleErrorHtml("Article HTML is too large to embed"));
+      return;
+    }
+
+    const html = rewriteArticleHtml(buf.toString("utf8"), parsed.toString());
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=300");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    res.end(html);
+  } catch (err) {
+    res.statusCode = 500;
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.end(
+      articleErrorHtml(err instanceof Error ? err.message : "Article proxy error")
+    );
+  }
+}
+
 function youtubeRssApiPlugin(): Plugin {
   return {
     name: "streamsindia-rss-api",
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
+        if (req.url?.startsWith("/api/article")) {
+          void handleArticleApi(req.url, res);
+          return;
+        }
         if (!req.url?.startsWith("/api/rss")) return next();
         void handleRssApi(req.url, res);
       });
     },
     configurePreviewServer(server) {
       server.middlewares.use((req, res, next) => {
+        if (req.url?.startsWith("/api/article")) {
+          void handleArticleApi(req.url, res);
+          return;
+        }
         if (!req.url?.startsWith("/api/rss")) return next();
         void handleRssApi(req.url, res);
       });
