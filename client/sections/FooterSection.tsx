@@ -28,12 +28,9 @@ export function FooterSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 text-center">
         <div className="flex items-center justify-center mb-3">
           <img
-            src="/logo/chalchitra.png"
+            src="/logo.png"
             alt="Chalchitra"
             className="h-10 w-auto"
-            onError={(e) => {
-              e.currentTarget.src = '/logo.png';
-            }}
           />
         </div>
 

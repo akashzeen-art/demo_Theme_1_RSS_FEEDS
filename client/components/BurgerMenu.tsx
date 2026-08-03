@@ -93,12 +93,9 @@ export function BurgerMenu() {
             aria-label="Chalchitra Home"
           >
             <img
-              src="/logo/chalchitra.png"
+              src="/logo.png"
               alt="Chalchitra"
               className="h-8 sm:h-10 w-auto object-contain"
-              onError={(e) => {
-                e.currentTarget.src = '/logo.png';
-              }}
             />
           </button>
 
