@@ -1,5 +1,5 @@
 /**
- * StreamsIndia feed loader — platform catalog + liveStreams + MRSS/RSS.
+ * ChalChitra feed loader — platform catalog + liveStreams + MRSS/RSS.
  * Live HLS (.m3u8) items are marked isLive and play brand-free via StreamPlayer.
  */
 

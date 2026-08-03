@@ -380,7 +380,7 @@ export function RssLivePanel({
                               {live
                                 ? 'On air'
                                 : item.provider === 'platform'
-                                  ? 'StreamsIndia'
+                                  ? 'ChalChitra'
                                   : item.provider === 'youtube' || item.provider === 'rss'
                                     ? 'Live RSS'
                                     : formatDate(item.pubDate)}

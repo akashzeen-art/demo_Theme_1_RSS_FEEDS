@@ -56,8 +56,8 @@ const PLANS = [
   },
 ];
 
-const LS_MOBILE = 'StreamsIndia_mobile';
-const LS_PLAN = 'StreamsIndia_plan';
+const LS_MOBILE = 'ChalChitra_mobile';
+const LS_PLAN = 'ChalChitra_plan';
 
 const GENRE_POOL = [
   'Thriller',

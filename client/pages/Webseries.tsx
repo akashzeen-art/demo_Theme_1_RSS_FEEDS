@@ -15,7 +15,7 @@ export default function Webseries() {
  <CategoryPageRss categoryId="webseries" />
  <ContentRow title="New & Hot" subtitle="Fresh drops this week" items={WEBSERIES_NEW} ranked />
  <ContentRow title="Binge Worthy" subtitle="Finish the season tonight" items={WEBSERIES_BINGE} />
- <ContentRow title="All Series" subtitle="Every show on StreamsIndia" items={WEBSERIES} />
+ <ContentRow title="All Series" subtitle="Every show on ChalChitra" items={WEBSERIES} />
  <ContentRow title="Continue Watching Vibes" subtitle="Pick up where you left off" items={WEBSERIES.slice(0, 6)} landscape />
  </CategoryPageShell>
  );

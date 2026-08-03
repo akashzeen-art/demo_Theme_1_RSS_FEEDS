@@ -3,9 +3,9 @@
   xmlns:media="http://search.yahoo.com/mrss/"
   xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>StreamsIndia Sports</title>
-    <link>https://streamsindia.com/sports</link>
-    <description>StreamsIndia Sports RSS feed</description>
+    <title>ChalChitra Sports</title>
+    <link>https://ChalChitra.com/sports</link>
+    <description>ChalChitra Sports RSS feed</description>
     <language>en</language>
     <atom:link href="/feeds/sports.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -13,7 +13,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-hls-1</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL" medium="video" isLive="true"/>
       <media:thumbnail url="/landscape_new_desicontent/31.png"/>
       <enclosure url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL"/>
@@ -23,7 +23,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-hls-2</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8" type="application/x-mpegURL" medium="video" isLive="true"/>
       <media:thumbnail url="/landscape_new_desicontent/32.png"/>
       <enclosure url="https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8" type="application/x-mpegURL"/>
@@ -33,7 +33,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-31</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/fb60c689-0ae6-4d37-9e7a-0a6fd490aef0/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/31.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/fb60c689-0ae6-4d37-9e7a-0a6fd490aef0/play_480p.mp4" type="video/mp4"/>
@@ -43,7 +43,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-32</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/1a4d0e65-a4a4-4468-99f6-51d2e3754ded/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/32.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/1a4d0e65-a4a4-4468-99f6-51d2e3754ded/play_480p.mp4" type="video/mp4"/>
@@ -53,7 +53,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-33</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/efc7bcdc-2e0e-45a7-a195-7f253abb5763/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/33.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/efc7bcdc-2e0e-45a7-a195-7f253abb5763/play_480p.mp4" type="video/mp4"/>
@@ -63,7 +63,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-34</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/c0bc6251-f2c8-46b3-89c5-6eea3cd9ce15/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/34.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/c0bc6251-f2c8-46b3-89c5-6eea3cd9ce15/play_480p.mp4" type="video/mp4"/>
@@ -73,7 +73,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-35</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/c729a39a-a052-4f10-a6ab-5cb24881e727/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/35.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/c729a39a-a052-4f10-a6ab-5cb24881e727/play_480p.mp4" type="video/mp4"/>
@@ -83,7 +83,7 @@
       <link>/sports</link>
       <guid isPermaLink="false">si-sports-36</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Sports</author>
+      <author>ChalChitra Sports</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/5afa0c99-8c48-4c37-a783-6c3cee7a10bf/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/36.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/5afa0c99-8c48-4c37-a783-6c3cee7a10bf/play_480p.mp4" type="video/mp4"/>

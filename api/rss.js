@@ -126,7 +126,7 @@ function parseGenericRss(xml, limit = 12) {
     const author =
       (chunk.match(/<author>([^<]*)<\/author>/i) || [])[1] ||
       (chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/i) || [])[1] ||
-      'StreamsIndia';
+      'ChalChitra';
 
     const ytId =
       (articleLink.match(/[?&]v=([\w-]{11})/) || [])[1] ||

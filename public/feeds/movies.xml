@@ -3,9 +3,9 @@
   xmlns:media="http://search.yahoo.com/mrss/"
   xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>StreamsIndia Movies</title>
-    <link>https://streamsindia.com/movies</link>
-    <description>StreamsIndia Movies RSS feed</description>
+    <title>ChalChitra Movies</title>
+    <link>https://ChalChitra.com/movies</link>
+    <description>ChalChitra Movies RSS feed</description>
     <language>en</language>
     <atom:link href="/feeds/movies.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -13,7 +13,7 @@
       <link>/movies</link>
       <guid isPermaLink="false">si-movies-1</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Movies</author>
+      <author>ChalChitra Movies</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/e28ebc9f-b16c-46ac-8c95-bb8dec174b5a/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/1.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/e28ebc9f-b16c-46ac-8c95-bb8dec174b5a/play_480p.mp4" type="video/mp4"/>
@@ -23,7 +23,7 @@
       <link>/movies</link>
       <guid isPermaLink="false">si-movies-2</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Movies</author>
+      <author>ChalChitra Movies</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/e623761c-e400-4d8d-b5f8-49d66d1f8a5b/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/2.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/e623761c-e400-4d8d-b5f8-49d66d1f8a5b/play_480p.mp4" type="video/mp4"/>
@@ -33,7 +33,7 @@
       <link>/movies</link>
       <guid isPermaLink="false">si-movies-3</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Movies</author>
+      <author>ChalChitra Movies</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/5baa9dae-1cda-4312-a386-2eae75c6519f/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/3.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/5baa9dae-1cda-4312-a386-2eae75c6519f/play_480p.mp4" type="video/mp4"/>
@@ -43,7 +43,7 @@
       <link>/movies</link>
       <guid isPermaLink="false">si-movies-4</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Movies</author>
+      <author>ChalChitra Movies</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/e852da10-0129-4dba-8eb6-7895cc242ee6/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/4.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/e852da10-0129-4dba-8eb6-7895cc242ee6/play_480p.mp4" type="video/mp4"/>
@@ -53,7 +53,7 @@
       <link>/movies</link>
       <guid isPermaLink="false">si-movies-5</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Movies</author>
+      <author>ChalChitra Movies</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/bfbdaf66-9be8-48f1-9152-d35b5d3e2c2f/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/5.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/bfbdaf66-9be8-48f1-9152-d35b5d3e2c2f/play_480p.mp4" type="video/mp4"/>
@@ -63,7 +63,7 @@
       <link>/movies</link>
       <guid isPermaLink="false">si-movies-6</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Movies</author>
+      <author>ChalChitra Movies</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/d2e7baf8-81a6-4092-8432-ec006b17ec32/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/6.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/d2e7baf8-81a6-4092-8432-ec006b17ec32/play_480p.mp4" type="video/mp4"/>

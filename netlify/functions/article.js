@@ -93,7 +93,7 @@ export async function handler(event) {
       redirect: 'follow',
       headers: {
         'User-Agent':
-          'Mozilla/5.0 (compatible; StreamsIndia/1.0; +https://streamsindia.com)',
+          'Mozilla/5.0 (compatible; ChalChitra/1.0; +https://ChalChitra.com)',
         Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
       },

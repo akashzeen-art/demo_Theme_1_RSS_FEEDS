@@ -19,7 +19,7 @@ const HERO_ITEMS: Array<ContentItem & { blurb: string }> = [
   },
   {
     ...MOVIES_TRENDING[0],
-    blurb: 'A hardcoded featured stage with cinematic posters from your StreamsIndia library.',
+    blurb: 'A hardcoded featured stage with cinematic posters from your ChalChitra library.',
   },
   {
     ...WEBSERIES_NEW[0],

@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * StreamsIndia — RSS CONFIG (rss.app ONLY)
+ * ChalChitra — RSS CONFIG (rss.app ONLY)
  * ═══════════════════════════════════════════════════════════════════════════
  *
  * All Live Feed sections load exclusively from rss.app XML feeds.
@@ -56,7 +56,7 @@ export type PlatformRssConfig = {
 
 /** ▼ Paste your rss.app feed URLs into each category.rssUrl */
 export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
-  brand: 'StreamsIndia',
+  brand: 'ChalChitra',
   defaultLimit: 12,
   allowedFeedHosts: ['rss.app', 'www.rss.app'],
 

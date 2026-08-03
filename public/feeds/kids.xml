@@ -3,9 +3,9 @@
   xmlns:media="http://search.yahoo.com/mrss/"
   xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>StreamsIndia Kids</title>
-    <link>https://streamsindia.com/kids</link>
-    <description>StreamsIndia Kids RSS feed</description>
+    <title>ChalChitra Kids</title>
+    <link>https://ChalChitra.com/kids</link>
+    <description>ChalChitra Kids RSS feed</description>
     <language>en</language>
     <atom:link href="/feeds/kids.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -13,7 +13,7 @@
       <link>/kids</link>
       <guid isPermaLink="false">si-kids-61</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Kids</author>
+      <author>ChalChitra Kids</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/14b5d597-5c1b-4146-a77c-76f8621cbee6/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/61.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/14b5d597-5c1b-4146-a77c-76f8621cbee6/play_480p.mp4" type="video/mp4"/>
@@ -23,7 +23,7 @@
       <link>/kids</link>
       <guid isPermaLink="false">si-kids-62</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Kids</author>
+      <author>ChalChitra Kids</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/a74bbde6-2f05-49b7-88b5-68ad82b4186c/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/62.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/a74bbde6-2f05-49b7-88b5-68ad82b4186c/play_480p.mp4" type="video/mp4"/>
@@ -33,7 +33,7 @@
       <link>/kids</link>
       <guid isPermaLink="false">si-kids-63</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Kids</author>
+      <author>ChalChitra Kids</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/2508404e-25a4-475c-8c05-af707dbf1e5d/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/63.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/2508404e-25a4-475c-8c05-af707dbf1e5d/play_480p.mp4" type="video/mp4"/>
@@ -43,7 +43,7 @@
       <link>/kids</link>
       <guid isPermaLink="false">si-kids-64</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Kids</author>
+      <author>ChalChitra Kids</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/912b01f0-6f55-491b-931d-7cda175785e2/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/64.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/912b01f0-6f55-491b-931d-7cda175785e2/play_480p.mp4" type="video/mp4"/>
@@ -53,7 +53,7 @@
       <link>/kids</link>
       <guid isPermaLink="false">si-kids-65</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Kids</author>
+      <author>ChalChitra Kids</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/d3901ece-5255-4604-b14c-085219a981b3/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/65.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/d3901ece-5255-4604-b14c-085219a981b3/play_480p.mp4" type="video/mp4"/>
@@ -63,7 +63,7 @@
       <link>/kids</link>
       <guid isPermaLink="false">si-kids-66</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Kids</author>
+      <author>ChalChitra Kids</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/639f02ab-e3db-434a-872a-72b38b4b277e/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/66.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/639f02ab-e3db-434a-872a-72b38b4b277e/play_480p.mp4" type="video/mp4"/>

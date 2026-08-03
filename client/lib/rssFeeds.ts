@@ -1,5 +1,5 @@
 /**
- * StreamsIndia RSS types + helpers.
+ * ChalChitra RSS types + helpers.
  * Customize feeds in: client/config/platformRss.config.ts
  */
 
@@ -159,7 +159,7 @@ export function buildLiveStreamItems(category: RssFeedConfig): RssVideoItem[] {
   }));
 }
 
-/** Build StreamsIndia catalog items as RSS-shaped feed */
+/** Build ChalChitra catalog items as RSS-shaped feed */
 export function buildPlatformFeedItems(
   category: RssFeedConfig,
   limit = 12

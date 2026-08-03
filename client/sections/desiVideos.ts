@@ -1,5 +1,5 @@
 /**
- * StreamsIndia video CDN map — Bunny Stream 480p.
+ * ChalChitra video CDN map — Bunny Stream 480p.
  * Titles match catalog / section display names where possible.
  */
 

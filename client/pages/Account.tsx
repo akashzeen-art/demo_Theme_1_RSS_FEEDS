@@ -8,8 +8,8 @@ import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { BurgerMenu } from '@/components/BurgerMenu';
 import { CategoryNav } from '@/components/CategoryNav';
 
-const LS_MOBILE = 'StreamsIndia_mobile';
-const LS_PLAN = 'StreamsIndia_plan';
+const LS_MOBILE = 'ChalChitra_mobile';
+const LS_PLAN = 'ChalChitra_plan';
 
 const PLANS = [
  { id: 'monthly', label: 'Monthly', price: '₹159', original: '₹318', discount: '50% OFF', desc: 'Unlimited Videos & Web Series' },

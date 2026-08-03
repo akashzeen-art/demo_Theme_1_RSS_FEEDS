@@ -123,7 +123,7 @@ function parseGenericRss(xml, limit = 12) {
     const author =
       (chunk.match(/<author>([^<]*)<\/author>/) || [])[1] ||
       (chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/) || [])[1] ||
-      'StreamsIndia';
+      'ChalChitra';
 
     const ytId =
       (articleLink.match(/[?&]v=([\w-]{11})/) || [])[1] ||
@@ -210,7 +210,7 @@ export async function handler(event) {
 
     const upstream = await fetch(feedUrl, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; StreamsIndia/1.0)',
+        'User-Agent': 'Mozilla/5.0 (compatible; ChalChitra/1.0)',
         Accept: 'application/atom+xml,application/rss+xml,application/xml,text/xml,*/*',
       },
     });

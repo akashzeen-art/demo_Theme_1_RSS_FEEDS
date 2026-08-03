@@ -22,7 +22,7 @@ const ICONS: Record<RssCategoryId | 'home', LucideIcon> = {
  webseries: Tv,
 };
 
-/** Category-wise thumbnail sets from StreamsIndia catalog */
+/** Category-wise thumbnail sets from ChalChitra catalog */
 const CATEGORY_THUMBS: Record<RssCategoryId | 'home', number[]> = {
  home: [1, 13, 31, 51],
  reels: [71, 72, 73, 74],
@@ -132,7 +132,7 @@ export function CategoryLaunchSection() {
               Browse by <span className="text-cyan-300">Category</span>
             </h2>
             <p className="text-white/55 text-xs sm:text-sm mt-2 max-w-md">
-              Pick a world — each channel streams live feeds from StreamsIndia.
+              Pick a world — each channel streams live feeds from ChalChitra.
             </p>
             <div className="h-0.5 w-24 mt-3 bg-cyan-300" />
           </div>

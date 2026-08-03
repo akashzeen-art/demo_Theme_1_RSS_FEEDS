@@ -141,7 +141,7 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
     const author =
       chunk.match(/<author>([^<]*)<\/author>/)?.[1] ||
       chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/)?.[1] ||
-      "StreamsIndia";
+      "ChalChitra";
 
     const ytId =
       articleLink.match(/[?&]v=([\w-]{11})/)?.[1] ||
@@ -234,7 +234,7 @@ async function handleRssApi(
     const upstream = await fetch(feedUrl, {
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (compatible; StreamsIndia/1.0; +https://streamsindia.com)",
+          "Mozilla/5.0 (compatible; ChalChitra/1.0; +https://ChalChitra.com)",
         Accept: "application/atom+xml,application/rss+xml,application/xml,text/xml,*/*",
       },
     });
@@ -354,7 +354,7 @@ async function handleArticleApi(
       redirect: "follow",
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (compatible; StreamsIndia/1.0; +https://streamsindia.com)",
+          "Mozilla/5.0 (compatible; ChalChitra/1.0; +https://ChalChitra.com)",
         Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
       },
@@ -400,7 +400,7 @@ async function handleArticleApi(
 
 function youtubeRssApiPlugin(): Plugin {
   return {
-    name: "streamsindia-rss-api",
+    name: "ChalChitra-rss-api",
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         if (req.url?.startsWith("/api/article")) {

@@ -3,9 +3,9 @@
   xmlns:media="http://search.yahoo.com/mrss/"
   xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>StreamsIndia Series</title>
-    <link>https://streamsindia.com/webseries</link>
-    <description>StreamsIndia Series RSS feed</description>
+    <title>ChalChitra Series</title>
+    <link>https://ChalChitra.com/webseries</link>
+    <description>ChalChitra Series RSS feed</description>
     <language>en</language>
     <atom:link href="/feeds/webseries.xml" rel="self" type="application/rss+xml"/>
     <item>
@@ -13,7 +13,7 @@
       <link>/webseries</link>
       <guid isPermaLink="false">si-webseries-13</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Series</author>
+      <author>ChalChitra Series</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/e039a210-2833-4540-8ed2-882920df66ad/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/13.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/e039a210-2833-4540-8ed2-882920df66ad/play_480p.mp4" type="video/mp4"/>
@@ -23,7 +23,7 @@
       <link>/webseries</link>
       <guid isPermaLink="false">si-webseries-14</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Series</author>
+      <author>ChalChitra Series</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/47557aed-0f85-45cf-a818-19fd88a2b8de/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/14.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/47557aed-0f85-45cf-a818-19fd88a2b8de/play_480p.mp4" type="video/mp4"/>
@@ -33,7 +33,7 @@
       <link>/webseries</link>
       <guid isPermaLink="false">si-webseries-15</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Series</author>
+      <author>ChalChitra Series</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/80d10199-16c3-433f-8802-de52a258588c/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/15.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/80d10199-16c3-433f-8802-de52a258588c/play_480p.mp4" type="video/mp4"/>
@@ -43,7 +43,7 @@
       <link>/webseries</link>
       <guid isPermaLink="false">si-webseries-17</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Series</author>
+      <author>ChalChitra Series</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/d6698497-d9a5-49ca-aae7-a937f0a563bc/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/17.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/d6698497-d9a5-49ca-aae7-a937f0a563bc/play_480p.mp4" type="video/mp4"/>
@@ -53,7 +53,7 @@
       <link>/webseries</link>
       <guid isPermaLink="false">si-webseries-18</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Series</author>
+      <author>ChalChitra Series</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/ed0bce30-6b78-4d14-8c40-e5971b4f3b8d/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/18.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/ed0bce30-6b78-4d14-8c40-e5971b4f3b8d/play_480p.mp4" type="video/mp4"/>
@@ -63,7 +63,7 @@
       <link>/webseries</link>
       <guid isPermaLink="false">si-webseries-19</guid>
       <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-      <author>StreamsIndia Series</author>
+      <author>ChalChitra Series</author>
       <media:content url="https://vz-012bcd01-e4e.b-cdn.net/62b9d1e4-4a58-440d-aced-b23367687127/play_480p.mp4" type="video/mp4" medium="video"/>
       <media:thumbnail url="/potrait_new_desicontent/19.png"/>
       <enclosure url="https://vz-012bcd01-e4e.b-cdn.net/62b9d1e4-4a58-440d-aced-b23367687127/play_480p.mp4" type="video/mp4"/>
