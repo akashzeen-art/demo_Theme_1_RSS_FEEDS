@@ -4,7 +4,7 @@ import { SectionVideoBg } from '@/components/SectionVideoBg';
 import { motion } from 'framer-motion';
 import { Play, Plus, Star, Sparkles } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
-import { getCookVideo } from './cookVideos';
+import { getVideo } from './desiVideos';
 
 const items = [
  { title: 'Black Horizon', genre: 'Mystery', rating: '4.9', duration: '48 min', img: '/Potrait-New_desi/MIDNIGHT ESCAPE.jpg' },
@@ -40,7 +40,7 @@ export function NewReleasesSection() {
  whileInView={{ opacity: 1, y: 0 }}
  transition={{ duration: 0.4, delay: i * 0.04 }}
  viewport={{ once: true }}
- onClick={() => setActiveVideo({ url: getCookVideo(i + 22), title: item.title, thumb: item.img })}>
+ onClick={() => setActiveVideo({ url: getVideo(i + 22), title: item.title, thumb: item.img })}>
  <div className="relative rounded-xl overflow-hidden bg-gray-900" style={{ aspectRatio: '1080/1350' }}>
  <img src={item.img} alt={item.title}
  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />

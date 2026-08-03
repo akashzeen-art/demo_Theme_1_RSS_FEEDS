@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionVideoBg } from '@/components/SectionVideoBg';
 import { useState as useFlowState } from 'react';
 import { SubscriptionFlow } from './SubscriptionFlow';
+import { getVideo } from './desiVideos';
 import { useRef, useState } from 'react';
 import { Play, ChefHat, Clock, Star, Users } from 'lucide-react';
 
@@ -15,7 +16,7 @@ const COOK_BG = [
  '/Landscape-New-Desi/DANGEROUS ALLIANCE.jpg',
  '/Landscape-New-Desi/DANGEROUS MINDS EP1.jpg',
 ];
-const COOK_VIDEO = 'https://vz-a2c5d962-9e6.b-cdn.net/c8e7b52d-f116-4b28-a8b5-f5207f1fa29c/play_480p.mp4';
+const COOK_VIDEO = getVideo(1);
 
 const cookingClasses = [
  { title: 'Italian Pasta Masterclass', cuisine: 'Italian', duration: '42 min', students: '134K', rating: '9.9' },

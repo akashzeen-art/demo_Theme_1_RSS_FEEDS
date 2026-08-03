@@ -4,7 +4,7 @@ import { SectionVideoBg } from '@/components/SectionVideoBg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Plus, Star, X, Clock, Users, Utensils } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
-import { getCookVideo } from './cookVideos';
+import { getVideo } from './desiVideos';
 const cards = [
  { id: '1', title: 'Pho Bo Noodle Soup', category: 'Vietnamese', duration: '60 min', students: '78K', rating: '9.7', img: '/Landscape-New-Desi/DEAD END MISSON.jpg' },
  { id: '2', title: 'Baklava Masterclass', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/Landscape-New-Desi/ESCAPE BEYOND FEAR EP1.jpg' },
@@ -61,7 +61,7 @@ export function CookingLandscapeSection2() {
  transition={{ duration: 0.4, delay: i * 0.05 }}
  viewport={{ once: true }}
  whileHover={{ scale: 1.03, zIndex: 10 }}
- onClick={() => setActiveVideo({ url: getCookVideo(parseInt(card.id) + 9), title: card.title, thumb: card.img })}>
+ onClick={() => setActiveVideo({ url: getVideo(parseInt(card.id) + 10), title: card.title, thumb: card.img })}>
  <img src={card.img} alt={card.title}
  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />

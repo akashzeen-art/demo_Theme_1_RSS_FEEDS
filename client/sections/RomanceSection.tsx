@@ -2,15 +2,13 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionVideoBg } from '@/components/SectionVideoBg';
 import { useState as useFlowState } from 'react';
 import { SubscriptionFlow } from './SubscriptionFlow';
+import { getVideo } from './desiVideos';
 import { useRef, useState } from 'react';
 import { Flame, Play, Clock, Star, Users } from 'lucide-react';
 
 const THUMB = '/Landscape-New-Desi/LAST MISSION ALIVE.jpg';
 const BG = '/Landscape-New-Desi/LAST MISSION ALIVE.jpg';
-const VIDEOS = [
- 'https://vz-a2c5d962-9e6.b-cdn.net/af866a10-febc-4b56-ac1f-a4537355e4b8/play_480p.mp4',
- 'https://vz-a2c5d962-9e6.b-cdn.net/651a7299-266b-449c-bb79-40b8736a885c/play_480p.mp4',
-];
+const VIDEOS = [getVideo(2), getVideo(3)];
 
 export function RomanceSection() {
  const ref = useRef<HTMLElement>(null);

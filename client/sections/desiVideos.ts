@@ -16,8 +16,7 @@ function thumb(file: string) {
 }
 
 /**
- * Latest drop — unique titles from the provided CDN list.
- * (Duplicate FINAL COUNTDOWN / shared EP URLs collapsed to first entry.)
+ * Full catalog — original 46 kept unchanged; additional sheet URLs appended.
  */
 export const LATEST_VIDEOS: DesiVideoEntry[] = [
   {
@@ -250,9 +249,259 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     url: 'https://vz-012bcd01-e4e.b-cdn.net/af831cce-bcaf-4631-9817-e835f5f0d5db/play_480p.mp4',
     thumb: thumb('THE MISSING WITNESS.jpg'),
   },
+  {
+    title: 'The Forbidden Files',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/85f84324-4088-4cc8-8ea2-ca99cb7bc568/play_480p.mp4',
+    thumb: thumb('THE FORBIDDEN FILES.jpg'),
+  },
+  {
+    title: 'Fatal Connections Ep1',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/2599bc17-5da5-4ebe-88c6-4e388cfb6e7a/play_480p.mp4',
+    thumb: thumb('FATAL CONNECTIONS EP1.jpg'),
+  },
+  {
+    title: 'Fatal Connections Ep3',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/e039a210-2833-4540-8ed2-882920df66ad/play_480p.mp4',
+    thumb: thumb('FATAL CONNECTIONS EP3.jpg'),
+  },
+  {
+    title: 'The Hidden Enemy',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/47557aed-0f85-45cf-a818-19fd88a2b8de/play_480p.mp4',
+    thumb: thumb('THE HIDDEN ENEMY.jpg'),
+  },
+  {
+    title: 'The Final Secret',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/3ed4455a-3408-42e9-bf9a-5f45d616ad76/play_480p.mp4',
+    thumb: thumb('THE FINAL SECRET.jpg'),
+  },
+  {
+    title: 'Black Diary Secrets Ep1',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/62b9d1e4-4a58-440d-aced-b23367687127/play_480p.mp4',
+    thumb: thumb('BLACK DIARY SECRETS  EP1.jpg'),
+  },
+  {
+    title: 'Black Diary Secrets Ep2',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/34f1001c-5f45-4a80-8a76-a2bee40bb09a/play_480p.mp4',
+    thumb: thumb('BLACK DIARY SECRETS  EP2.jpg'),
+  },
+  {
+    title: 'The Missing Link',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/11444673-b5cf-43a1-a6fa-7cc8e4552e96/play_480p.mp4',
+    thumb: thumb('THE MISSING LINK.jpg'),
+  },
+  {
+    title: 'Rogue Mission',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/bc22fa81-0406-4f0a-bdf1-a5a928abdcec/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Operation Nightfall',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/28d84155-2e99-4633-833d-01bfb7187dd3/play_480p.mp4',
+    thumb: thumb('OPERATION NIGHTFALL.jpg'),
+  },
+  {
+    title: 'Beyond Suspicion Ep2',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/efc7bcdc-2e0e-45a7-a195-7f253abb5763/play_480p.mp4',
+    thumb: thumb('BEYOND SUSPICION EP2.jpg'),
+  },
+  {
+    title: 'The Unknown Target',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/cb6cdbd5-e1d3-470c-ab5c-a7e8bcb58945/play_480p.mp4',
+    thumb: thumb('THE UNKNOWN TARGET.jpg'),
+  },
+  {
+    title: 'Last Mission Alive',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/a1d91030-cf54-420a-9b1c-4afe9ba19e15/play_480p.mp4',
+    thumb: thumb('LAST MISSION ALIVE.jpg'),
+  },
+  {
+    title: 'The Diary Secrets',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/d1f6716d-b7b1-41c3-8e4a-fd7204a75a74/play_480p.mp4',
+    thumb: thumb('THE DIARY SECRETS.jpg'),
+  },
+  {
+    title: 'Shadow Protocol',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/08ebb0ad-11cd-458a-823b-3e19382347aa/play_480p.mp4',
+    thumb: thumb('SHADOW PROTOCOL.jpg'),
+  },
+  {
+    title: 'The Wanted Target',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/b9704452-fd1f-431d-a921-a0fa8187a170/play_480p.mp4',
+    thumb: thumb('THE WANTED TARGET.jpg'),
+  },
+  {
+    title: 'Unknown Enemy Ep3',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/c4bcdd12-b1f3-4598-9ffc-b7072ac2d354/play_480p.mp4',
+    thumb: thumb('UNKNOWN ENEMY EP3.jpg'),
+  },
+  {
+    title: 'Killer Instinct',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/b920eca1-3a4a-4fce-bebd-0a9d2633e4f3/play_480p.mp4',
+    thumb: thumb('KILLER INSTINCT.jpg'),
+  },
+  {
+    title: 'Black Signal',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/f5c0b07d-5a7f-4df6-b906-1f7a2f0cef76/play_480p.mp4',
+    thumb: thumb('BLACK SIGNAL.jpg'),
+  },
+  {
+    title: 'Hidden Fear Ep1',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/d72d661d-325f-4d19-b173-bf88746ddc7a/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'The Silent Hunt',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/4941972e-1692-4d0b-ab19-28887a806631/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Crimewave',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/516d12a8-04e5-4779-87d2-fa2809493d70/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Dangerous Destination Ep1',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/6e1962ba-dbcc-4c2b-963a-d3176124deb4/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Dangerous Destination Ep3',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/613259cb-60be-4296-96ca-63ebc21922c0/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Dangerous Destination Ep4',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/2c902c65-1f63-4855-be88-cee69e2ac9a0/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Killer Wali Raat',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/436a5e04-04b6-4bcc-bd2d-c54939083b0c/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Code Red Mafia',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/29215cc6-4174-406b-a21d-71122bc7336a/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'The Unofficial Network',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/a90c6024-768c-4c24-87d4-07612b07477a/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Shadow Operation',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/7daed06f-23e0-41d5-a35c-9529616f0773/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Chase to Danger Ep2',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/671096db-84aa-4452-8298-d564b5fe5a41/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Dark Evidence',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/3b1ff614-219e-4e77-8a2f-ad32e744267e/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'The Last Truth Ep1',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/710a74b7-ec71-4504-abc9-d231aa23c2ec/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Adventure Beyond Borders',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/6dfc4323-4ae3-428e-9866-13053dbd731c/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Escape From Nowhere',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/80d10199-16c3-433f-8802-de52a258588c/play_480p.mp4',
+    thumb: thumb('ESCAPE FROM NOWHERE.jpg'),
+  },
+  {
+    title: 'Dangerous Minds Ep4',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/fb60c689-0ae6-4d37-9e7a-0a6fd490aef0/play_480p.mp4',
+    thumb: thumb('DANGEROUS MINDS EP4.jpg'),
+  },
+  {
+    title: 'Beyond Suspicion Ep1',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/1a4d0e65-a4a4-4468-99f6-51d2e3754ded/play_480p.mp4',
+    thumb: thumb('BEYOND SUSPICION EP1.jpg'),
+  },
+  {
+    title: 'The Secret Syndicate',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/6cffca6b-7759-40e7-84de-c97856b4c7be/play_480p.mp4',
+    thumb: thumb('THE SECRET SYNDICATE.jpg'),
+  },
+  {
+    title: 'Midnight Escape',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/9ac5b5f9-d682-44a7-b877-772dec4b380d/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Her Story',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/e8ad8fc4-49fa-43ab-9fda-36916e56d066/play_480p.mp4',
+    thumb: thumb('HER STORY.jpg'),
+  },
+  {
+    title: 'Escape Beyond Fear Ep1',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/7bd7696a-2b32-4542-ac63-73fe38a547fc/play_480p.mp4',
+    thumb: thumb('ESCAPE BEYOND FEAR EP1.jpg'),
+  },
+  {
+    title: 'Escape Beyond Fear Ep2',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/e2c089c7-9466-462d-93c7-a72a539672b6/play_480p.mp4',
+    thumb: thumb('ESCAPE BEYOND FEAR EP2.jpg'),
+  },
+  {
+    title: 'Escape Beyond Fear Ep3',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/06429499-6d65-49a3-98e6-84777884c4a2/play_480p.mp4',
+    thumb: thumb('ESCAPE BEYOND FEAR EP3.jpg'),
+  },
+  {
+    title: 'The Last Deal',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/2508404e-25a4-475c-8c05-af707dbf1e5d/play_480p.mp4',
+    thumb: thumb('THE LAST DEAL.jpg'),
+  },
+  {
+    title: 'The Crime Circle',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/912b01f0-6f55-491b-931d-7cda175785e2/play_480p.mp4',
+    thumb: thumb('THE CRIME CIRCLE.jpg'),
+  },
+  {
+    title: 'Mission Darknight',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/bf3ebf7d-ca49-443f-b7b8-1a3d4e2ae96b/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Silent Witness',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/a0f4772a-4376-44b1-a458-b50eff38a0e0/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'The Last Chance',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/20428f28-cc91-4463-bb07-df334be38ab3/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Dangerous Destination Ep2',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/4527946b-8e26-4e53-87da-ab74f2313614/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Chase to Danger Ep3',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/9d656763-670c-49e0-b721-ba6e9291b17b/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
+  {
+    title: 'Chase to Danger Ep4',
+    url: 'https://vz-012bcd01-e4e.b-cdn.net/af763878-2990-48bd-83f1-b396dbce21f7/play_480p.mp4',
+    thumb: thumb('MIDNIGHT ESCAPE.jpg'),
+  },
 ];
 
-/** SNO → URL (1-based). Cycles latest drop so all catalog SNOs play a real file. */
+/** SNO → URL (1-based). Cycles catalog so all catalog SNOs play a real file. */
 export const VIDEOS: Record<number, string> = {};
 for (let i = 1; i <= 120; i++) {
   VIDEOS[i] = LATEST_VIDEOS[(i - 1) % LATEST_VIDEOS.length].url;

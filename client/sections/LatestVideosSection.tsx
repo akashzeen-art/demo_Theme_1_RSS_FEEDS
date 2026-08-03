@@ -14,9 +14,7 @@ type VideoRowMeta = {
   items: DesiVideoEntry[];
 };
 
-/** Exact layout: 5 rows × 8 + spotlight row × 6 (= 46 titles) */
-const CHUNK = [8, 8, 8, 8, 8, 6] as const;
-
+/** Split full catalog into themed rows of ~8 (last row gets remainder). */
 function buildSections(): VideoRowMeta[] {
   const metas: Omit<VideoRowMeta, 'items'>[] = [
     {
@@ -57,23 +55,40 @@ function buildSections(): VideoRowMeta[] {
       genre: 'Mystery',
     },
     {
-      id: 'spotlight-six',
+      id: 'forbidden-files',
+      eyebrow: 'Deep Cut',
+      title: 'Forbidden Files',
+      subtitle: 'Hidden enemies, diary secrets and missing links',
+      genre: 'Thriller',
+    },
+    {
+      id: 'escape-beyond',
+      eyebrow: 'On the Run',
+      title: 'Escape Beyond Fear',
+      subtitle: 'Nightfalls, destinations and last chances',
+      badge: 'HOT',
+      genre: 'Action',
+    },
+    {
+      id: 'chase-syndicate',
       eyebrow: 'Editor Picks',
-      title: 'Spotlight Six',
-      subtitle: 'Hand-picked finales from the latest catalog',
+      title: 'Chase & Syndicate',
+      subtitle: 'Danger epilogues and border-crossing finales',
       badge: 'TOP',
       genre: 'Drama',
     },
   ];
 
+  const rowCount = metas.length;
+  const size = Math.max(1, Math.ceil(LATEST_VIDEOS.length / rowCount));
   let cursor = 0;
-  return metas.map((meta, idx) => {
-    const size = CHUNK[idx] ?? 8;
-    const slice = LATEST_VIDEOS.slice(cursor, cursor + size);
-    cursor += size;
-    // If last row needs 6 but fewer remain, keep what we have
-    return { ...meta, items: slice };
-  }).filter((s) => s.items.length > 0);
+  return metas
+    .map((meta) => {
+      const slice = LATEST_VIDEOS.slice(cursor, cursor + size);
+      cursor += size;
+      return { ...meta, items: slice };
+    })
+    .filter((s) => s.items.length > 0);
 }
 
 export const VIDEO_ROW_SECTIONS = buildSections();
@@ -89,6 +104,8 @@ function VideoSliderRow({
     url: string;
     title: string;
     thumb: string;
+    genre: string;
+    rating: string;
   } | null>(null);
 
   return (
@@ -132,6 +149,8 @@ function VideoSliderRow({
                     url: item.url,
                     title: item.title,
                     thumb: item.thumb,
+                    genre: section.genre,
+                    rating: (4.5 + (i % 5) * 0.1).toFixed(1),
                   })
                 }
               >
@@ -185,6 +204,8 @@ function VideoSliderRow({
         videoUrl={activeVideo?.url ?? null}
         title={activeVideo?.title}
         thumbnail={activeVideo?.thumb}
+        genre={activeVideo?.genre}
+        rating={activeVideo?.rating}
         onClose={() => setActiveVideo(null)}
       />
     </section>

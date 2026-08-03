@@ -13,7 +13,14 @@ interface ContentRowProps {
 }
 
 export function ContentRow({ title, subtitle, items, ranked = false, landscape = false }: ContentRowProps) {
- const [active, setActive] = useState<{ url: string; title: string; thumb: string } | null>(null);
+ const [active, setActive] = useState<{
+   url: string;
+   title: string;
+   thumb: string;
+   genre: string;
+   duration: string;
+   rating: string;
+ } | null>(null);
 
  return (
  <section className="relative py-6 md:py-10">
@@ -48,6 +55,9 @@ export function ContentRow({ title, subtitle, items, ranked = false, landscape =
  url: resolveVideo(item),
  title: item.title,
  thumb: landscape && item.landscape ? item.landscape : item.img,
+ genre: item.genre,
+ duration: item.duration,
+ rating: item.rating,
  })
  }
  >
@@ -110,6 +120,9 @@ export function ContentRow({ title, subtitle, items, ranked = false, landscape =
  videoUrl={active?.url ?? null}
  title={active?.title}
  thumbnail={active?.thumb}
+ genre={active?.genre}
+ duration={active?.duration}
+ rating={active?.rating}
  onClose={() => setActive(null)}
  />
  </section>

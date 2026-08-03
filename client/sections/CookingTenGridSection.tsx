@@ -4,7 +4,7 @@ import { SectionVideoBg } from '@/components/SectionVideoBg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Play, X, Star, Clock, Users } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
-import { getCookVideo } from './cookVideos';
+import { getVideo } from './desiVideos';
 const cards = [
  { id: '1', title: 'Grilled Salmon', category: 'Seafood', duration: '25 min', students: '87K', rating: '9.8', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP1.jpg' },
  { id: '2', title: 'Mushroom Risotto', category: 'Italian', duration: '40 min', students: '72K', rating: '9.6', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP2.jpg' },
@@ -90,7 +90,7 @@ export function CookingTenGridSection() {
  style={{ aspectRatio: '1350/760' }}
  whileHover={{ scale: 1.06, zIndex: 20 }}
  whileTap={{ scale: 0.97 }}
- onClick={() => setActiveVideo({ url: getCookVideo(parseInt(card.id) - 1), title: card.title, thumb: card.img })}
+ onClick={() => setActiveVideo({ url: getVideo(parseInt(card.id)), title: card.title, thumb: card.img })}
  >
  <img src={card.img} alt={card.title}
  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500" />
