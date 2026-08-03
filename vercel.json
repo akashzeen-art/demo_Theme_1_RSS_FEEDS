@@ -6,12 +6,10 @@
   "installCommand": "pnpm install",
   "functions": {
     "api/rss.js": {
-      "maxDuration": 30,
-      "memory": 512
+      "maxDuration": 30
     },
     "api/article.js": {
-      "maxDuration": 30,
-      "memory": 512
+      "maxDuration": 30
     }
   },
   "rewrites": [
