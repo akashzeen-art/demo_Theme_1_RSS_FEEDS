@@ -1,14 +1,10 @@
 /**
- * Vercel Edge Function — GET /api/rss?channelId=UC… | feedUrl=…
- * Fixes RSS on Vercel (Netlify functions are not used there).
+ * Vercel Serverless Function (Node) — GET /api/rss?feedUrl=…
+ * Node runtime is more reliable with Vite SPA deploys than Edge.
  */
 
-export const config = {
-  runtime: 'edge',
-};
-
 function decodeXml(s) {
-  return s
+  return String(s || '')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
@@ -47,9 +43,7 @@ function extractThumb(chunk, enclosure) {
     (chunk.match(/<content:encoded[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/i) || [])[1] ||
     (chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i) || [])[1] ||
     '';
-  const descImg =
-    (desc.match(/<img[^>]+src=["']([^"']+)["']/i) || [])[1] ||
-    '';
+  const descImg = (desc.match(/<img[^>]+src=["']([^"']+)["']/i) || [])[1] || '';
   const candidates = [mediaThumb, mediaContent, enclosure, descImg]
     .map((u) => decodeXml(String(u || '').trim()))
     .filter(Boolean);
@@ -110,28 +104,28 @@ function parseGenericRss(xml, limit = 12) {
 
   for (const chunk of chunks) {
     const titleRaw =
-      (chunk.match(/<title[^>]*><!\[CDATA\[(.*?)\]\]><\/title>/s) || [])[1] ||
-      (chunk.match(/<title[^>]*>([^<]*)<\/title>/) || [])[1] ||
+      (chunk.match(/<title[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/title>/i) || [])[1] ||
+      (chunk.match(/<title[^>]*>([^<]*)<\/title>/i) || [])[1] ||
       'Untitled';
     const link =
-      (chunk.match(/<link[^>]*href="([^"]+)"/) || [])[1] ||
-      (chunk.match(/<link>([^<]*)<\/link>/) || [])[1] ||
-      (chunk.match(/<guid[^>]*>([^<]*)<\/guid>/) || [])[1] ||
+      (chunk.match(/<link[^>]*href="([^"]+)"/i) || [])[1] ||
+      (chunk.match(/<link>([^<]*)<\/link>/i) || [])[1] ||
+      (chunk.match(/<guid[^>]*>([^<]*)<\/guid>/i) || [])[1] ||
       '';
     const enclosureRaw =
-      (chunk.match(/<enclosure[^>]*url="([^"]+)"/) || [])[1] ||
-      (chunk.match(/<media:content[^>]*url="([^"]+)"/) || [])[1] ||
+      (chunk.match(/<enclosure[^>]*url="([^"]+)"/i) || [])[1] ||
+      (chunk.match(/<media:content[^>]*url="([^"]+)"/i) || [])[1] ||
       '';
     const enclosure = decodeXml(enclosureRaw.trim());
     const articleLink = decodeXml(String(link || '').trim());
     const thumb = extractThumb(chunk, enclosure);
     const pubDate =
-      (chunk.match(/<pubDate>([^<]*)<\/pubDate>/) || [])[1] ||
-      (chunk.match(/<published>([^<]*)<\/published>/) || [])[1] ||
+      (chunk.match(/<pubDate>([^<]*)<\/pubDate>/i) || [])[1] ||
+      (chunk.match(/<published>([^<]*)<\/published>/i) || [])[1] ||
       '';
     const author =
-      (chunk.match(/<author>([^<]*)<\/author>/) || [])[1] ||
-      (chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/) || [])[1] ||
+      (chunk.match(/<author>([^<]*)<\/author>/i) || [])[1] ||
+      (chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/i) || [])[1] ||
       'StreamsIndia';
 
     const ytId =
@@ -176,96 +170,100 @@ function parseGenericRss(xml, limit = 12) {
   return items;
 }
 
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      'Content-Type': 'application/json',
-      'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=60',
-      'Access-Control-Allow-Origin': '*',
-    },
-  });
+function setCors(res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 
-export default async function handler(request) {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
+export default async function handler(req, res) {
+  setCors(res);
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
   }
 
-  if (request.method !== 'GET') {
-    return json({ status: 'error', message: 'Method not allowed' }, 405);
+  if (req.method !== 'GET') {
+    return res.status(405).json({ status: 'error', message: 'Method not allowed' });
   }
 
   try {
-    const { searchParams } = new URL(request.url);
-    const channelId = searchParams.get('channelId') || '';
-    const feedUrlParam = searchParams.get('feedUrl') || '';
-    const limit = Math.min(Number(searchParams.get('limit') || 12), 20);
+    const channelId = String(req.query?.channelId || '');
+    const feedUrlParam = String(req.query?.feedUrl || '');
+    const limit = Math.min(Number(req.query?.limit || 12) || 12, 20);
 
     let feedUrl = '';
     if (feedUrlParam) {
+      let parsed;
       try {
-        const parsed = new URL(feedUrlParam);
-        if (!/^https?:$/.test(parsed.protocol)) throw new Error('bad protocol');
-        const host = parsed.hostname.replace(/^www\./, '');
-        // Live Feeds are rss.app only
-        if (host !== 'rss.app') {
-          return json(
-            { status: 'error', message: 'Only rss.app feed URLs are allowed' },
-            400
-          );
-        }
-        feedUrl = parsed.toString();
-      } catch (e) {
-        if (e && e.message === 'Only rss.app feed URLs are allowed') throw e;
-        return json({ status: 'error', message: 'Invalid feedUrl' }, 400);
+        parsed = new URL(feedUrlParam);
+      } catch {
+        return res.status(400).json({ status: 'error', message: 'Invalid feedUrl' });
       }
+      if (!/^https?:$/.test(parsed.protocol)) {
+        return res.status(400).json({ status: 'error', message: 'Invalid feedUrl protocol' });
+      }
+      const host = parsed.hostname.replace(/^www\./, '');
+      if (host !== 'rss.app') {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Only rss.app feed URLs are allowed',
+        });
+      }
+      feedUrl = parsed.toString();
     } else if (/^UC[\w-]{20,}$/.test(channelId)) {
-      return json(
-        { status: 'error', message: 'YouTube channel RSS disabled — use rss.app feedUrl only' },
-        400
-      );
+      return res.status(400).json({
+        status: 'error',
+        message: 'YouTube channel RSS disabled — use rss.app feedUrl only',
+      });
     } else {
-      return json({ status: 'error', message: 'feedUrl (rss.app) is required' }, 400);
+      return res.status(400).json({
+        status: 'error',
+        message: 'feedUrl (rss.app) is required',
+      });
     }
 
     const upstream = await fetch(feedUrl, {
       headers: {
         'User-Agent':
-          'Mozilla/5.0 (compatible; StreamsIndia/1.0; +https://streamsindia.com)',
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         Accept:
           'application/atom+xml,application/rss+xml,application/xml,text/xml,*/*',
+        'Accept-Language': 'en-US,en;q=0.9',
       },
+      redirect: 'follow',
     });
 
     if (!upstream.ok) {
-      return json(
-        {
-          status: 'error',
-          message: `Upstream RSS failed (${upstream.status})`,
-        },
-        502
-      );
+      return res.status(502).json({
+        status: 'error',
+        message: `Upstream RSS failed (${upstream.status})`,
+      });
     }
 
     const xml = await upstream.text();
-    const items = parseGenericRss(xml, limit);
-
-    return json({ status: 'ok', channelId, feedUrl, items });
-  } catch (err) {
-    return json(
-      {
+    if (!xml || (!xml.includes('<item>') && !xml.includes('<entry>'))) {
+      return res.status(502).json({
         status: 'error',
-        message: err instanceof Error ? err.message : 'RSS proxy error',
-      },
-      500
-    );
+        message: 'Upstream returned empty or invalid RSS',
+      });
+    }
+
+    const items = parseGenericRss(xml, limit);
+    if (!items.length) {
+      return res.status(502).json({
+        status: 'error',
+        message: 'No items parsed from rss.app feed',
+      });
+    }
+
+    res.setHeader('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=60');
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    return res.status(200).json({ status: 'ok', channelId, feedUrl, items });
+  } catch (err) {
+    return res.status(500).json({
+      status: 'error',
+      message: err instanceof Error ? err.message : 'RSS proxy error',
+    });
   }
 }

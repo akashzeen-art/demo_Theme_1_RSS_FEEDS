@@ -4,7 +4,7 @@ import { SectionVideoBg } from '@/components/SectionVideoBg';
 import { motion } from 'framer-motion';
 import { Play, Plus, Star } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
-import { getVideo } from './desiVideos';
+import { getVideoByTitle } from './desiVideos';
 
 const items = [
  { title: 'Raaz Beyond Fear', genre: 'Thriller', rating: '4.9', duration: '42 min', img: '/Potrait-New_desi/RAAZ BEYOND FEAR.jpg' },
@@ -16,9 +16,9 @@ const items = [
  { title: 'Raaz Revenge & Mafia Ep1', genre: 'Crime', rating: '4.9', duration: '48 min', img: '/Potrait-New_desi/RAAZ, REVENGE & MAFIA EP1.jpg' },
  { title: 'Raaz Revenge & Mafia Ep2', genre: 'Crime', rating: '4.8', duration: '52 min', img: '/Potrait-New_desi/RAAZ, REVENGE & MAFIA EP2.jpg' },
  { title: 'Silent Trigger', genre: 'Action', rating: '4.7', duration: '40 min', img: '/Potrait-New_desi/SCILENT TRIGGER.jpg' },
- { title: 'The Forbidden Files', genre: 'Mystery', rating: '4.8', duration: '44 min', img: '/Potrait-New_desi/THE FORBIDDEN FILES.jpg' },
- { title: 'Fatal Connections Ep1', genre: 'Thriller', rating: '4.7', duration: '36 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP1.jpg' },
- { title: 'Fatal Connections Ep2', genre: 'Thriller', rating: '4.9', duration: '39 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP2.jpg' },
+ { title: 'Final Countdown', genre: 'Mystery', rating: '4.8', duration: '44 min', img: '/Potrait-New_desi/FINAL COUNTDOWN.jpg' },
+ { title: 'Fatal Connections Ep2', genre: 'Thriller', rating: '4.7', duration: '36 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP2.jpg' },
+ { title: 'The Secret Order', genre: 'Thriller', rating: '4.9', duration: '39 min', img: '/Potrait-New_desi/THE SECRET ORDER.jpg' },
 ];
 
 const genreColor: Record<string, string> = {
@@ -52,7 +52,7 @@ export function TopPicksSection() {
  whileInView={{ opacity: 1, y: 0 }}
  transition={{ duration: 0.4, delay: i * 0.04 }}
  viewport={{ once: true }}
- onClick={() => setActiveVideo({ url: getVideo(i + 1), title: item.title, thumb: item.img })}>
+ onClick={() => setActiveVideo({ url: getVideoByTitle(item.title), title: item.title, thumb: item.img })}>
  {/* Thumbnail */}
  <div className="relative rounded-xl overflow-hidden bg-gray-900 glow-card" style={{ aspectRatio: '1080/1350' }}>
  <img src={item.img} alt={item.title}

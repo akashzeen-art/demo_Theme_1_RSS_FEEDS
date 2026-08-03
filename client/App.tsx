@@ -6,7 +6,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SitePreloader } from "@/components/SitePreloader";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import RefundPolicy from "./pages/RefundPolicy";
@@ -28,7 +27,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <SitePreloader />
       <BrowserRouter
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >

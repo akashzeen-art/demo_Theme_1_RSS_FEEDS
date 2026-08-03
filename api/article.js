@@ -1,17 +1,14 @@
 /**
- * Vercel Edge — GET /api/article?url=https://…
- * Proxies article HTML so it can load in an in-app iframe
- * (bypasses frame-ancestors / X-Frame-Options on publisher sites).
+ * Vercel Serverless Function (Node) — GET /api/article?url=…
+ * Proxies article HTML for in-app iframe embedding.
  */
-
-export const config = {
-  runtime: 'edge',
-};
 
 const MAX_BYTES = 1_800_000;
 
 function isBlockedHost(hostname) {
-  const h = String(hostname || '').toLowerCase().replace(/^\[|\]$/g, '');
+  const h = String(hostname || '')
+    .toLowerCase()
+    .replace(/^\[|\]$/g, '');
   if (!h || h === 'localhost' || h.endsWith('.local') || h.endsWith('.internal')) {
     return true;
   }
@@ -52,55 +49,49 @@ function rewriteHtml(html, sourceUrl) {
   return out;
 }
 
-function errorHtml(message, status = 400) {
-  return new Response(
-    `<!doctype html><html><head><meta charset="utf-8"><title>Article</title>
+function errorPage(message) {
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Article</title>
 <style>body{margin:0;font-family:system-ui,sans-serif;background:#0b1728;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px;text-align:center}
 p{opacity:.75;max-width:28rem;line-height:1.5}</style></head>
-<body><div><h1 style="font-size:1.1rem;margin:0 0 8px">Unable to load article</h1><p>${message}</p></div></body></html>`,
-    {
-      status,
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'no-store',
-        'X-Frame-Options': 'SAMEORIGIN',
-      },
-    }
-  );
+<body><div><h1 style="font-size:1.1rem;margin:0 0 8px">Unable to load article</h1><p>${message}</p></div></body></html>`;
 }
 
-export default async function handler(request) {
-  if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-      },
-    });
+function setCors(res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+}
+
+export default async function handler(req, res) {
+  setCors(res);
+
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
   }
 
-  if (request.method !== 'GET') {
-    return errorHtml('Method not allowed', 405);
+  if (req.method !== 'GET') {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res.status(405).send(errorPage('Method not allowed'));
   }
 
   try {
-    const { searchParams } = new URL(request.url);
-    const target = (searchParams.get('url') || '').trim();
-    if (!target) return errorHtml('Missing url parameter');
+    const target = String(req.query?.url || '').trim();
+    if (!target) {
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(400).send(errorPage('Missing url parameter'));
+    }
 
     let parsed;
     try {
       parsed = new URL(target);
     } catch {
-      return errorHtml('Invalid article URL');
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(400).send(errorPage('Invalid article URL'));
     }
 
-    if (!/^https?:$/.test(parsed.protocol)) {
-      return errorHtml('Only http(s) article URLs are allowed');
-    }
-    if (isBlockedHost(parsed.hostname)) {
-      return errorHtml('That host is not allowed');
+    if (!/^https?:$/.test(parsed.protocol) || isBlockedHost(parsed.hostname)) {
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(400).send(errorPage('That article URL is not allowed'));
     }
 
     const upstream = await fetch(parsed.toString(), {
@@ -114,35 +105,32 @@ export default async function handler(request) {
     });
 
     if (!upstream.ok) {
-      return errorHtml(`Publisher returned ${upstream.status}`, 502);
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(502).send(errorPage(`Publisher returned ${upstream.status}`));
     }
 
     const ctype = (upstream.headers.get('content-type') || '').toLowerCase();
     if (ctype && !ctype.includes('text/html') && !ctype.includes('application/xhtml')) {
-      return errorHtml('URL is not an HTML article page', 415);
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(415).send(errorPage('URL is not an HTML article page'));
     }
 
-    const buf = await upstream.arrayBuffer();
+    const buf = Buffer.from(await upstream.arrayBuffer());
     if (buf.byteLength > MAX_BYTES) {
-      return errorHtml('Article HTML is too large to embed', 413);
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      return res.status(413).send(errorPage('Article HTML is too large to embed'));
     }
 
-    const html = rewriteHtml(new TextDecoder('utf-8').decode(buf), parsed.toString());
-
-    return new Response(html, {
-      status: 200,
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=60',
-        'X-Frame-Options': 'SAMEORIGIN',
-        'Content-Security-Policy': "frame-ancestors 'self'",
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    const html = rewriteHtml(buf.toString('utf8'), parsed.toString());
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=60');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('Content-Security-Policy', "frame-ancestors 'self'");
+    return res.status(200).send(html);
   } catch (err) {
-    return errorHtml(
-      err instanceof Error ? err.message : 'Article proxy error',
-      500
-    );
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res
+      .status(500)
+      .send(errorPage(err instanceof Error ? err.message : 'Article proxy error'));
   }
 }

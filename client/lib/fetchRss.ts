@@ -231,20 +231,29 @@ async function fetchViaLocalApi(params: {
   if (params.channelId) q.set('channelId', params.channelId);
   if (params.feedUrl) q.set('feedUrl', params.feedUrl);
 
-  const res = await fetch(`/api/rss?${q.toString()}`);
-  if (!res.ok) throw new Error(`Local RSS API failed (${res.status})`);
+  const res = await fetch(`/api/rss?${q.toString()}`, {
+    headers: { Accept: 'application/json' },
+  });
+  const ctype = (res.headers.get('content-type') || '').toLowerCase();
+  // SPA fallback often returns index.html with 200 — treat as API miss
+  if (!res.ok || ctype.includes('text/html')) {
+    throw new Error(
+      `Local RSS API failed (${res.status}${ctype.includes('text/html') ? ', got HTML' : ''})`
+    );
+  }
   const data = (await res.json()) as ApiResponse;
   if (data.status !== 'ok' || !Array.isArray(data.items) || !data.items.length) {
     throw new Error(data.message || 'Empty RSS response');
   }
-  return normalizeItems(data.items as Array<Partial<RssVideoItem> & Record<string, unknown>>, params.author).slice(
-    0,
-    params.limit
-  );
+  return normalizeItems(
+    data.items as Array<Partial<RssVideoItem> & Record<string, unknown>>,
+    params.author
+  ).slice(0, params.limit);
 }
 
 async function fetchViaRss2Json(feedUrl: string, limit: number, author: string) {
-  const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=${Math.max(limit, 10)}`;
+  // Do NOT pass `count` — rss2json free tier rejects it without an API key
+  const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`rss2json failed (${res.status})`);
   const data = await res.json();
@@ -252,27 +261,61 @@ async function fetchViaRss2Json(feedUrl: string, limit: number, author: string) 
     throw new Error(data.message || 'Invalid rss2json response');
   }
 
-  const raw = data.items.map((item: Record<string, unknown>) => ({
-    id: String(item.guid || ''),
-    title: String(item.title || 'Untitled'),
-    link: String(item.link || ''),
-    embedUrl: String(
-      (item.enclosure as { link?: string } | undefined)?.link ||
-        (item.enclosure as { url?: string } | undefined)?.url ||
-        ''
-    ),
-    thumbnail: String(
-      item.thumbnail ||
-        (item.enclosure as { thumbnail?: string } | undefined)?.thumbnail ||
-        '/logo.png'
-    ),
-    pubDate: String(item.pubDate || ''),
-    author: String(item.author || author),
-  }));
+  const raw = data.items.map((item: Record<string, unknown>) => {
+    const desc = String(item.description || '');
+    const descImg = desc.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1] || '';
+    return {
+      id: String(item.guid || item.link || ''),
+      title: String(item.title || 'Untitled'),
+      link: String(item.link || ''),
+      embedUrl: String(
+        (item.enclosure as { link?: string } | undefined)?.link ||
+          (item.enclosure as { url?: string } | undefined)?.url ||
+          item.link ||
+          ''
+      ),
+      thumbnail: String(
+        item.thumbnail ||
+          (item.enclosure as { thumbnail?: string } | undefined)?.thumbnail ||
+          descImg ||
+          '/logo.png'
+      ),
+      pubDate: String(item.pubDate || ''),
+      author: String(item.author || author),
+    };
+  });
 
   const items = normalizeItems(raw, author);
   if (!items.length) throw new Error('No videos parsed from feed');
   return items.slice(0, limit);
+}
+
+async function fetchViaCorsXml(feedUrl: string, limit: number, author: string) {
+  const proxies = [
+    `https://corsproxy.io/?${encodeURIComponent(feedUrl)}`,
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`,
+  ];
+  let lastError = 'CORS XML proxy failed';
+  for (const proxy of proxies) {
+    try {
+      const res = await fetch(proxy);
+      if (!res.ok) {
+        lastError = `proxy ${res.status}`;
+        continue;
+      }
+      const xml = await res.text();
+      if (!xml.includes('<item>') && !xml.includes('<entry>')) {
+        lastError = 'proxy returned non-RSS';
+        continue;
+      }
+      const items = parseRssXml(xml, limit, author);
+      if (items.length) return items;
+      lastError = 'empty parse';
+    } catch (e) {
+      lastError = e instanceof Error ? e.message : 'proxy error';
+    }
+  }
+  throw new Error(lastError);
 }
 
 async function loadRemoteFeed(
@@ -333,6 +376,14 @@ async function loadRemoteFeed(
         return items;
       } catch (e) {
         errors.push(e instanceof Error ? e.message : 'rss2json failed');
+      }
+
+      try {
+        const items = await fetchViaCorsXml(absolute, limit, opts.author);
+        cache.set(cacheKey, { at: Date.now(), items });
+        return items;
+      } catch (e) {
+        errors.push(e instanceof Error ? e.message : 'cors xml failed');
       }
     }
 
