@@ -226,53 +226,45 @@ export function RssLivePanel({
                   />
                 </div>
               ) : selected && articleFrameSrc ? (
-                <div className="relative overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-[#111827]">
-                  <div className="h-[min(68vh,620px)] min-h-[280px] sm:min-h-[360px] relative">
+                <div className="overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-black">
+                  <div className="relative w-full aspect-video min-h-[200px] sm:min-h-0 overflow-hidden bg-black">
                     {!frameReady && (
-                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-[#111827]">
+                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-black">
                         {selected.thumbnail ? (
                           <img
                             src={selected.thumbnail}
                             alt=""
-                            className="absolute inset-0 w-full h-full object-cover opacity-30"
+                            className="absolute inset-0 w-full h-full object-cover opacity-25"
                             onError={(e) => {
                               e.currentTarget.style.display = 'none';
                             }}
                           />
                         ) : null}
-                        <Loader2 className="relative w-8 h-8 text-cyan-300 animate-spin" />
-                        <p className="relative text-[10px] uppercase tracking-wider text-white/50">
-                          Loading article…
-                        </p>
+                        <Loader2 className="relative w-7 h-7 text-[#ff0000] animate-spin" />
                       </div>
                     )}
                     <iframe
                       key={articleFrameSrc}
                       src={articleFrameSrc}
                       title={selected.title || 'Article'}
-                      className="absolute inset-0 w-full h-full border-0 bg-white"
+                      className="absolute inset-0 w-full h-full border-0 bg-black"
                       loading="eager"
                       referrerPolicy="no-referrer"
                       sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
                       onLoad={() => setFrameReady(true)}
                     />
-                  </div>
-                  {articleHref ? (
-                    <div className="flex items-center justify-between gap-3 px-3 py-2 border-t border-white/10 bg-[#0a1422]">
-                      <p className="text-[10px] text-white/40 uppercase tracking-wider truncate">
-                        In-app article view
-                      </p>
+                    {articleHref ? (
                       <a
                         href={articleHref}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 shrink-0 text-[10px] font-medium uppercase tracking-wider text-cyan-300 hover:text-cyan-200"
+                        className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/70 border border-white/15 text-[10px] font-medium uppercase tracking-wider text-white hover:border-cyan-400/50 hover:text-cyan-200 transition-colors"
                       >
                         Open original
                         <ExternalLink size={12} />
                       </a>
-                    </div>
-                  ) : null}
+                    ) : null}
+                  </div>
                 </div>
               ) : selected ? (
                 <div className="relative overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-[#111827] aspect-video min-h-[200px]">

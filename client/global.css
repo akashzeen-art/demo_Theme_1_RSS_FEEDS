@@ -242,6 +242,12 @@
     box-shadow: 0 12px 40px rgba(2, 6, 23, 0.26);
   }
 
+  .glass {
+    background: rgba(8, 17, 29, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
   /* ── Comic background effects ── */
   .comic-halftone {
     background-image: radial-gradient(#111 1.1px, transparent 1.2px);

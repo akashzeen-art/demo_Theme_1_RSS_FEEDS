@@ -14,11 +14,13 @@ import {
 } from 'lucide-react';
 import { CATEGORIES } from '@/lib/catalog';
 
-const EXTRA = [
+const MENU_LINKS = [
   { label: 'My Account', path: '/account' },
   { label: 'About Us', path: '/about' },
-  { label: 'Contact Us', path: '/contact' },
+  { label: 'Terms & Conditions', path: '/terms' },
+  { label: 'Refund Policy', path: '/refund' },
   { label: 'Privacy Policy', path: '/privacy' },
+  { label: 'Contact Us', path: '/contact' },
 ];
 
 const ICONS: Record<string, typeof Home> = {
@@ -30,7 +32,7 @@ const ICONS: Record<string, typeof Home> = {
   series: Tv,
 };
 
-/** Cosmic dark header — deep navy + cyan accents */
+/** Cosmic dark header + glass side drawer */
 export function BurgerMenu() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -88,12 +90,15 @@ export function BurgerMenu() {
             type="button"
             onClick={() => go('/')}
             className="shrink-0 focus:outline-none"
-            aria-label="StreamsIndia Home"
+            aria-label="Chalchitra Home"
           >
             <img
-              src="/logo.png"
-              alt="StreamsIndia"
+              src="/logo/chalchitra.png"
+              alt="Chalchitra"
               className="h-8 sm:h-10 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.src = '/logo.png';
+              }}
             />
           </button>
 
@@ -216,7 +221,7 @@ export function BurgerMenu() {
         {open && (
           <>
             <motion.div
-              className="fixed inset-0 z-[110] bg-[#050b14]/70 backdrop-blur-sm"
+              className="fixed inset-0 z-[110] bg-black/50 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -224,89 +229,85 @@ export function BurgerMenu() {
             />
 
             <motion.aside
-              className="fixed top-0 right-0 h-full w-[min(100vw-2.5rem,20rem)] z-[111] flex flex-col px-6 sm:px-7 py-8 border-l border-cyan-400/15 overflow-y-auto bg-[#07111f]"
-              style={{
-                paddingTop: 'max(2rem, env(safe-area-inset-top))',
-                paddingBottom: 'max(2rem, env(safe-area-inset-bottom))',
-                backgroundImage:
-                  'radial-gradient(circle at top right, rgba(34,211,238,0.12), transparent 40%), radial-gradient(circle at bottom left, rgba(59,130,246,0.1), transparent 35%)',
-              }}
+              className="fixed top-0 right-0 z-[111] h-full w-72 glass border-l border-white/10 shadow-2xl overflow-y-auto"
+              style={{ paddingTop: 'env(safe-area-inset-top)' }}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 320, damping: 32 }}
             >
-              <div className="flex items-center justify-between mb-8">
-                <img src="/logo.png" alt="" className="h-8 w-auto object-contain" />
+              <div className="flex items-center justify-between px-5 h-16 border-b border-white/10">
+                <span className="text-white font-bold">Menu</span>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white"
+                  className="p-2 text-slate-400 hover:text-white"
                   aria-label="Close menu"
                 >
-                  <X size={18} />
+                  <X size={20} />
                 </button>
               </div>
 
-              <p className="text-cyan-300 text-[10px] uppercase tracking-[0.35em] font-medium mb-3">
-                Browse
+              <p className="px-5 pt-4 pb-2 text-xs text-slate-500">
+                Premium desi thriller &amp; crime content
               </p>
-              <nav className="flex flex-col gap-0.5">
-                {CATEGORIES.map((link, i) => {
-                  const Icon = ICONS[link.icon] || Home;
-                  const active =
-                    link.path === '/'
-                      ? location.pathname === '/'
-                      : location.pathname.startsWith(link.path);
+
+              <div className="border-t border-white/8 bg-[#07111f]/90">
+                <div
+                  className="flex items-center gap-1.5 px-3 py-2 overflow-x-auto"
+                  aria-label="Browse categories"
+                  style={{ scrollbarWidth: 'none' } as React.CSSProperties}
+                >
+                  {CATEGORIES.map((cat) => {
+                    const Icon = ICONS[cat.icon] || Home;
+                    const active =
+                      cat.path === '/'
+                        ? location.pathname === '/'
+                        : location.pathname.startsWith(cat.path);
+                    return (
+                      <button
+                        key={cat.path}
+                        type="button"
+                        onClick={() => go(cat.path)}
+                        className={`flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-medium uppercase tracking-wider whitespace-nowrap transition-colors border ${
+                          active
+                            ? 'bg-cyan-400 text-[#07111f] border-cyan-400'
+                            : 'bg-white/5 text-white/60 border-white/10 hover:text-white hover:border-white/25'
+                        }`}
+                      >
+                        <Icon size={11} />
+                        {cat.label}
+                        {cat.icon === 'live' && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <nav className="flex flex-col gap-1 p-4 pt-3">
+                {MENU_LINKS.map((link, i) => {
+                  const active = location.pathname.startsWith(link.path);
                   return (
                     <motion.button
                       key={link.path}
                       type="button"
                       onClick={() => go(link.path)}
-                      className={`flex items-center gap-3 text-left py-3 px-2 rounded-lg text-sm uppercase tracking-widest border-b border-white/8 transition-colors ${
+                      className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition ${
                         active
-                          ? 'text-cyan-300 bg-cyan-400/10'
-                          : 'text-white/85 hover:bg-white/5'
+                          ? 'text-white bg-white/10'
+                          : 'text-slate-200 hover:text-white hover:bg-white/5'
                       }`}
-                      initial={{ opacity: 0, x: 16 }}
+                      initial={{ opacity: 0, x: 12 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.04 }}
+                      transition={{ delay: i * 0.03 }}
                     >
-                      <Icon
-                        size={16}
-                        className={active ? 'text-cyan-300' : 'text-white/40'}
-                      />
                       {link.label}
-                      {link.icon === 'live' && (
-                        <span className="ml-auto w-1.5 h-1.5 rounded-full bg-cyan-300" />
-                      )}
                     </motion.button>
                   );
                 })}
               </nav>
-
-              <p className="text-white/40 text-[10px] uppercase tracking-[0.35em] mt-8 mb-3">
-                More
-              </p>
-              <nav className="flex flex-col gap-0.5">
-                {EXTRA.map((link) => (
-                  <button
-                    key={link.path}
-                    type="button"
-                    onClick={() => go(link.path)}
-                    className="text-left py-2.5 px-2 text-white/55 text-xs uppercase tracking-widest border-b border-white/8 hover:text-cyan-200 transition-colors"
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </nav>
-
-              <div className="mt-auto pt-8 space-y-3">
-                <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
-                <p className="text-[10px] text-white/35 tracking-widest">
-                  © 2026 Alphamovil Digital Solutions LLP
-                </p>
-              </div>
             </motion.aside>
           </>
         )}
