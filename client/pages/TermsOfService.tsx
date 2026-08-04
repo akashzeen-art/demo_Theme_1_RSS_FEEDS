@@ -109,7 +109,7 @@ export default function TermsOfService() {
 
           <PolicySection title="Children's Information">
             StreamNow does not knowingly collect any Personal Identifiable Information from children
-            under the age of 13. If you think that your child provided this kind of information on
+            under the age of 16. If you think that your child provided this kind of information on
             our website, we strongly encourage you to contact us immediately.
           </PolicySection>
 
