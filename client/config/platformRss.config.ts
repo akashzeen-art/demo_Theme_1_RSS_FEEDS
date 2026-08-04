@@ -33,6 +33,8 @@ export type PlatformCategoryRss = {
    * Must look like: https://rss.app/feeds/YOUR_FEED_ID.xml
    */
   rssUrl: string;
+  /** Optional extra rss.app URLs merged into the same Live Feed panel */
+  rssUrls?: string[];
   preferLive?: boolean;
   liveStreams?: LiveStreamItem[];
   /** Catalog fallback thumbnails only (not used as Live Feed source) */
@@ -61,28 +63,16 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
   allowedFeedHosts: ['rss.app', 'www.rss.app'],
 
   categories: {
-    reels: {
-      enabled: true,
-      source: 'rss',
-      channelName: 'Music - Celebuzz',
-      rssUrl: 'https://rss.app/feeds/vI0CmUYD495xLLcy.xml',
-      preferLive: false,
-      platformSnos: [71, 72, 73, 74, 75, 76],
-      platformTitles: [
-        'Twist Ending',
-        'Chase Scene Cut',
-        'Behind the Crime',
-        'Drama Teaser',
-        'Comedy Bit',
-        'Sports Slow-Mo',
-      ],
-    },
-
+    // Single Bhojpuri Live Feed (both feeds merged)
     live: {
       enabled: true,
       source: 'rss',
-      channelName: 'Couples News, Pictures, and Videos',
-      rssUrl: 'https://rss.app/feeds/DY0mpELyWM1lzUs3.xml',
+      channelName: 'Bhojpuri',
+      rssUrl: 'https://rss.app/feeds/tCKWIkVM5mST2LMR.xml',
+      rssUrls: [
+        'https://rss.app/feeds/tCKWIkVM5mST2LMR.xml',
+        'https://rss.app/feeds/t42zS8m4mYv8iqzE.xml',
+      ],
       preferLive: false,
       platformSnos: [51, 52, 53, 54, 55, 56],
       platformTitles: [
@@ -95,11 +85,12 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
       ],
     },
 
+    // Hidden — Bhojpuri Entertainment is merged into live
     sports: {
-      enabled: true,
+      enabled: false,
       source: 'rss',
-      channelName: 'Music - Celebuzz',
-      rssUrl: 'https://rss.app/feeds/vI0CmUYD495xLLcy.xml',
+      channelName: 'bhojpurientertainment',
+      rssUrl: 'https://rss.app/feeds/t42zS8m4mYv8iqzE.xml',
       preferLive: false,
       platformSnos: [31, 32, 33, 34, 35, 36],
       platformTitles: [
@@ -112,11 +103,12 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
       ],
     },
 
+    // TV / Hollywood
     movies: {
       enabled: true,
       source: 'rss',
-      channelName: 'Movies | Hollywood Reporter',
-      rssUrl: 'https://rss.app/feeds/Kokt3XvDewq5YvZp.xml',
+      channelName: 'TV | Hollywood Reporter',
+      rssUrl: 'https://rss.app/feeds/gMfDeENxqlKGq8FD.xml',
       preferLive: false,
       platformSnos: [1, 2, 3, 4, 5, 6],
       platformTitles: [
@@ -129,11 +121,29 @@ export const PLATFORM_RSS_CONFIG: PlatformRssConfig = {
       ],
     },
 
-    webseries: {
+    // Celebuzz entertainment
+    reels: {
       enabled: true,
       source: 'rss',
-      channelName: 'Couples News, Pictures, and Videos',
-      rssUrl: 'https://rss.app/feeds/DY0mpELyWM1lzUs3.xml',
+      channelName: 'entertainment - Celebuzz',
+      rssUrl: 'https://rss.app/feeds/RfjVfhv52FaYOmSr.xml',
+      preferLive: false,
+      platformSnos: [71, 72, 73, 74, 75, 76],
+      platformTitles: [
+        'Twist Ending',
+        'Chase Scene Cut',
+        'Behind the Crime',
+        'Drama Teaser',
+        'Comedy Bit',
+        'Sports Slow-Mo',
+      ],
+    },
+
+    webseries: {
+      enabled: false,
+      source: 'rss',
+      channelName: 'bhojpurientertainment',
+      rssUrl: 'https://rss.app/feeds/t42zS8m4mYv8iqzE.xml',
       preferLive: false,
       platformSnos: [13, 14, 15, 17, 18, 19],
       platformTitles: [

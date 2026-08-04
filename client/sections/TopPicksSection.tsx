@@ -7,18 +7,18 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideoByTitle } from './desiVideos';
 
 const items = [
- { title: 'Raaz Beyond Fear', genre: 'Thriller', rating: '4.9', duration: '42 min', img: '/Potrait-New_desi/RAAZ BEYOND FEAR.jpg' },
- { title: 'The Hidden Truth', genre: 'Drama', rating: '4.8', duration: '38 min', img: '/Potrait-New_desi/THE HIDDEN TRUTH.jpg' },
- { title: 'Silent Chase', genre: 'Action', rating: '4.9', duration: '45 min', img: '/Potrait-New_desi/SCILENT CHASE.jpg' },
- { title: 'The Missing Witness', genre: 'Crime', rating: '4.7', duration: '50 min', img: '/Potrait-New_desi/THE MISSING WITNESS.jpg' },
- { title: 'The Secret Route Ep 1', genre: 'Thriller', rating: '4.8', duration: '35 min', img: '/Potrait-New_desi/THE SECRET ROUT EP 1.jpg' },
- { title: 'The Secret Route Ep 2', genre: 'Thriller', rating: '4.9', duration: '38 min', img: '/Potrait-New_desi/THE SECRET ROUT EP 2.jpg' },
- { title: 'Raaz Revenge & Mafia Ep1', genre: 'Crime', rating: '4.9', duration: '48 min', img: '/Potrait-New_desi/RAAZ, REVENGE & MAFIA EP1.jpg' },
- { title: 'Raaz Revenge & Mafia Ep2', genre: 'Crime', rating: '4.8', duration: '52 min', img: '/Potrait-New_desi/RAAZ, REVENGE & MAFIA EP2.jpg' },
- { title: 'Silent Trigger', genre: 'Action', rating: '4.7', duration: '40 min', img: '/Potrait-New_desi/SCILENT TRIGGER.jpg' },
- { title: 'Final Countdown', genre: 'Mystery', rating: '4.8', duration: '44 min', img: '/Potrait-New_desi/FINAL COUNTDOWN.jpg' },
- { title: 'Fatal Connections Ep2', genre: 'Thriller', rating: '4.7', duration: '36 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP2.jpg' },
- { title: 'The Secret Order', genre: 'Thriller', rating: '4.9', duration: '39 min', img: '/Potrait-New_desi/THE SECRET ORDER.jpg' },
+ { title: 'Raaz Beyond Fear', genre: 'Thriller', rating: '4.9', duration: '42 min', img: '/portrait/RAAZBEYONDFEAR.jpg' },
+ { title: 'The Hidden Truth', genre: 'Drama', rating: '4.8', duration: '38 min', img: '/portrait/THEHIDDENTRUTH.jpg' },
+ { title: 'Silent Chase', genre: 'Action', rating: '4.9', duration: '45 min', img: '/portrait/SCILENTCHASE.jpg' },
+ { title: 'The Missing Witness', genre: 'Crime', rating: '4.7', duration: '50 min', img: '/portrait/THEMISSINGWITNESS.jpg' },
+ { title: 'The Secret Route Ep 1', genre: 'Thriller', rating: '4.8', duration: '35 min', img: '/portrait/THESECRETROUTEP1.jpg' },
+ { title: 'The Secret Route Ep 2', genre: 'Thriller', rating: '4.9', duration: '38 min', img: '/portrait/THESECRETROUTEP2.jpg' },
+ { title: 'Raaz Revenge & Mafia Ep1', genre: 'Crime', rating: '4.9', duration: '48 min', img: '/portrait/RAAZ,REVENGE&MAFIAEP1.jpg' },
+ { title: 'Raaz Revenge & Mafia Ep2', genre: 'Crime', rating: '4.8', duration: '52 min', img: '/portrait/RAAZ,REVENGE&MAFIAEP2.jpg' },
+ { title: 'Silent Trigger', genre: 'Action', rating: '4.7', duration: '40 min', img: '/portrait/SCILENTTRIGGER.jpg' },
+ { title: 'Final Countdown', genre: 'Mystery', rating: '4.8', duration: '44 min', img: '/portrait/FINALCOUNTDOWN.jpg' },
+ { title: 'Fatal Connections Ep2', genre: 'Thriller', rating: '4.7', duration: '36 min', img: '/portrait/FATALCONNECTIONSEP2.jpg' },
+ { title: 'The Secret Order', genre: 'Thriller', rating: '4.9', duration: '39 min', img: '/portrait/THESECRETORDER.jpg' },
 ];
 
 const genreColor: Record<string, string> = {

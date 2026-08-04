@@ -36,6 +36,20 @@ function isImageUrl(url: string) {
   return /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(clean);
 }
 
+/** True only when feed provided a usable remote image (not site logo fallback) */
+function hasRealThumbnail(url: string | undefined | null) {
+  const u = String(url || '').trim();
+  if (!u) return false;
+  if (u === '/logo.png' || /\/logo\.png$/i.test(u)) return false;
+  if (/^\/?(logo|placeholder|default)(\.|$)/i.test(u)) return false;
+  if (/^data:image\//i.test(u)) return true;
+  return /^https?:\/\//i.test(u);
+}
+
+function withThumbnailsOnly(items: RssVideoItem[]) {
+  return items.filter((item) => hasRealThumbnail(item.thumbnail));
+}
+
 function isPlayableMedia(url: string) {
   if (!url || isImageUrl(url)) return false;
   return (
@@ -75,9 +89,12 @@ function extractThumbFromChunk(chunk: string, enclosure: string) {
     .map((u) => decodeXml(String(u || '').trim()))
     .filter(Boolean);
   for (const u of candidates) {
-    if (isImageUrl(u)) return u;
+    if (isImageUrl(u) || /^https?:\/\//i.test(u)) {
+      // Prefer clear image URLs; skip obvious non-image enclosures
+      if (isImageUrl(u) || !isPlayableMedia(u)) return u;
+    }
   }
-  return candidates[0] || '/logo.png';
+  return '';
 }
 
 /** Normalize any API / parsed item into RssVideoItem */
@@ -94,10 +111,9 @@ function normalizeItems(
       String((x as { enclosure?: string }).enclosure || x.embedUrl || '').trim()
     );
     let thumb = decodeXml(String(x.thumbnail || '').trim());
-    if (isImageUrl(enclosure) && (!thumb || thumb === '/logo.png')) {
+    if (isImageUrl(enclosure) && !hasRealThumbnail(thumb)) {
       thumb = enclosure;
     }
-    if (!thumb) thumb = '/logo.png';
 
     const ytId =
       (typeof x.id === 'string' && /^[\w-]{11}$/.test(x.id) ? x.id : null) ||
@@ -106,13 +122,14 @@ function normalizeItems(
       null;
 
     if (ytId) {
+      const ytThumb =
+        (hasRealThumbnail(thumb) ? thumb : '') ||
+        `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`;
       items.push({
         id: ytId,
         title,
         link: link || `https://www.youtube.com/watch?v=${ytId}`,
-        thumbnail:
-          (thumb && thumb !== '/logo.png' ? thumb : '') ||
-          `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`,
+        thumbnail: ytThumb,
         pubDate: String(x.pubDate || ''),
         author: String(x.author || fallbackAuthor),
         embedUrl: youtubeEmbedUrl(ytId, true),
@@ -121,6 +138,9 @@ function normalizeItems(
       });
       continue;
     }
+
+    // Skip articles with no usable thumbnail
+    if (!hasRealThumbnail(thumb)) continue;
 
     const playable = isPlayableMedia(enclosure);
     const media = playable ? enclosure : link || enclosure;
@@ -143,7 +163,7 @@ function normalizeItems(
     });
   }
 
-  return items;
+  return withThumbnailsOnly(items);
 }
 
 /** Parse MRSS / RSS / Atom XML in the browser (same-origin feeds) */
@@ -204,10 +224,10 @@ export function parseRssXml(
       isLive: mediaLive,
     });
 
-    if (raw.length >= limit) break;
+    if (raw.length >= limit * 2) break;
   }
 
-  return normalizeItems(raw, fallbackAuthor).slice(0, limit);
+  return withThumbnailsOnly(normalizeItems(raw, fallbackAuthor)).slice(0, limit);
 }
 
 async function fetchSameOriginXml(feedPath: string, limit: number, author: string) {
@@ -278,7 +298,7 @@ async function fetchViaRss2Json(feedUrl: string, limit: number, author: string) 
         item.thumbnail ||
           (item.enclosure as { thumbnail?: string } | undefined)?.thumbnail ||
           descImg ||
-          '/logo.png'
+          ''
       ),
       pubDate: String(item.pubDate || ''),
       author: String(item.author || author),
@@ -455,6 +475,7 @@ export async function fetchChannelRss(
 
 /**
  * Primary loader — rss.app feeds ONLY.
+ * Merges category.rssUrls (or rssUrl) into one item list.
  */
 export async function fetchCategoryRss(
   categoryId: string,
@@ -465,33 +486,54 @@ export async function fetchCategoryRss(
     throw new Error('Category feed disabled or missing');
   }
 
-  if (!isRssAppFeedUrl(category.rssUrl)) {
+  const feedUrls = Array.from(
+    new Set(
+      (category.rssUrls?.length ? category.rssUrls : [category.rssUrl || ''])
+        .map((u) => u.trim())
+        .filter((u) => isRssAppFeedUrl(u))
+    )
+  );
+
+  if (!feedUrls.length) {
     throw new Error(
       `Paste a valid rss.app feed URL for “${category.title}” in platformRss.config.ts (https://rss.app/feeds/….xml)`
     );
   }
 
-  let remote: RssVideoItem[] = [];
-  let remoteError: string | null = null;
+  // Over-fetch so filtering out missing thumbs still fills the panel
+  const perFeed = Math.max(limit * 2, Math.ceil((limit * 2) / feedUrls.length) + 6);
+  const results = await Promise.allSettled(
+    feedUrls.map((feedUrl) =>
+      loadRemoteFeed(
+        `rssapp:${feedUrl}`,
+        { feedUrl, author: category.channelName },
+        perFeed
+      )
+    )
+  );
 
-  try {
-    remote = await loadRemoteFeed(
-      `rssapp:${category.rssUrl}`,
-      { feedUrl: category.rssUrl!, author: category.channelName },
-      limit
-    );
-  } catch (e) {
-    remoteError = e instanceof Error ? e.message : 'rss.app feed failed';
-    remote = [];
+  const merged: RssVideoItem[] = [];
+  const errors: string[] = [];
+  for (const r of results) {
+    if (r.status === 'fulfilled' && r.value.length) {
+      merged.push(...r.value);
+    } else if (r.status === 'rejected') {
+      errors.push(r.reason instanceof Error ? r.reason.message : 'feed failed');
+    }
   }
 
-  // Live Feed panels show rss.app items only (no YouTube channel / catalog fill)
-  if (remote.length) {
-    return dedupeByEmbed(remote).slice(0, limit);
-  }
+  // Newest first when dates exist
+  merged.sort((a, b) => {
+    const da = Date.parse(a.pubDate || '') || 0;
+    const db = Date.parse(b.pubDate || '') || 0;
+    return db - da;
+  });
+
+  const unique = withThumbnailsOnly(dedupeByEmbed(merged)).slice(0, limit);
+  if (unique.length) return unique;
 
   throw new Error(
-    remoteError ||
+    errors[0] ||
       `${category.title} rss.app feed unavailable — check the feed URL in platformRss.config.ts`
   );
 }

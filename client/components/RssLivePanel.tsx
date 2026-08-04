@@ -70,11 +70,16 @@ function useCategoryRss(categoryId: string, enabled: boolean, limit = 12) {
     };
   }, [categoryId, enabled, limit, tick]);
 
+  const dropBrokenThumb = (id: string) => {
+    setItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
   return {
     items,
     loading,
     error,
     reload: () => setTick((t) => t + 1),
+    dropBrokenThumb,
   };
 }
 
@@ -109,7 +114,7 @@ export function RssLivePanel({
     return () => io.disconnect();
   }, []);
 
-  const { items, loading, error, reload } = useCategoryRss(
+  const { items, loading, error, reload, dropBrokenThumb } = useCategoryRss(
     category.id,
     visible,
     compact ? 8 : 12
@@ -235,8 +240,8 @@ export function RssLivePanel({
                             src={selected.thumbnail}
                             alt=""
                             className="absolute inset-0 w-full h-full object-cover opacity-25"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
+                            onError={() => {
+                              if (selected?.id) dropBrokenThumb(selected.id);
                             }}
                           />
                         ) : null}
@@ -253,7 +258,7 @@ export function RssLivePanel({
                       sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
                       onLoad={() => setFrameReady(true)}
                     />
-                    {articleHref ? (
+                    {/* {articleHref ? (
                       <a
                         href={articleHref}
                         target="_blank"
@@ -263,17 +268,17 @@ export function RssLivePanel({
                         Open original
                         <ExternalLink size={12} />
                       </a>
-                    ) : null}
+                    ) : null} */}
                   </div>
                 </div>
               ) : selected ? (
                 <div className="relative overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-[#111827] aspect-video min-h-[200px]">
                   <img
-                    src={selected.thumbnail || '/logo.png'}
+                    src={selected.thumbnail}
                     alt=""
                     className="absolute inset-0 w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = '/logo.png';
+                    onError={() => {
+                      if (selected?.id) dropBrokenThumb(selected.id);
                     }}
                   />
                 </div>
@@ -292,7 +297,7 @@ export function RssLivePanel({
                         : 'Live feed'}
                   </p>
                   <p className="mt-2 text-[10px] leading-relaxed text-white/30 max-w-xl">
-                    Entertainment-discovery feed for non-commercial demo use, leaning toward Hollywood, celebrity chatter and international pop-culture viewpoints.
+                    {category.subtitle}. Powered by rss.app · {category.channelName}.
                   </p>
                 </div>
               </div>
@@ -345,12 +350,7 @@ export function RssLivePanel({
                               alt=""
                               className="w-full h-full object-cover object-center"
                               loading="lazy"
-                              onError={(e) => {
-                                const t = e.currentTarget;
-                                if (t.dataset.fallback === '1') return;
-                                t.dataset.fallback = '1';
-                                t.style.opacity = '0.35';
-                              }}
+                              onError={() => dropBrokenThumb(item.id)}
                             />
                             {live && (
                               <span className="absolute top-1 left-1 text-[8px] font-bold uppercase bg-cyan-400 px-1.5 py-0.5 rounded text-[#07111f]">

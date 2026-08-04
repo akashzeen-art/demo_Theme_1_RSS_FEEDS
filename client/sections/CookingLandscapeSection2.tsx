@@ -6,16 +6,16 @@ import { Play, Plus, Star, X, Clock, Users, Utensils } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 const cards = [
- { id: '1', title: 'Pho Bo Noodle Soup', category: 'Vietnamese', duration: '60 min', students: '78K', rating: '9.7', img: '/Landscape-New-Desi/DEAD END MISSON.jpg' },
- { id: '2', title: 'Baklava Masterclass', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/Landscape-New-Desi/ESCAPE BEYOND FEAR EP1.jpg' },
- { id: '3', title: 'Eggs Benedict', category: 'Breakfast', duration: '20 min', students: '92K', rating: '9.6', img: '/Landscape-New-Desi/BEYOND SUSPICION EP2.jpg' },
- { id: '4', title: 'Lamb Kofta Skewers', category: 'Middle East', duration: '35 min', students: '67K', rating: '9.5', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP1.jpg' },
- { id: '5', title: 'Tonkotsu Ramen', category: 'Japanese', duration: '120 min', students: '83K', rating: '9.9', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP2.jpg' },
- { id: '6', title: 'Bibimbap Bowl', category: 'Korean', duration: '35 min', students: '76K', rating: '9.7', img: '/Landscape-New-Desi/BLACK SIGNAL.jpg' },
- { id: '7', title: 'Focaccia Bread', category: 'Baking', duration: '180 min', students: '58K', rating: '9.6', img: '/Landscape-New-Desi/DANGEROUS ALLIANCE.jpg' },
- { id: '8', title: 'Tiramisu Masterclass', category: 'Dessert', duration: '45 min', students: '112K', rating: '9.8', img: '/Landscape-New-Desi/DANGEROUS MINDS EP1.jpg' },
- { id: '9', title: 'Mango Sticky Rice', category: 'Thai', duration: '30 min', students: '89K', rating: '9.7', img: '/Landscape-New-Desi/DANGEROUS MINDS EP2.jpg' },
- { id: '10', title: 'Cinnamon Rolls', category: 'Baking', duration: '150 min', students: '127K', rating: '9.8', img: '/Landscape-New-Desi/DANGEROUS MINDS EP3.jpg' },
+ { id: '1', title: 'Pho Bo Noodle Soup', category: 'Vietnamese', duration: '60 min', students: '78K', rating: '9.7', img: '/landscape/DEADENDMISSON.jpg' },
+ { id: '2', title: 'Baklava Masterclass', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/landscape/ESCAPEBEYONDFEAREP1.jpg' },
+ { id: '3', title: 'Eggs Benedict', category: 'Breakfast', duration: '20 min', students: '92K', rating: '9.6', img: '/landscape/BEYONDSUSPICIONEP2.jpg' },
+ { id: '4', title: 'Lamb Kofta Skewers', category: 'Middle East', duration: '35 min', students: '67K', rating: '9.5', img: '/landscape/BLACKDIARYSECRETSEP1.jpg' },
+ { id: '5', title: 'Tonkotsu Ramen', category: 'Japanese', duration: '120 min', students: '83K', rating: '9.9', img: '/landscape/BLACKDIARYSECRETSEP2.jpg' },
+ { id: '6', title: 'Bibimbap Bowl', category: 'Korean', duration: '35 min', students: '76K', rating: '9.7', img: '/landscape/BLACKSIGNAL.jpg' },
+ { id: '7', title: 'Focaccia Bread', category: 'Baking', duration: '180 min', students: '58K', rating: '9.6', img: '/landscape/DANGEROUSALLIANCE.jpg' },
+ { id: '8', title: 'Tiramisu Masterclass', category: 'Dessert', duration: '45 min', students: '112K', rating: '9.8', img: '/landscape/DANGEROUSMINDSEP1.jpg' },
+ { id: '9', title: 'Mango Sticky Rice', category: 'Thai', duration: '30 min', students: '89K', rating: '9.7', img: '/landscape/DANGEROUSMINDSEP2.jpg' },
+ { id: '10', title: 'Cinnamon Rolls', category: 'Baking', duration: '150 min', students: '127K', rating: '9.8', img: '/landscape/DANGEROUSMINDSEP3.jpg' },
 ];
 
 const catGrad: Record<string, string> = {

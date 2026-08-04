@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'Her Story', genre: 'Drama', rating: '5.0', duration: '44 min', img: '/Potrait-New_desi/HER STORY.jpg' },
- { rank: 2, title: 'Dangerous Territory', genre: 'Action', rating: '4.9', duration: '49 min', img: '/Potrait-New_desi/DANGEROUS TERRITORY.jpg' },
- { rank: 3, title: 'Shadow Protocol', genre: 'Thriller', rating: '4.9', duration: '46 min', img: '/Potrait-New_desi/SHADOW PROTOCOL.jpg' },
- { rank: 4, title: 'Escape Beyond Fear Ep1', genre: 'Thriller', rating: '4.8', duration: '36 min', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP1.jpg' },
- { rank: 5, title: 'Escape Beyond Fear Ep2', genre: 'Thriller', rating: '4.8', duration: '38 min', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP2.jpg' },
- { rank: 6, title: 'Escape Beyond Fear Ep3', genre: 'Thriller', rating: '4.7', duration: '40 min', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP3.jpg' },
- { rank: 7, title: 'Underground Warriors Ep1', genre: 'Action', rating: '4.7', duration: '45 min', img: '/Potrait-New_desi/UNDERGROUND WARRIORS EP1.jpg' },
- { rank: 8, title: 'Underground Warriors Ep2', genre: 'Action', rating: '4.6', duration: '47 min', img: '/Potrait-New_desi/UNDERGROUND WARRIORS EP2.jpg' },
- { rank: 9, title: 'Mystery Junction', genre: 'Mystery', rating: '4.6', duration: '42 min', img: '/Potrait-New_desi/MYSTERY JUNCTION.jpg' },
- { rank: 10, title: 'Dark City Files', genre: 'Crime', rating: '4.5', duration: '50 min', img: '/Potrait-New_desi/DARK CITY FILES.jpg' },
+ { rank: 1, title: 'Her Story', genre: 'Drama', rating: '5.0', duration: '44 min', img: '/portrait/HERSTORY.jpg' },
+ { rank: 2, title: 'Dangerous Territory', genre: 'Action', rating: '4.9', duration: '49 min', img: '/portrait/DANGEROUSTERRITORY.jpg' },
+ { rank: 3, title: 'Shadow Protocol', genre: 'Thriller', rating: '4.9', duration: '46 min', img: '/portrait/SHADOWPROTOCOL.jpg' },
+ { rank: 4, title: 'Escape Beyond Fear Ep1', genre: 'Thriller', rating: '4.8', duration: '36 min', img: '/portrait/ESCAPEBEYONDFEAREP1.jpg' },
+ { rank: 5, title: 'Escape Beyond Fear Ep2', genre: 'Thriller', rating: '4.8', duration: '38 min', img: '/portrait/ESCAPEBEYONDFEAREP2.jpg' },
+ { rank: 6, title: 'Escape Beyond Fear Ep3', genre: 'Thriller', rating: '4.7', duration: '40 min', img: '/portrait/ESCAPEBEYONDFEAREP3.jpg' },
+ { rank: 7, title: 'Underground Warriors Ep1', genre: 'Action', rating: '4.7', duration: '45 min', img: '/portrait/UNDERGROUNDWARRIORSEP1.jpg' },
+ { rank: 8, title: 'Underground Warriors Ep2', genre: 'Action', rating: '4.6', duration: '47 min', img: '/portrait/UNDERGROUNDWARRIORSEP2.jpg' },
+ { rank: 9, title: 'Mystery Junction', genre: 'Mystery', rating: '4.6', duration: '42 min', img: '/portrait/MYSTERYJUNCTION.jpg' },
+ { rank: 10, title: 'Dark City Files', genre: 'Crime', rating: '4.5', duration: '50 min', img: '/portrait/DARKCITYFILES.jpg' },
 ];
 
 export function CriticsChoiceSection() {

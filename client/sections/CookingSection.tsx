@@ -8,13 +8,13 @@ import { useRef, useState } from 'react';
 import { Play, ChefHat, Clock, Star, Users } from 'lucide-react';
 
 const COOK_THUMBS = [
- '/Landscape-New-Desi/BLACK DIARY SECRETS  EP1.jpg',
- '/Landscape-New-Desi/BLACK DIARY SECRETS  EP2.jpg',
- '/Landscape-New-Desi/BLACK SIGNAL.jpg',
+ '/landscape/BLACKDIARYSECRETSEP1.jpg',
+ '/landscape/BLACKDIARYSECRETSEP2.jpg',
+ '/landscape/BLACKSIGNAL.jpg',
 ];
 const COOK_BG = [
- '/Landscape-New-Desi/DANGEROUS ALLIANCE.jpg',
- '/Landscape-New-Desi/DANGEROUS MINDS EP1.jpg',
+ '/landscape/DANGEROUSALLIANCE.jpg',
+ '/landscape/DANGEROUSMINDSEP1.jpg',
 ];
 const COOK_VIDEO = getVideo(1);
 

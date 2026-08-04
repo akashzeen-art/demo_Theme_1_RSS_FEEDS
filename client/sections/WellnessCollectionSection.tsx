@@ -6,18 +6,18 @@ import { Heart, Play, X, Star } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 const cards = [
- { id: '1', title: 'The Last Deal', thumbnail: '/Potrait-New_desi/THE LAST DEAL.jpg', category: 'Crime', year: '2024', rating: '9.9' },
- { id: '2', title: 'The Crime Circle', thumbnail: '/Potrait-New_desi/THE CRIME CIRCLE.jpg', category: 'Crime', year: '2024', rating: '9.7' },
- { id: '3', title: 'Secret Nights', thumbnail: '/Potrait-New_desi/SECRET NIGHTS.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
- { id: '4', title: 'Mission Darknight', thumbnail: '/Potrait-New_desi/MISSSION DARKNIGHT.jpg', category: 'Action', year: '2024', rating: '9.6' },
- { id: '5', title: 'Adventure Ke Raaz', thumbnail: '/Potrait-New_desi/ADVENTURE KE RAAZ.jpg', category: 'Drama', year: '2024', rating: '9.7' },
- { id: '6', title: 'Killer Instinct', thumbnail: '/Potrait-New_desi/KILLER INSTINCT.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
- { id: '7', title: 'Escape Route 21', thumbnail: '/Potrait-New_desi/ESCAPE ROUT 21.jpg', category: 'Action', year: '2024', rating: '9.9' },
- { id: '8', title: 'Black Signal', thumbnail: '/Potrait-New_desi/BLACK SIGNAL.jpg', category: 'Mystery', year: '2024', rating: '9.8' },
- { id: '9', title: 'Rogue Nation', thumbnail: '/Potrait-New_desi/ROGUE MISSON.jpg', category: 'Action', year: '2024', rating: '9.6' },
- { id: '10', title: 'Silent Witness', thumbnail: '/Potrait-New_desi/BEYOND SUSPICION EP1.jpg', category: 'Crime', year: '2024', rating: '9.7' },
- { id: '11', title: 'Hidden Fear Ep1', thumbnail: '/Potrait-New_desi/BEYOND SUSPICION EP2.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
- { id: '12', title: 'Hidden Fear Ep2', thumbnail: '/Potrait-New_desi/BLACK DIARY SECRETS  EP1.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
+ { id: '1', title: 'The Last Deal', thumbnail: '/portrait/THELASTDEAL.jpg', category: 'Crime', year: '2024', rating: '9.9' },
+ { id: '2', title: 'The Crime Circle', thumbnail: '/portrait/THECRIMECIRCLE.jpg', category: 'Crime', year: '2024', rating: '9.7' },
+ { id: '3', title: 'Secret Nights', thumbnail: '/portrait/SECRETNIGHTS.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
+ { id: '4', title: 'Mission Darknight', thumbnail: '/portrait/MISSSIONDARKNIGHT.jpg', category: 'Action', year: '2024', rating: '9.6' },
+ { id: '5', title: 'Adventure Ke Raaz', thumbnail: '/portrait/ADVENTUREKERAAZ.jpg', category: 'Drama', year: '2024', rating: '9.7' },
+ { id: '6', title: 'Killer Instinct', thumbnail: '/portrait/KILLERINSTINCT.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
+ { id: '7', title: 'Escape Route 21', thumbnail: '/portrait/ESCAPEROUT21.jpg', category: 'Action', year: '2024', rating: '9.9' },
+ { id: '8', title: 'Black Signal', thumbnail: '/portrait/BLACKSIGNAL.jpg', category: 'Mystery', year: '2024', rating: '9.8' },
+ { id: '9', title: 'Rogue Nation', thumbnail: '/portrait/ROGUEMISSON.jpg', category: 'Action', year: '2024', rating: '9.6' },
+ { id: '10', title: 'Silent Witness', thumbnail: '/portrait/BEYONDSUSPICIONEP1.jpg', category: 'Crime', year: '2024', rating: '9.7' },
+ { id: '11', title: 'Hidden Fear Ep1', thumbnail: '/portrait/BEYONDSUSPICIONEP2.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
+ { id: '12', title: 'Hidden Fear Ep2', thumbnail: '/portrait/BLACKDIARYSECRETSEP1.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
 ];
 
 const catGrad: Record<string, string> = {

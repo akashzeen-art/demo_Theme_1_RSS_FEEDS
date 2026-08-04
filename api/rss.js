@@ -50,7 +50,18 @@ function extractThumb(chunk, enclosure) {
   for (const u of candidates) {
     if (isImageUrl(u)) return u;
   }
-  return candidates[0] || '/logo.png';
+  // Keep http(s) image-like candidates (CDN URLs often lack extensions)
+  for (const u of candidates) {
+    if (/^https?:\/\//i.test(u) && !isVideoUrl(u)) return u;
+  }
+  return '';
+}
+
+function hasRealThumb(url) {
+  const u = String(url || '').trim();
+  if (!u) return false;
+  if (u === '/logo.png' || /\/logo\.png$/i.test(u)) return false;
+  return /^https?:\/\//i.test(u) || /^data:image\//i.test(u);
 }
 
 function parseYoutubeAtom(xml, limit = 12) {
@@ -144,6 +155,7 @@ function parseGenericRss(xml, limit = 12) {
       });
     } else {
       if (!articleLink && !enclosure) continue;
+      if (!hasRealThumb(thumb)) continue;
       const playable = isVideoUrl(enclosure) && !isImageUrl(enclosure);
       const media = playable ? enclosure : articleLink || enclosure;
       if (!media) continue;
@@ -167,7 +179,7 @@ function parseGenericRss(xml, limit = 12) {
     if (items.length >= limit) break;
   }
 
-  return items;
+  return items.filter((item) => hasRealThumb(item.thumbnail));
 }
 
 function setCors(res) {

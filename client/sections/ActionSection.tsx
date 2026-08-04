@@ -5,8 +5,8 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { useRef, useState } from 'react';
 import { Play, Zap, Clock, Star, Users } from 'lucide-react';
 
-const THUMB = '/Landscape-New-Desi/KILLER INSTINCT.jpg';
-const BG = '/Landscape-New-Desi/KILLER INSTINCT.jpg';
+const THUMB = '/landscape/KILLERINSTINCT.jpg';
+const BG = '/landscape/KILLERINSTINCT.jpg';
 const VIDEOS = [
  'https://vz-32907a33-0f1.b-cdn.net/2bf6b03c-29e3-448d-aa55-27ec10759691/play_480p.mp4',
  'https://vz-32907a33-0f1.b-cdn.net/40c97b6c-9bf8-40df-a4e1-f8162c18404b/play_480p.mp4',

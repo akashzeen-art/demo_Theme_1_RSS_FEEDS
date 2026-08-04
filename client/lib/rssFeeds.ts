@@ -52,6 +52,8 @@ export type RssFeedConfig = {
   channelId: string;
   channelName: string;
   rssUrl?: string;
+  /** Extra rss.app URLs merged into this panel */
+  rssUrls?: string[];
   preferLive?: boolean;
   liveStreams: LiveStreamItem[];
   platformSnos: number[];
@@ -62,41 +64,41 @@ const META: Record<
   RssCategoryId,
   Pick<RssFeedConfig, 'title' | 'subtitle' | 'path' | 'accent' | 'badge' | 'sno'>
 > = {
-  reels: {
-    title: 'Reels',
-    subtitle: 'Live discovery feed powered by rss.app',
-    path: '/reels',
-    accent: 'from-rose-600 to-orange-500',
-    badge: 'Shorts',
-    sno: 71,
-  },
   live: {
-    title: 'Live',
-    subtitle: 'Live discovery feed powered by rss.app',
+    title: 'Bhojpuri',
+    subtitle: 'Bhojpuri news, culture & entertainment',
     path: '/live',
     accent: 'from-red-600 to-rose-700',
-    badge: 'On Air',
+    badge: 'Bhojpuri',
     sno: 51,
   },
   sports: {
     title: 'Sports',
-    subtitle: 'Live discovery feed powered by rss.app',
+    subtitle: 'Sports feed',
     path: '/sports',
-    accent: 'from-emerald-600 to-teal-500',
-    badge: 'Arena',
+    accent: 'from-amber-600 to-orange-500',
+    badge: 'Sports',
     sno: 31,
   },
   movies: {
-    title: 'Movies',
-    subtitle: 'Live discovery feed powered by rss.app',
+    title: 'TV | Hollywood Reporter',
+    subtitle: 'TV & Hollywood industry news',
     path: '/movies',
     accent: 'from-red-700 to-amber-600',
-    badge: 'Cinema',
+    badge: 'TV',
     sno: 1,
+  },
+  reels: {
+    title: 'Entertainment',
+    subtitle: 'Celebuzz entertainment feed',
+    path: '/reels',
+    accent: 'from-rose-600 to-orange-500',
+    badge: 'Celebuzz',
+    sno: 71,
   },
   webseries: {
     title: 'Web Series',
-    subtitle: 'Live discovery feed powered by rss.app',
+    subtitle: 'Series feed',
     path: '/webseries',
     accent: 'from-orange-600 to-red-600',
     badge: 'Series',
@@ -104,9 +106,22 @@ const META: Record<
   },
 };
 
+/** Home / nav order — single Bhojpuri section first, then the rest */
+export const RSS_CATEGORY_ORDER: RssCategoryId[] = [
+  'live',
+  'movies',
+  'reels',
+  'sports',
+  'webseries',
+];
+
 function buildCategory(id: RssCategoryId): RssFeedConfig {
   const cfg = PLATFORM_RSS_CONFIG.categories[id];
   const meta = META[id];
+  const extra = (cfg.rssUrls || []).filter(Boolean);
+  const urls = Array.from(
+    new Set([cfg.rssUrl, ...extra].map((u) => u.trim()).filter(Boolean))
+  );
   return {
     id,
     ...meta,
@@ -114,7 +129,8 @@ function buildCategory(id: RssCategoryId): RssFeedConfig {
     source: 'rss',
     channelId: `rssapp-${id}`,
     channelName: cfg.channelName || PLATFORM_RSS_CONFIG.brand,
-    rssUrl: cfg.rssUrl,
+    rssUrl: urls[0] || cfg.rssUrl,
+    rssUrls: urls,
     preferLive: Boolean(cfg.preferLive),
     liveStreams: cfg.liveStreams || [],
     platformSnos: cfg.platformSnos || [],
@@ -124,11 +140,19 @@ function buildCategory(id: RssCategoryId): RssFeedConfig {
 
 /** Always rebuild from live config (avoids stale HMR / module cache) */
 export function getAllRssCategories(): RssFeedConfig[] {
-  return (Object.keys(META) as RssCategoryId[]).map(buildCategory);
+  return RSS_CATEGORY_ORDER.map(buildCategory);
 }
 
 export function getEnabledRssCategories(): RssFeedConfig[] {
-  return getAllRssCategories().filter((c) => c.enabled);
+  const seen = new Set<string>();
+  return getAllRssCategories().filter((c) => {
+    if (!c.enabled) return false;
+    // Avoid showing the same rss.app URL twice on home
+    const key = (c.rssUrl || '').trim().toLowerCase();
+    if (key && seen.has(key)) return false;
+    if (key) seen.add(key);
+    return true;
+  });
 }
 
 /** @deprecated use getAllRssCategories() — kept for imports */

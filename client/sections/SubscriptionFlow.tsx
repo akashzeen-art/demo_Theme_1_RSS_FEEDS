@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { LATEST_VIDEOS, type DesiVideoEntry } from '@/sections/desiVideos';
 import { WatchVideoPlayer } from '@/components/WatchVideoPlayer';
+import { rewriteThumbPath } from '@/lib/thumbs';
 
 interface SubscriptionFlowProps {
   videoUrl: string | null;
@@ -118,22 +119,7 @@ function relatedFor(title: string, limit = 12): DesiVideoEntry[] {
 
 /** Prefer landscape art for Netflix-style preview cards; encode spaces in paths. */
 function mediaSrc(path: string | undefined | null, preferLandscape = false) {
-  if (!path) return '/logo.png';
-  let src = path.trim();
-  if (preferLandscape) {
-    src = src
-      .replace('/Potrait-New_desi/', '/Landscape-New-Desi/')
-      .replace('/potrait_new_desicontent/', '/landscape_new_desicontent/')
-      .replace('/Eatme Portrait/', '/Eatme Landscape/')
-      .replace('/Yoga Portrait/', '/Yoga landscape/');
-  }
-  try {
-    // Keep absolute http(s) URLs as-is; encode local paths with spaces
-    if (/^https?:\/\//i.test(src)) return src;
-    return encodeURI(src);
-  } catch {
-    return src;
-  }
+  return rewriteThumbPath(path, preferLandscape);
 }
 
 function ThumbImage({

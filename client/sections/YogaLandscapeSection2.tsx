@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getYogaVideo } from './yogaVideos';
 
 const cards = [
- { id: '1', title: 'The Secret Order', category: 'Crime', duration: '48 min', students: '89K', rating: '9.7', img: '/Landscape-New-Desi/THE SECRET ORDER.jpg' },
- { id: '2', title: 'The Final Dhokha', category: 'Drama', duration: '44 min', students: '67K', rating: '9.6', img: '/Landscape-New-Desi/THE FINAL DHOKHA.jpg' },
- { id: '3', title: 'Black Diary Secrets Ep1', category: 'Thriller', duration: '37 min', students: '143K', rating: '9.9', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP1.jpg' },
- { id: '4', title: 'Black Diary Secrets Ep2', category: 'Thriller', duration: '40 min', students: '54K', rating: '9.5', img: '/Landscape-New-Desi/BLACK DIARY SECRETS  EP2.jpg' },
- { id: '5', title: 'Final Witness', category: 'Crime', duration: '45 min', students: '48K', rating: '9.6', img: '/Landscape-New-Desi/FINAL WITNESS.jpg' },
- { id: '6', title: 'The Missing Link', category: 'Mystery', duration: '42 min', students: '72K', rating: '9.7', img: '/Landscape-New-Desi/THE MISSING LINK.jpg' },
- { id: '7', title: 'Dead End Mission', category: 'Action', duration: '47 min', students: '201K', rating: '9.8', img: '/Landscape-New-Desi/DEAD END MISSON.jpg' },
- { id: '8', title: 'Dangerous Alliance', category: 'Crime', duration: '44 min', students: '118K', rating: '9.9', img: '/Landscape-New-Desi/DANGEROUS ALLIANCE.jpg' },
- { id: '9', title: 'Escape Plan 302', category: 'Thriller', duration: '50 min', students: '96K', rating: '9.6', img: '/Landscape-New-Desi/ESCAPE PLAN 302.jpg' },
- { id: '10', title: 'Rogue Mission', category: 'Action', duration: '42 min', students: '83K', rating: '9.7', img: '/Landscape-New-Desi/ROGUE MISSON.jpg' },
+ { id: '1', title: 'The Secret Order', category: 'Crime', duration: '48 min', students: '89K', rating: '9.7', img: '/landscape/THESECRETORDER.jpg' },
+ { id: '2', title: 'The Final Dhokha', category: 'Drama', duration: '44 min', students: '67K', rating: '9.6', img: '/landscape/THEFINALDHOKHA.jpg' },
+ { id: '3', title: 'Black Diary Secrets Ep1', category: 'Thriller', duration: '37 min', students: '143K', rating: '9.9', img: '/landscape/BLACKDIARYSECRETSEP1.jpg' },
+ { id: '4', title: 'Black Diary Secrets Ep2', category: 'Thriller', duration: '40 min', students: '54K', rating: '9.5', img: '/landscape/BLACKDIARYSECRETSEP2.jpg' },
+ { id: '5', title: 'Final Witness', category: 'Crime', duration: '45 min', students: '48K', rating: '9.6', img: '/landscape/FINALWITNESS.jpg' },
+ { id: '6', title: 'The Missing Link', category: 'Mystery', duration: '42 min', students: '72K', rating: '9.7', img: '/landscape/THEMISSINGLINK.jpg' },
+ { id: '7', title: 'Dead End Mission', category: 'Action', duration: '47 min', students: '201K', rating: '9.8', img: '/landscape/DEADENDMISSON.jpg' },
+ { id: '8', title: 'Dangerous Alliance', category: 'Crime', duration: '44 min', students: '118K', rating: '9.9', img: '/landscape/DANGEROUSALLIANCE.jpg' },
+ { id: '9', title: 'Escape Plan 302', category: 'Thriller', duration: '50 min', students: '96K', rating: '9.6', img: '/landscape/ESCAPEPLAN302.jpg' },
+ { id: '10', title: 'Rogue Mission', category: 'Action', duration: '42 min', students: '83K', rating: '9.7', img: '/landscape/ROGUEMISSON.jpg' },
 ];
 
 const catGrad: Record<string, string> = {

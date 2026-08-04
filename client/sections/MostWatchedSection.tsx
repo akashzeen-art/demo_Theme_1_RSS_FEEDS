@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'Dead End Mission', genre: 'Action', rating: '4.9', duration: '47 min', img: '/Potrait-New_desi/DEAD END MISSON.jpg' },
- { rank: 2, title: 'Dangerous Alliance', genre: 'Crime', rating: '4.9', duration: '44 min', img: '/Potrait-New_desi/DANGEROUS ALLIANCE.jpg' },
- { rank: 3, title: 'Escape Plan 302', genre: 'Thriller', rating: '4.8', duration: '50 min', img: '/Potrait-New_desi/ESCAPE PLAN 302.jpg' },
- { rank: 4, title: 'Rogue Mission', genre: 'Action', rating: '4.8', duration: '42 min', img: '/Potrait-New_desi/ROGUE MISSON.jpg' },
- { rank: 5, title: 'Operation Nightfall', genre: 'Thriller', rating: '4.8', duration: '55 min', img: '/Potrait-New_desi/OPERATION NIGHTFALL.jpg' },
- { rank: 6, title: 'Dangerous Minds Ep1', genre: 'Drama', rating: '4.8', duration: '38 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP1.jpg' },
- { rank: 7, title: 'Dangerous Minds Ep2', genre: 'Drama', rating: '4.7', duration: '40 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP2.jpg' },
- { rank: 8, title: 'Dangerous Minds Ep3', genre: 'Drama', rating: '4.6', duration: '41 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP3.jpg' },
- { rank: 9, title: 'Dangerous Minds Ep4', genre: 'Drama', rating: '4.8', duration: '43 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP4.jpg' },
- { rank: 10, title: 'Beyond Suspicion Ep1', genre: 'Mystery', rating: '4.7', duration: '39 min', img: '/Potrait-New_desi/BEYOND SUSPICION EP1.jpg' },
+ { rank: 1, title: 'Dead End Mission', genre: 'Action', rating: '4.9', duration: '47 min', img: '/portrait/DEADENDMISSON.jpg' },
+ { rank: 2, title: 'Dangerous Alliance', genre: 'Crime', rating: '4.9', duration: '44 min', img: '/portrait/DANGEROUSALLIANCE.jpg' },
+ { rank: 3, title: 'Escape Plan 302', genre: 'Thriller', rating: '4.8', duration: '50 min', img: '/portrait/ESCAPEPLAN302.jpg' },
+ { rank: 4, title: 'Rogue Mission', genre: 'Action', rating: '4.8', duration: '42 min', img: '/portrait/ROGUEMISSON.jpg' },
+ { rank: 5, title: 'Operation Nightfall', genre: 'Thriller', rating: '4.8', duration: '55 min', img: '/portrait/OPERATIONNIGHTFALL.jpg' },
+ { rank: 6, title: 'Dangerous Minds Ep1', genre: 'Drama', rating: '4.8', duration: '38 min', img: '/portrait/DANGEROUSMINDSEP1.jpg' },
+ { rank: 7, title: 'Dangerous Minds Ep2', genre: 'Drama', rating: '4.7', duration: '40 min', img: '/portrait/DANGEROUSMINDSEP2.jpg' },
+ { rank: 8, title: 'Dangerous Minds Ep3', genre: 'Drama', rating: '4.6', duration: '41 min', img: '/portrait/DANGEROUSMINDSEP3.jpg' },
+ { rank: 9, title: 'Dangerous Minds Ep4', genre: 'Drama', rating: '4.8', duration: '43 min', img: '/portrait/DANGEROUSMINDSEP4.jpg' },
+ { rank: 10, title: 'Beyond Suspicion Ep1', genre: 'Mystery', rating: '4.7', duration: '39 min', img: '/portrait/BEYONDSUSPICIONEP1.jpg' },
 ];
 
 export function MostWatchedSection() {

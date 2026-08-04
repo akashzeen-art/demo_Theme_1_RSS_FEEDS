@@ -7,44 +7,44 @@ import { getYogaVideo } from './yogaVideos';
 
 // Portrait items 1–10
 const PORTRAIT_1 = [
- { title: 'Morning Vinyasa Flow', genre: 'Yoga', rating: '4.9', duration: '32 min', img: '/Potrait-New_desi/ADVENTURE KE RAAZ.jpg', vi: 0 },
- { title: 'Yin & Restore', genre: 'Yoga', rating: '4.8', duration: '45 min', img: '/Potrait-New_desi/BEYOND SUSPICION EP1.jpg', vi: 1 },
- { title: 'Power Core Flow', genre: 'Yoga', rating: '4.9', duration: '40 min', img: '/Potrait-New_desi/BEYOND SUSPICION EP2.jpg', vi: 2 },
- { title: 'Ashtanga Fundamentals', genre: 'Yoga', rating: '4.7', duration: '50 min', img: '/Potrait-New_desi/BLACK DIARY SECRETS  EP1.jpg', vi: 3 },
- { title: 'Breathwork & Pranayama', genre: 'Meditation', rating: '4.9', duration: '30 min', img: '/Potrait-New_desi/BLACK DIARY SECRETS  EP2.jpg', vi: 4 },
- { title: 'Kundalini Awakening', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/Potrait-New_desi/BLACK SIGNAL.jpg', vi: 5 },
- { title: 'Hatha Yoga Basics', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/Potrait-New_desi/DANGEROUS ALLIANCE.jpg', vi: 6 },
- { title: 'Restorative Deep Stretch',genre: 'Yoga', rating: '4.8', duration: '60 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP1.jpg', vi: 7 },
- { title: 'Guided Meditation', genre: 'Meditation', rating: '4.9', duration: '25 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP2.jpg', vi: 8 },
- { title: 'Prenatal Yoga', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP3.jpg', vi: 9 },
+ { title: 'Morning Vinyasa Flow', genre: 'Yoga', rating: '4.9', duration: '32 min', img: '/portrait/ADVENTUREKERAAZ.jpg', vi: 0 },
+ { title: 'Yin & Restore', genre: 'Yoga', rating: '4.8', duration: '45 min', img: '/portrait/BEYONDSUSPICIONEP1.jpg', vi: 1 },
+ { title: 'Power Core Flow', genre: 'Yoga', rating: '4.9', duration: '40 min', img: '/portrait/BEYONDSUSPICIONEP2.jpg', vi: 2 },
+ { title: 'Ashtanga Fundamentals', genre: 'Yoga', rating: '4.7', duration: '50 min', img: '/portrait/BLACKDIARYSECRETSEP1.jpg', vi: 3 },
+ { title: 'Breathwork & Pranayama', genre: 'Meditation', rating: '4.9', duration: '30 min', img: '/portrait/BLACKDIARYSECRETSEP2.jpg', vi: 4 },
+ { title: 'Kundalini Awakening', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/portrait/BLACKSIGNAL.jpg', vi: 5 },
+ { title: 'Hatha Yoga Basics', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/portrait/DANGEROUSALLIANCE.jpg', vi: 6 },
+ { title: 'Restorative Deep Stretch',genre: 'Yoga', rating: '4.8', duration: '60 min', img: '/portrait/DANGEROUSMINDSEP1.jpg', vi: 7 },
+ { title: 'Guided Meditation', genre: 'Meditation', rating: '4.9', duration: '25 min', img: '/portrait/DANGEROUSMINDSEP2.jpg', vi: 8 },
+ { title: 'Prenatal Yoga', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/portrait/DANGEROUSMINDSEP3.jpg', vi: 9 },
 ];
 
 // Portrait items 11–20
 const PORTRAIT_2 = [
- { title: 'Sunrise Vinyasa', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/Potrait-New_desi/DANGEROUS MINDS EP4.jpg', vi: 10 },
- { title: 'Deep Yin Flow', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/Potrait-New_desi/DANGEROUS TERRITORY.jpg', vi: 11 },
- { title: 'Power Core Yoga', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/Potrait-New_desi/DARK CITY FILES.jpg', vi: 12 },
- { title: 'Breathwork Mastery', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/Potrait-New_desi/DEAD END MISSON.jpg', vi: 13 },
- { title: 'Ashtanga Series', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP1.jpg', vi: 14 },
- { title: 'Kundalini Flow', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP2.jpg', vi: 15 },
- { title: 'Breathwork & Pranayama II',genre:'Meditation', rating: '4.7', duration: '30 min', img: '/Potrait-New_desi/ESCAPE BEYOND FEAR EP3.jpg', vi: 16 },
- { title: 'Restorative Yoga', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/Potrait-New_desi/ESCAPE FROM NOWHERE.jpg', vi: 17 },
- { title: 'Ashtanga Advanced', genre: 'Yoga', rating: '4.6', duration: '50 min', img: '/Potrait-New_desi/ESCAPE PLAN 302.jpg', vi: 18 },
- { title: 'Morning Meditation', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/Potrait-New_desi/ESCAPE ROUT 21.jpg', vi: 19 },
+ { title: 'Sunrise Vinyasa', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/portrait/DANGEROUSMINDSEP4.jpg', vi: 10 },
+ { title: 'Deep Yin Flow', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/portrait/DANGEROUSTERRITORY.jpg', vi: 11 },
+ { title: 'Power Core Yoga', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/portrait/DARKCITYFILES.jpg', vi: 12 },
+ { title: 'Breathwork Mastery', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/portrait/DEADENDMISSON.jpg', vi: 13 },
+ { title: 'Ashtanga Series', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/portrait/ESCAPEBEYONDFEAREP1.jpg', vi: 14 },
+ { title: 'Kundalini Flow', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/portrait/ESCAPEBEYONDFEAREP2.jpg', vi: 15 },
+ { title: 'Breathwork & Pranayama II',genre:'Meditation', rating: '4.7', duration: '30 min', img: '/portrait/ESCAPEBEYONDFEAREP3.jpg', vi: 16 },
+ { title: 'Restorative Yoga', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/portrait/ESCAPEFROMNOWHERE.jpg', vi: 17 },
+ { title: 'Ashtanga Advanced', genre: 'Yoga', rating: '4.6', duration: '50 min', img: '/portrait/ESCAPEPLAN302.jpg', vi: 18 },
+ { title: 'Morning Meditation', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/portrait/ESCAPEROUT21.jpg', vi: 19 },
 ];
 
 // Portrait items 21–30
 const PORTRAIT_3 = [
- { title: 'Vinyasa Sunrise II', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP1.jpg', vi: 20 },
- { title: 'Deep Yin Restore', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP2.jpg', vi: 21 },
- { title: 'Core Power Blast', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/Potrait-New_desi/FATAL CONNECTIONS EP3.jpg', vi: 22 },
- { title: 'Breathwork Journey', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/Potrait-New_desi/FINAL COUNTDOWN.jpg', vi: 23 },
- { title: 'Ashtanga Flow II', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/Potrait-New_desi/FINAL WITNESS.jpg', vi: 24 },
- { title: 'Kundalini Awakening II', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/Potrait-New_desi/HER STORY.jpg', vi: 25 },
- { title: 'Hatha Basics II', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/Potrait-New_desi/KILLER INSTINCT.jpg', vi: 26 },
- { title: 'Restorative Stretch', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/Potrait-New_desi/LAST MISSION ALIVE.jpg', vi: 27 },
- { title: 'Guided Breathwork', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/Potrait-New_desi/MIDNIGHT ESCAPE.jpg', vi: 28 },
- { title: 'Prenatal Flow', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/Potrait-New_desi/MISSSION DARKNIGHT.jpg', vi: 29 },
+ { title: 'Vinyasa Sunrise II', genre: 'Yoga', rating: '5.0', duration: '32 min', img: '/portrait/FATALCONNECTIONSEP1.jpg', vi: 20 },
+ { title: 'Deep Yin Restore', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/portrait/FATALCONNECTIONSEP2.jpg', vi: 21 },
+ { title: 'Core Power Blast', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/portrait/FATALCONNECTIONSEP3.jpg', vi: 22 },
+ { title: 'Breathwork Journey', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/portrait/FINALCOUNTDOWN.jpg', vi: 23 },
+ { title: 'Ashtanga Flow II', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/portrait/FINALWITNESS.jpg', vi: 24 },
+ { title: 'Kundalini Awakening II', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/portrait/HERSTORY.jpg', vi: 25 },
+ { title: 'Hatha Basics II', genre: 'Yoga', rating: '4.7', duration: '35 min', img: '/portrait/KILLERINSTINCT.jpg', vi: 26 },
+ { title: 'Restorative Stretch', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/portrait/LASTMISSIONALIVE.jpg', vi: 27 },
+ { title: 'Guided Breathwork', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/portrait/MIDNIGHTESCAPE.jpg', vi: 28 },
+ { title: 'Prenatal Flow', genre: 'Yoga', rating: '4.6', duration: '40 min', img: '/portrait/MISSSIONDARKNIGHT.jpg', vi: 29 },
 ];
 
 const genreColor: Record<string, string> = {

@@ -6,8 +6,8 @@ import { getVideo } from './desiVideos';
 import { useRef, useState } from 'react';
 import { Flame, Play, Clock, Star, Users } from 'lucide-react';
 
-const THUMB = '/Landscape-New-Desi/LAST MISSION ALIVE.jpg';
-const BG = '/Landscape-New-Desi/LAST MISSION ALIVE.jpg';
+const THUMB = '/landscape/LASTMISSIONALIVE.jpg';
+const BG = '/landscape/LASTMISSIONALIVE.jpg';
 const VIDEOS = [getVideo(2), getVideo(3)];
 
 export function RomanceSection() {

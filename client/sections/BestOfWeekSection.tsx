@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'Beyond Suspicion Ep2', genre: 'Mystery', rating: '5.0', duration: '41 min', img: '/Potrait-New_desi/BEYOND SUSPICION EP2.jpg' },
- { rank: 2, title: 'Final Countdown', genre: 'Action', rating: '4.9', duration: '48 min', img: '/Potrait-New_desi/FINAL COUNTDOWN.jpg' },
- { rank: 3, title: 'The Dark Network', genre: 'Crime', rating: '4.8', duration: '52 min', img: '/Potrait-New_desi/THE DARK NETWORK.jpg' },
- { rank: 4, title: 'The Secret Mission', genre: 'Thriller', rating: '4.8', duration: '44 min', img: '/Potrait-New_desi/THE SECRET MISSION.jpg' },
- { rank: 5, title: 'The Secret Syndicate', genre: 'Crime', rating: '4.8', duration: '46 min', img: '/Potrait-New_desi/THE SECRET SYNDICATE.jpg' },
- { rank: 6, title: 'The Unknown Target', genre: 'Action', rating: '4.8', duration: '43 min', img: '/Potrait-New_desi/THE UNKNOWN TARGET.jpg' },
- { rank: 7, title: 'Wanted for Revenge', genre: 'Drama', rating: '4.7', duration: '50 min', img: '/Potrait-New_desi/WANTED FOR REVENGE.jpg' },
- { rank: 8, title: 'Last Mission Alive', genre: 'Thriller', rating: '4.7', duration: '47 min', img: '/Potrait-New_desi/LAST MISSION ALIVE.jpg' },
- { rank: 9, title: 'Midnight Escape', genre: 'Action', rating: '4.6', duration: '40 min', img: '/Potrait-New_desi/MIDNIGHT ESCAPE.jpg' },
- { rank: 10, title: 'The Diary Secrets', genre: 'Mystery', rating: '4.6', duration: '38 min', img: '/Potrait-New_desi/THE DIARY SECRETS.jpg' },
+ { rank: 1, title: 'Beyond Suspicion Ep2', genre: 'Mystery', rating: '5.0', duration: '41 min', img: '/portrait/BEYONDSUSPICIONEP2.jpg' },
+ { rank: 2, title: 'Final Countdown', genre: 'Action', rating: '4.9', duration: '48 min', img: '/portrait/FINALCOUNTDOWN.jpg' },
+ { rank: 3, title: 'The Dark Network', genre: 'Crime', rating: '4.8', duration: '52 min', img: '/portrait/THEDARKNETWORK.jpg' },
+ { rank: 4, title: 'The Secret Mission', genre: 'Thriller', rating: '4.8', duration: '44 min', img: '/portrait/THESECRETMISSION.jpg' },
+ { rank: 5, title: 'The Secret Syndicate', genre: 'Crime', rating: '4.8', duration: '46 min', img: '/portrait/THESECRETSYNDICATE.jpg' },
+ { rank: 6, title: 'The Unknown Target', genre: 'Action', rating: '4.8', duration: '43 min', img: '/portrait/THEUNKNOWNTARGET.jpg' },
+ { rank: 7, title: 'Wanted for Revenge', genre: 'Drama', rating: '4.7', duration: '50 min', img: '/portrait/WANTEDFORREVENGE.jpg' },
+ { rank: 8, title: 'Last Mission Alive', genre: 'Thriller', rating: '4.7', duration: '47 min', img: '/portrait/LASTMISSIONALIVE.jpg' },
+ { rank: 9, title: 'Midnight Escape', genre: 'Action', rating: '4.6', duration: '40 min', img: '/portrait/MIDNIGHTESCAPE.jpg' },
+ { rank: 10, title: 'The Diary Secrets', genre: 'Mystery', rating: '4.6', duration: '38 min', img: '/portrait/THEDIARYSECRETS.jpg' },
 ];
 
 const genreColor: Record<string, string> = {

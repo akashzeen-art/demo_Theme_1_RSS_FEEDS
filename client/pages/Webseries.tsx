@@ -9,7 +9,7 @@ export default function Webseries() {
  badge="Binge"
  title="Web Series"
  subtitle="Episode after episode — plus live RSS trailers and series drops."
- heroImage="/Landscape-New-Desi/DARK CITY FILES.jpg"
+ heroImage="/landscape/DARKCITYFILES.jpg"
  >
  <CategorySisterLinks current="webseries" />
  <CategoryPageRss categoryId="webseries" />
