@@ -7,10 +7,10 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { title: 'Black Horizon', genre: 'Mystery', rating: '4.9', duration: '48 min', img: '/portrait/BLACKHORIZON.jpg' },
- { title: 'Dark Empire', genre: 'Crime', rating: '4.8', duration: '52 min', img: '/portrait/DARKEMPIRE.jpg' },
- { title: 'Adventure Beyond Borders', genre: 'Action', rating: '4.7', duration: '45 min', img: '/portrait/ADVENTUREBEYONDBORDERS.jpg' },
- { title: 'Midnight Case', genre: 'Thriller',rating: '4.8', duration: '44 min', img: '/portrait/MIDNIGHTCASE.jpg' },
+ { title: 'Black Horizon', genre: 'Mystery', rating: '4.9', duration: '12 min', img: '/portrait/BLACKHORIZON.jpg' },
+ { title: 'Dark Empire', genre: 'Crime', rating: '4.7', duration: '12 min', img: '/portrait/DARKEMPIRE.jpg' },
+ { title: 'Adventure Beyond Borders', genre: 'Action', rating: '4.8', duration: '6 min', img: '/portrait/ADVENTUREBEYONDBORDERS.jpg' },
+ { title: 'Midnight Case', genre: 'Thriller', rating: '4.8', duration: '18 min', img: '/portrait/MIDNIGHTCASE.jpg' },
 ];
 
 export function NewReleasesSection() {

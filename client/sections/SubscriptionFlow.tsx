@@ -10,7 +10,7 @@ import {
   ThumbsUp,
   ChevronDown,
 } from 'lucide-react';
-import { LATEST_VIDEOS, type DesiVideoEntry } from '@/sections/desiVideos';
+import { LATEST_VIDEOS, findVideoEntry, type DesiVideoEntry } from '@/sections/desiVideos';
 import { WatchVideoPlayer } from '@/components/WatchVideoPlayer';
 import { rewriteThumbPath } from '@/lib/thumbs';
 
@@ -89,24 +89,33 @@ function buildSynopsis(title: string, genre: string) {
 }
 
 function estimateDuration(title: string) {
-  const mins = 95 + (hashStr(title) % 70);
-  const h = Math.floor(mins / 60);
-  const m = mins % 60;
-  return h > 0 ? `${h}h ${m}m` : `${m}m`;
+  const entry = findVideoEntry(title);
+  if (entry?.duration) return entry.duration;
+  const mins = 30 + (hashStr(title) % 25);
+  return `${mins} min`;
 }
 
 function toPreview(
-  entry: { url: string; title: string; thumb: string },
+  entry: { url: string; title: string; thumb: string; duration?: string; rating?: string },
   overrides?: Partial<PreviewItem>
 ): PreviewItem {
+  const catalog = findVideoEntry(entry.title);
   const genre = overrides?.genre || GENRE_POOL[hashStr(entry.title) % GENRE_POOL.length];
   return {
     url: entry.url,
     title: entry.title,
     thumb: entry.thumb,
     genre,
-    duration: overrides?.duration || estimateDuration(entry.title),
-    rating: overrides?.rating || (4.5 + (hashStr(entry.title) % 5) * 0.1).toFixed(1),
+    duration:
+      overrides?.duration ||
+      entry.duration ||
+      catalog?.duration ||
+      estimateDuration(entry.title),
+    rating:
+      overrides?.rating ||
+      entry.rating ||
+      catalog?.rating ||
+      (4.5 + (hashStr(entry.title) % 5) * 0.1).toFixed(1),
     description: overrides?.description || buildSynopsis(entry.title, genre),
     year: overrides?.year || String(2022 + (hashStr(entry.title) % 5)),
   };
@@ -629,7 +638,10 @@ export function SubscriptionFlow({
                             <p className="font-semibold text-white text-[13px] leading-tight line-clamp-1">
                               {item.title}
                             </p>
-                            <p className="mt-1 text-[11px] leading-snug text-white/55 line-clamp-3 min-h-[2.5rem]">
+                            <p className="mt-1 text-[11px] text-white/70">
+                              {meta.rating} · {meta.duration}
+                            </p>
+                            <p className="mt-1 text-[11px] leading-snug text-white/55 line-clamp-2 min-h-[2rem]">
                               {meta.description}
                             </p>
                           </div>

@@ -7,15 +7,15 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'The Wanted Target', genre: 'Crime', rating: '5.0', duration: '46 min', img: '/portrait/THEWANTEDTARGET.jpg' },
- { rank: 2, title: 'Wanted by Darkness', genre: 'Thriller', rating: '4.9', duration: '48 min', img: '/portrait/WANTEDBYDARKNESS.jpg' },
+ { rank: 1, title: 'The Wanted Target', genre: 'Crime', rating: '4.5', duration: '2 min', img: '/portrait/THEWANTEDTARGET.jpg' },
+ { rank: 2, title: 'Wanted by Darkness', genre: 'Thriller', rating: '4.8', duration: '25 min', img: '/portrait/WANTEDBYDARKNESS.jpg' },
  { rank: 3, title: 'Unknown Enemy Ep1', genre: 'Action', rating: '4.9', duration: '37 min', img: '/portrait/UNKNOWNENEMYEP1.jpg' },
  { rank: 4, title: 'Unknown Enemy Ep2', genre: 'Action', rating: '4.8', duration: '39 min', img: '/portrait/UNKNOWNENEMYEP2.jpg' },
- { rank: 5, title: 'Unknown Enemy Ep3', genre: 'Action', rating: '4.8', duration: '41 min', img: '/portrait/UNKNOWNENEMYEP3.jpg' },
- { rank: 6, title: 'The Shadow Game Ep1', genre: 'Thriller', rating: '4.7', duration: '43 min', img: '/portrait/THESHADOWGAMEEP1.jpg' },
- { rank: 7, title: 'The Shadow Game Ep2', genre: 'Thriller', rating: '4.7', duration: '44 min', img: '/portrait/THESHADOWGAMEEP2.jpg' },
- { rank: 8, title: 'The Shadow Game Ep3', genre: 'Thriller', rating: '4.6', duration: '45 min', img: '/portrait/THESHADOWGAMEEP3.jpg' },
- { rank: 9, title: 'The Shadow Game Ep4', genre: 'Thriller', rating: '4.6', duration: '46 min', img: '/portrait/THESHADOWGAMEEP4.jpg' },
+ { rank: 5, title: 'Unknown Enemy Ep3', genre: 'Action', rating: '4.6', duration: '12 min', img: '/portrait/UNKNOWNENEMYEP3.jpg' },
+ { rank: 6, title: 'The Shadow Game Ep1', genre: 'Thriller', rating: '4.6', duration: '21 min', img: '/portrait/THESHADOWGAMEEP1.jpg' },
+ { rank: 7, title: 'The Shadow Game Ep2', genre: 'Thriller', rating: '4.5', duration: '18 min', img: '/portrait/THESHADOWGAMEEP2.jpg' },
+ { rank: 8, title: 'The Shadow Game Ep3', genre: 'Thriller', rating: '4.9', duration: '11 min', img: '/portrait/THESHADOWGAMEEP3.jpg' },
+ { rank: 9, title: 'The Shadow Game Ep4', genre: 'Thriller', rating: '4.8', duration: '11 min', img: '/portrait/THESHADOWGAMEEP4.jpg' },
  { rank: 10, title: 'The Fitness Trap', genre: 'Drama', rating: '4.5', duration: '40 min', img: '/portrait/THEFITNESSTRAP.jpg' },
 ];
 
@@ -72,7 +72,8 @@ export function StaffPicksSection() {
  <div className="mt-1.5 px-0.5">
 <p className="text-white font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
  <div className="flex items-center gap-1.5 mt-0.5">
- <span className={`text-[9px] font-orbitron ${genreColor[item.genre] ?? 'text-rose-400'}`}>{item.genre}</span>
+ <Star size={9} className="fill-yellow-400 text-yellow-400 shrink-0" />
+ <span className="text-yellow-400 text-[10px] font-orbitron">{item.rating}</span>
  <span className="text-gray-600 text-[9px]">·</span>
  <span className="text-gray-400 text-[9px] font-orbitron">{item.duration}</span>
  </div>

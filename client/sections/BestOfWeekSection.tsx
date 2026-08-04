@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'Beyond Suspicion Ep2', genre: 'Mystery', rating: '5.0', duration: '41 min', img: '/portrait/BEYONDSUSPICIONEP2.jpg' },
- { rank: 2, title: 'Final Countdown', genre: 'Action', rating: '4.9', duration: '48 min', img: '/portrait/FINALCOUNTDOWN.jpg' },
- { rank: 3, title: 'The Dark Network', genre: 'Crime', rating: '4.8', duration: '52 min', img: '/portrait/THEDARKNETWORK.jpg' },
- { rank: 4, title: 'The Secret Mission', genre: 'Thriller', rating: '4.8', duration: '44 min', img: '/portrait/THESECRETMISSION.jpg' },
- { rank: 5, title: 'The Secret Syndicate', genre: 'Crime', rating: '4.8', duration: '46 min', img: '/portrait/THESECRETSYNDICATE.jpg' },
- { rank: 6, title: 'The Unknown Target', genre: 'Action', rating: '4.8', duration: '43 min', img: '/portrait/THEUNKNOWNTARGET.jpg' },
- { rank: 7, title: 'Wanted for Revenge', genre: 'Drama', rating: '4.7', duration: '50 min', img: '/portrait/WANTEDFORREVENGE.jpg' },
- { rank: 8, title: 'Last Mission Alive', genre: 'Thriller', rating: '4.7', duration: '47 min', img: '/portrait/LASTMISSIONALIVE.jpg' },
- { rank: 9, title: 'Midnight Escape', genre: 'Action', rating: '4.6', duration: '40 min', img: '/portrait/MIDNIGHTESCAPE.jpg' },
- { rank: 10, title: 'The Diary Secrets', genre: 'Mystery', rating: '4.6', duration: '38 min', img: '/portrait/THEDIARYSECRETS.jpg' },
+ { rank: 1, title: 'Beyond Suspicion Ep2', genre: 'Mystery', rating: '4.7', duration: '6 min', img: '/portrait/BEYONDSUSPICIONEP2.jpg' },
+ { rank: 2, title: 'Final Countdown', genre: 'Action', rating: '4.5', duration: '10 min', img: '/portrait/FINALCOUNTDOWN.jpg' },
+ { rank: 3, title: 'The Dark Network', genre: 'Crime', rating: '4.5', duration: '22 min', img: '/portrait/THEDARKNETWORK.jpg' },
+ { rank: 4, title: 'The Secret Mission', genre: 'Thriller', rating: '4.8', duration: '12 min', img: '/portrait/THESECRETMISSION.jpg' },
+ { rank: 5, title: 'The Secret Syndicate', genre: 'Crime', rating: '4.9', duration: '11 min', img: '/portrait/THESECRETSYNDICATE.jpg' },
+ { rank: 6, title: 'The Unknown Target', genre: 'Action', rating: '4.9', duration: '27 min', img: '/portrait/THEUNKNOWNTARGET.jpg' },
+ { rank: 7, title: 'Wanted for Revenge', genre: 'Drama', rating: '4.6', duration: '15 min', img: '/portrait/WANTEDFORREVENGE.jpg' },
+ { rank: 8, title: 'Last Mission Alive', genre: 'Thriller', rating: '4.5', duration: '11 min', img: '/portrait/LASTMISSIONALIVE.jpg' },
+ { rank: 9, title: 'Midnight Escape', genre: 'Action', rating: '4.7', duration: '11 min', img: '/portrait/MIDNIGHTESCAPE.jpg' },
+ { rank: 10, title: 'The Diary Secrets', genre: 'Mystery', rating: '4.8', duration: '9 min', img: '/portrait/THEDIARYSECRETS.jpg' },
 ];
 
 const genreColor: Record<string, string> = {
@@ -72,7 +72,8 @@ export function BestOfWeekSection() {
  <div className="mt-1.5 px-0.5">
 <p className="text-white font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
  <div className="flex items-center gap-1.5 mt-0.5">
- <span className={`text-[9px] font-orbitron ${genreColor[item.genre] ?? 'text-emerald-400'}`}>{item.genre}</span>
+ <Star size={9} className="fill-yellow-400 text-yellow-400 shrink-0" />
+ <span className="text-yellow-400 text-[10px] font-orbitron">{item.rating}</span>
  <span className="text-gray-600 text-[9px]">·</span>
  <span className="text-gray-400 text-[9px] font-orbitron">{item.duration}</span>
  </div>

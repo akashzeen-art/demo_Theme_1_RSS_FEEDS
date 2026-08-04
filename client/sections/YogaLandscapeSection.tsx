@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getYogaVideo } from './yogaVideos';
 
 const cards = [
- { id: '1', title: 'Raaz Revenge & Mafia Ep1', category: 'Crime', duration: '48 min', students: '128K', rating: '9.9', img: '/landscape/RAAZ,REVENGE&MAFIAEP1.jpg' },
- { id: '2', title: 'Raaz Revenge & Mafia Ep2', category: 'Crime', duration: '52 min', students: '112K', rating: '9.8', img: '/landscape/RAAZ,REVENGE&MAFIAEP2.jpg' },
- { id: '3', title: 'Silent Trigger', category: 'Action', duration: '40 min', students: '103K', rating: '9.7', img: '/landscape/SCILENTTRIGGER.jpg' },
- { id: '4', title: 'The Forbidden Files', category: 'Mystery', duration: '44 min', students: '76K', rating: '9.6', img: '/landscape/THEFORBIDDENFILES.jpg' },
- { id: '5', title: 'Fatal Connections Ep1', category: 'Thriller', duration: '36 min', students: '94K', rating: '9.9', img: '/landscape/FATALCONNECTIONSEP1.jpg' },
- { id: '6', title: 'Fatal Connections Ep2', category: 'Thriller', duration: '39 min', students: '88K', rating: '9.8', img: '/landscape/FATALCONNECTIONSEP2.jpg' },
- { id: '7', title: 'Fatal Connections Ep3', category: 'Thriller', duration: '41 min', students: '134K', rating: '9.7', img: '/landscape/FATALCONNECTIONSEP3.jpg' },
- { id: '8', title: 'The Hidden Enemy', category: 'Action', duration: '46 min', students: '97K', rating: '9.8', img: '/landscape/THEHIDDENENEMY.jpg' },
- { id: '9', title: 'Escape From Nowhere', category: 'Thriller', duration: '43 min', students: '156K', rating: '9.9', img: '/landscape/ESCAPEFROMNOWHERE.jpg' },
- { id: '10', title: 'The Final Secret', category: 'Mystery', duration: '50 min', students: '72K', rating: '9.6', img: '/landscape/THEFINALSECRET.jpg' },
+ { id: '1', title: 'Raaz Revenge & Mafia Ep1', category: 'Crime', duration: '18 min', students: '128K', rating: '9.9', img: '/landscape/RAAZ,REVENGE&MAFIAEP1.jpg' },
+ { id: '2', title: 'Raaz Revenge & Mafia Ep2', category: 'Crime', duration: '18 min', students: '112K', rating: '9.8', img: '/landscape/RAAZ,REVENGE&MAFIAEP2.jpg' },
+ { id: '3', title: 'Silent Trigger', category: 'Action', duration: '13 min', students: '103K', rating: '9.7', img: '/landscape/SCILENTTRIGGER.jpg' },
+ { id: '4', title: 'The Forbidden Files', category: 'Mystery', duration: '18 min', students: '76K', rating: '9.6', img: '/landscape/THEFORBIDDENFILES.jpg' },
+ { id: '5', title: 'Fatal Connections Ep1', category: 'Thriller', duration: '12 min', students: '94K', rating: '9.9', img: '/landscape/FATALCONNECTIONSEP1.jpg' },
+ { id: '6', title: 'Fatal Connections Ep2', category: 'Thriller', duration: '12 min', students: '88K', rating: '9.8', img: '/landscape/FATALCONNECTIONSEP2.jpg' },
+ { id: '7', title: 'Fatal Connections Ep3', category: 'Thriller', duration: '8 min', students: '134K', rating: '9.7', img: '/landscape/FATALCONNECTIONSEP3.jpg' },
+ { id: '8', title: 'The Hidden Enemy', category: 'Action', duration: '17 min', students: '97K', rating: '9.8', img: '/landscape/THEHIDDENENEMY.jpg' },
+ { id: '9', title: 'Escape From Nowhere', category: 'Thriller', duration: '15 min', students: '156K', rating: '9.9', img: '/landscape/ESCAPEFROMNOWHERE.jpg' },
+ { id: '10', title: 'The Final Secret', category: 'Mystery', duration: '14 min', students: '72K', rating: '9.6', img: '/landscape/THEFINALSECRET.jpg' },
 ];
 
 const catGrad: Record<string, string> = {

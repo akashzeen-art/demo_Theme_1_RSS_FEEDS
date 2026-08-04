@@ -106,6 +106,7 @@ function VideoSliderRow({
     thumb: string;
     genre: string;
     rating: string;
+    duration: string;
   } | null>(null);
 
   return (
@@ -150,7 +151,8 @@ function VideoSliderRow({
                     title: item.title,
                     thumb: item.thumb,
                     genre: section.genre,
-                    rating: (4.5 + (i % 5) * 0.1).toFixed(1),
+                    rating: item.rating,
+                    duration: item.duration,
                   })
                 }
               >
@@ -173,6 +175,9 @@ function VideoSliderRow({
                       <Play size={16} className="text-white fill-white ml-0.5" />
                     </div>
                   </div>
+                  <div className="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/70 rounded text-[9px] font-orbitron text-white">
+                    {item.duration}
+                  </div>
                   {(showNewBadge || section.badge) && i < 2 && (
                     <span className="absolute top-2 left-2 px-1.5 py-0.5 text-[9px] font-orbitron uppercase tracking-wider rounded bg-white/90 text-[#07111f] border border-white/20">
                       {section.badge || 'NEW'}
@@ -184,13 +189,13 @@ function VideoSliderRow({
                     {item.title}
                   </p>
                   <div className="flex items-center gap-1.5 mt-1">
+                    <Star size={9} className="text-cyan-300 fill-cyan-300 shrink-0" />
                     <span className="text-cyan-300 text-[9px] sm:text-[10px] font-medium">
-                      {section.genre}
+                      {item.rating}
                     </span>
                     <span className="text-white/25 text-[9px]">·</span>
-                    <Star size={9} className="text-cyan-300 fill-cyan-300" />
                     <span className="text-white/55 text-[9px] sm:text-[10px]">
-                      {(4.5 + (i % 5) * 0.1).toFixed(1)}
+                      {item.duration}
                     </span>
                   </div>
                 </div>
@@ -206,6 +211,7 @@ function VideoSliderRow({
         thumbnail={activeVideo?.thumb}
         genre={activeVideo?.genre}
         rating={activeVideo?.rating}
+        duration={activeVideo?.duration}
         onClose={() => setActiveVideo(null)}
       />
     </section>

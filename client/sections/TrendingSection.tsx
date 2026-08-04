@@ -7,16 +7,16 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'Fatal Connections Ep3', genre: 'Thriller', rating: '4.9', duration: '41 min', img: '/portrait/FATALCONNECTIONSEP3.jpg' },
- { rank: 2, title: 'The Hidden Enemy', genre: 'Action', rating: '4.8', duration: '46 min', img: '/portrait/THEHIDDENENEMY.jpg' },
- { rank: 3, title: 'Escape From Nowhere', genre: 'Thriller', rating: '4.9', duration: '43 min', img: '/portrait/ESCAPEFROMNOWHERE.jpg' },
- { rank: 4, title: 'The Final Secret', genre: 'Mystery', rating: '4.7', duration: '50 min', img: '/portrait/THEFINALSECRET.jpg' },
- { rank: 5, title: 'The Secret Order', genre: 'Crime', rating: '4.9', duration: '48 min', img: '/portrait/THESECRETORDER.jpg' },
- { rank: 6, title: 'The Final Dhokha', genre: 'Drama', rating: '4.8', duration: '44 min', img: '/portrait/THEFINALDHOKHA.jpg' },
- { rank: 7, title: 'Black Diary Secrets Ep1', genre: 'Thriller', rating: '4.7', duration: '37 min', img: '/portrait/BLACKDIARYSECRETSEP1.jpg' },
- { rank: 8, title: 'Black Diary Secrets Ep2', genre: 'Thriller', rating: '4.8', duration: '40 min', img: '/portrait/BLACKDIARYSECRETSEP2.jpg' },
- { rank: 9, title: 'Final Witness', genre: 'Crime', rating: '4.9', duration: '45 min', img: '/portrait/FINALWITNESS.jpg' },
- { rank: 10, title: 'The Missing Link', genre: 'Mystery', rating: '4.6', duration: '42 min', img: '/portrait/THEMISSINGLINK.jpg' },
+ { rank: 1, title: 'Fatal Connections Ep3', genre: 'Thriller', rating: '4.5', duration: '8 min', img: '/portrait/FATALCONNECTIONSEP3.jpg' },
+ { rank: 2, title: 'The Hidden Enemy', genre: 'Action', rating: '4.9', duration: '17 min', img: '/portrait/THEHIDDENENEMY.jpg' },
+ { rank: 3, title: 'Escape From Nowhere', genre: 'Thriller', rating: '4.9', duration: '15 min', img: '/portrait/ESCAPEFROMNOWHERE.jpg' },
+ { rank: 4, title: 'The Final Secret', genre: 'Mystery', rating: '4.7', duration: '14 min', img: '/portrait/THEFINALSECRET.jpg' },
+ { rank: 5, title: 'The Secret Order', genre: 'Crime', rating: '4.6', duration: '15 min', img: '/portrait/THESECRETORDER.jpg' },
+ { rank: 6, title: 'The Final Dhokha', genre: 'Drama', rating: '4.5', duration: '8 min', img: '/portrait/THEFINALDHOKHA.jpg' },
+ { rank: 7, title: 'Black Diary Secrets Ep1', genre: 'Thriller', rating: '4.7', duration: '6 min', img: '/portrait/BLACKDIARYSECRETSEP1.jpg' },
+ { rank: 8, title: 'Black Diary Secrets Ep2', genre: 'Thriller', rating: '4.6', duration: '7 min', img: '/portrait/BLACKDIARYSECRETSEP2.jpg' },
+ { rank: 9, title: 'Final Witness', genre: 'Crime', rating: '4.6', duration: '43 min', img: '/portrait/FINALWITNESS.jpg' },
+ { rank: 10, title: 'The Missing Link', genre: 'Mystery', rating: '4.7', duration: '13 min', img: '/portrait/THEMISSINGLINK.jpg' },
 ];
 
 export function TrendingSection() {
@@ -68,7 +68,8 @@ export function TrendingSection() {
  <div className="mt-1.5 px-0.5">
  <p className="text-white font-bebas text-xs sm:text-sm leading-tight line-clamp-1">{item.title}</p>
  <div className="flex items-center gap-1.5 mt-0.5">
- <span className="text-cyan-300 text-[9px] font-orbitron">{item.genre}</span>
+ <Star size={9} className="fill-cyan-300 text-cyan-300 shrink-0" />
+ <span className="text-cyan-300 text-[9px] font-orbitron">{item.rating}</span>
  <span className="text-white/25 text-[9px]">·</span>
  <span className="text-white/45 text-[9px] font-orbitron">{item.duration}</span>
  </div>
