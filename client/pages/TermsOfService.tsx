@@ -18,7 +18,7 @@ export default function TermsOfService() {
 
         <div className="space-y-4">
           <ContentCard>
-            <p className="text-gray-400 text-sm mb-4">Last Updated: 30-06-2025</p>
+            <p className="text-gray-400 text-sm mb-4">Last Updated: 01-08-2026</p>
             <p className="text-gray-100 leading-relaxed text-[15px] mb-4">
               At NumeroMobile Private Limited, accessible one of our main priorities is the privacy
               of our visitors. This Privacy Policy document contains types of information that is

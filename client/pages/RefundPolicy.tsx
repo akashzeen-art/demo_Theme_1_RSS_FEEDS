@@ -18,7 +18,7 @@ export default function RefundPolicy() {
 
         <div className="space-y-4">
           <ContentCard>
-            <p className="text-gray-400 text-sm mb-4">Last Updated: 09-07-2025</p>
+            <p className="text-gray-400 text-sm mb-4">Last Updated: 01-08-2026</p>
             <p className="text-gray-100 leading-relaxed text-[15px]">
               Thank you for subscribing to NumeroMobile&apos;s services. We hope you are satisfied
               with our services, but if not, we&apos;re here to help.

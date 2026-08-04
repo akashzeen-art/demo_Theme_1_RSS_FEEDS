@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
 
         <div className="space-y-4">
           <ContentCard>
-            <p className="text-gray-400 text-sm mb-4">Last Updated: 14-07-2025</p>
+            <p className="text-gray-400 text-sm mb-4">Last Updated: 01-08-2026</p>
             <p className="text-gray-100 leading-relaxed text-[15px] mb-4">
               This Privacy Policy describes how NumeroMobile (&quot;we&quot;, &quot;us&quot;, or
               &quot;our&quot;) collects, uses, discloses, and protects your personal information when
