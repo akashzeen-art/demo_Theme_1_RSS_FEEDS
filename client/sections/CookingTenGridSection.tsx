@@ -17,7 +17,7 @@ const cards = [
  { id: '9', title: 'Avocado Toast', category: 'Healthy', duration: '15 min', students: '201K', rating: '9.6', img: '/landscape/DANGEROUSTERRITORY.jpg' },
  { id: '10', title: 'Beef Wellington', category: 'British', duration: '90 min', students: '61K', rating: '9.8', img: '/landscape/DARKCITYFILES.jpg' },
  { id: '11', title: 'Pho Bo Soup', category: 'Vietnamese', duration: '60 min', students: '78K', rating: '9.7', img: '/landscape/DEADENDMISSON.jpg' },
- { id: '12', title: 'Baklava', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/landscape/ESCAPEBEYONDFEAREP1.jpg' },
+ { id: '12', title: 'Baklava', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/landscape/ESCAPEBEYONDFEAREP2.jpg' },
  { id: '13', title: 'Eggs Benedict', category: 'Breakfast', duration: '20 min', students: '92K', rating: '9.6', img: '/landscape/BEYONDSUSPICIONEP2.jpg' },
  { id: '14', title: 'Lamb Kofta', category: 'Middle East', duration: '35 min', students: '67K', rating: '9.5', img: '/landscape/BLACKDIARYSECRETSEP1.jpg' },
  { id: '15', title: 'Tonkotsu Ramen', category: 'Japanese', duration: '120 min',students: '83K', rating: '9.9', img: '/landscape/BLACKDIARYSECRETSEP2.jpg' },

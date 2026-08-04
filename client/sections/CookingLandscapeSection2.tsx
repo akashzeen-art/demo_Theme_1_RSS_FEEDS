@@ -7,7 +7,7 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 const cards = [
  { id: '1', title: 'Pho Bo Noodle Soup', category: 'Vietnamese', duration: '60 min', students: '78K', rating: '9.7', img: '/landscape/DEADENDMISSON.jpg' },
- { id: '2', title: 'Baklava Masterclass', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/landscape/ESCAPEBEYONDFEAREP1.jpg' },
+ { id: '2', title: 'Baklava Masterclass', category: 'Dessert', duration: '50 min', students: '45K', rating: '9.5', img: '/landscape/ESCAPEBEYONDFEAREP2.jpg' },
  { id: '3', title: 'Eggs Benedict', category: 'Breakfast', duration: '20 min', students: '92K', rating: '9.6', img: '/landscape/BEYONDSUSPICIONEP2.jpg' },
  { id: '4', title: 'Lamb Kofta Skewers', category: 'Middle East', duration: '35 min', students: '67K', rating: '9.5', img: '/landscape/BLACKDIARYSECRETSEP1.jpg' },
  { id: '5', title: 'Tonkotsu Ramen', category: 'Japanese', duration: '120 min', students: '83K', rating: '9.9', img: '/landscape/BLACKDIARYSECRETSEP2.jpg' },

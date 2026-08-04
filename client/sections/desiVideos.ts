@@ -401,13 +401,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '13 min',
     rating: '4.7',
   },
-  {
-    title: 'Rogue Mission',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/bc22fa81-0406-4f0a-bdf1-a5a928abdcec/play_480p.mp4',
-    thumb: thumb('ROGUEMISSON.jpg'),
-    duration: '3 min',
-    rating: '4.7',
-  },
+
   {
     title: 'Operation Nightfall',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/28d84155-2e99-4633-833d-01bfb7187dd3/play_480p.mp4',
@@ -450,13 +444,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '9 min',
     rating: '4.7',
   },
-  {
-    title: 'The Wanted Target',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/b9704452-fd1f-431d-a921-a0fa8187a170/play_480p.mp4',
-    thumb: thumb('THEWANTEDTARGET.jpg'),
-    duration: '2 min',
-    rating: '4.5',
-  },
+
   {
     title: 'Unknown Enemy Ep3',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/c4bcdd12-b1f3-4598-9ffc-b7072ac2d354/play_480p.mp4',
@@ -492,13 +480,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '7 min',
     rating: '4.7',
   },
-  {
-    title: 'Crimewave',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/516d12a8-04e5-4779-87d2-fa2809493d70/play_480p.mp4',
-    thumb: thumb('CRIMEWAVE.jpg'),
-    duration: '5 min',
-    rating: '4.7',
-  },
+
   {
     title: 'Dangerous Destination Ep1',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/6e1962ba-dbcc-4c2b-963a-d3176124deb4/play_480p.mp4',
@@ -541,13 +523,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '17 min',
     rating: '4.9',
   },
-  {
-    title: 'Shadow Operation',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/7daed06f-23e0-41d5-a35c-9529616f0773/play_480p.mp4',
-    thumb: thumb('SHADOWOPERATION.jpg'),
-    duration: '3 min',
-    rating: '4.6',
-  },
+
   {
     title: 'Chase to Danger Ep2',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/671096db-84aa-4452-8298-d564b5fe5a41/play_480p.mp4',
@@ -555,13 +531,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '17 min',
     rating: '4.8',
   },
-  {
-    title: 'Dark Evidence',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/3b1ff614-219e-4e77-8a2f-ad32e744267e/play_480p.mp4',
-    thumb: thumb('DARKEVEDENCE.jpg'),
-    duration: '4 min',
-    rating: '4.9',
-  },
+
   {
     title: 'The Last Truth Ep1',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/710a74b7-ec71-4504-abc9-d231aa23c2ec/play_480p.mp4',
@@ -590,13 +560,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '20 min',
     rating: '4.5',
   },
-  {
-    title: 'Beyond Suspicion Ep1',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/1a4d0e65-a4a4-4468-99f6-51d2e3754ded/play_480p.mp4',
-    thumb: thumb('BEYONDSUSPICIONEP1.jpg'),
-    duration: '4 min',
-    rating: '4.6',
-  },
+
   {
     title: 'The Secret Syndicate',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/6cffca6b-7759-40e7-84de-c97856b4c7be/play_480p.mp4',
@@ -618,13 +582,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '24 min',
     rating: '4.6',
   },
-  {
-    title: 'Escape Beyond Fear Ep1',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/7bd7696a-2b32-4542-ac63-73fe38a547fc/play_480p.mp4',
-    thumb: thumb('ESCAPEBEYONDFEAREP1.jpg'),
-    duration: '5 min',
-    rating: '4.6',
-  },
+
   {
     title: 'Escape Beyond Fear Ep2',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/e2c089c7-9466-462d-93c7-a72a539672b6/play_480p.mp4',
@@ -632,20 +590,7 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     duration: '8 min',
     rating: '4.5',
   },
-  {
-    title: 'Escape Beyond Fear Ep3',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/06429499-6d65-49a3-98e6-84777884c4a2/play_480p.mp4',
-    thumb: thumb('ESCAPEBEYONDFEAREP3.jpg'),
-    duration: '5 min',
-    rating: '4.9',
-  },
-  {
-    title: 'The Last Deal',
-    url: 'https://vz-012bcd01-e4e.b-cdn.net/2508404e-25a4-475c-8c05-af707dbf1e5d/play_480p.mp4',
-    thumb: thumb('THELASTDEAL.jpg'),
-    duration: '5 min',
-    rating: '4.8',
-  },
+
   {
     title: 'The Crime Circle',
     url: 'https://vz-012bcd01-e4e.b-cdn.net/912b01f0-6f55-491b-931d-7cda175785e2/play_480p.mp4',
@@ -694,8 +639,8 @@ export const LATEST_VIDEOS: DesiVideoEntry[] = [
     thumb: thumb('CHASETODANGEREP4.jpg'),
     duration: '25 min',
     rating: '4.6',
-  },
-];
+  }
+];;
 
 /** SNO → URL (1-based). Cycles catalog so all catalog SNOs play a real file. */
 export const VIDEOS: Record<number, string> = {};
@@ -726,7 +671,7 @@ export function getVideoByTitle(title: string): string {
 }
 
 function normalizeTitle(t: string) {
-  return t.trim().toLowerCase().replace(/[,]/g, ' ').replace(/\s+/g, ' ');
+  return t.trim().toLowerCase().replace(/[]/g, ' ').replace(/\s+/g, ' ');
 }
 
 export function findVideoEntry(title: string): DesiVideoEntry | undefined {

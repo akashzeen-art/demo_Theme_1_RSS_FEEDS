@@ -66,10 +66,12 @@ export default function RefundPolicy() {
 
           <PolicySection title="5. Refund Processing">
             Once your refund request is received and inspected, we will send you an email to notify
-            you of the approval or rejection of your refund. If approved, your refund will be
-            processed, and a credit will automatically be applied to your original method of payment
-            within 7 working days. Please note that refunds can only be made back to the original
-            payment method used at the time of purchase.
+            you of the approval or rejection of your refund.
+            <br />
+            <br />
+            If approved, your refund will be processed, and a credit will automatically be applied to
+            your original method of payment within 7 working days. Please note that refunds can only
+            be made back to the original payment method used at the time of purchase.
           </PolicySection>
 
           <PolicySection title="6. Changes to Refund Policy">
@@ -81,13 +83,17 @@ export default function RefundPolicy() {
           <PolicySection title="Scenarios Where Refunds Would Typically Be Granted">
             <ul className="list-disc list-inside space-y-2">
               <li>
-                <strong className="text-white">Technical Issues:</strong> Persistent technical issues
-                that prevent effective use of the product despite multiple support attempts.
+                <strong className="text-white">Technical Issues:</strong> The customer experiences
+                persistent technical issues that prevent them from using the SaaS product
+                effectively, despite multiple attempts by the support team to resolve the problem.
+                For example, the software fails to load or crashes frequently, impeding the
+                customer&apos;s ability to perform necessary tasks.
               </li>
               <li>
-                <strong className="text-white">Billing Error:</strong> Incorrect charges due to a
-                billing error on NumeroMobile&apos;s part (e.g. double billing or charge after valid
-                cancellation).
+                <strong className="text-white">Billing Error:</strong> The customer was incorrectly
+                charged due to a billing error on NumeroMobile&apos;s part. For example, they were
+                billed twice in one month, or charged after cancelling their subscription in
+                accordance with the cancellation policy.
               </li>
             </ul>
           </PolicySection>
@@ -96,7 +102,9 @@ export default function RefundPolicy() {
             <ul className="list-disc list-inside space-y-2">
               <li>
                 <strong className="text-white">Change of Mind:</strong> The customer decides they no
-                longer want or need the product after the refund eligibility period has passed.
+                longer want or need the SaaS product after the refund eligibility period has passed.
+                For example, they found a different product they prefer, or they no longer need the
+                service due to changes in their business.
               </li>
             </ul>
           </PolicySection>

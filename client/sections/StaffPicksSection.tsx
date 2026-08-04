@@ -7,7 +7,7 @@ import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 
 const items = [
- { rank: 1, title: 'The Wanted Target', genre: 'Crime', rating: '4.5', duration: '2 min', img: '/portrait/THEWANTEDTARGET.jpg' },
+ { rank: 1, title: 'Wanted for Revenge', genre: 'Drama', rating: '4.6', duration: '15 min', img: '/portrait/WANTEDFORREVENGE.jpg' },
  { rank: 2, title: 'Wanted by Darkness', genre: 'Thriller', rating: '4.8', duration: '25 min', img: '/portrait/WANTEDBYDARKNESS.jpg' },
  { rank: 3, title: 'Unknown Enemy Ep1', genre: 'Action', rating: '4.9', duration: '37 min', img: '/portrait/UNKNOWNENEMYEP1.jpg' },
  { rank: 4, title: 'Unknown Enemy Ep2', genre: 'Action', rating: '4.8', duration: '39 min', img: '/portrait/UNKNOWNENEMYEP2.jpg' },

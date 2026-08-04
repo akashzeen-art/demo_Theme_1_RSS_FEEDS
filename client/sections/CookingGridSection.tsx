@@ -11,12 +11,12 @@ const cards = [
  { id: '3', title: 'The Silent Hunt', category: 'Action', rating: '9.7', img: '/portrait/DANGEROUSALLIANCE.jpg' },
  { id: '4', title: 'The Last Chance', category: 'Drama', rating: '9.5', img: '/portrait/DANGEROUSMINDSEP1.jpg' },
  { id: '5', title: 'Shadow Force', category: 'Action', rating: '9.9', img: '/portrait/DANGEROUSMINDSEP2.jpg' },
- { id: '6', title: 'Crimewave', category: 'Crime', rating: '9.4', img: '/portrait/DANGEROUSMINDSEP3.jpg' },
+ { id: '6', title: 'Code Red Mafia', category: 'Crime', rating: '9.4', img: '/portrait/DANGEROUSMINDSEP3.jpg' },
  { id: '7', title: 'Mystery Avenue', category: 'Mystery', rating: '9.7', img: '/portrait/DANGEROUSMINDSEP4.jpg' },
  { id: '8', title: 'Dangerous Destination Ep1',category: 'Thriller', rating: '9.8', img: '/portrait/DANGEROUSTERRITORY.jpg' },
  { id: '9', title: 'Dangerous Destination Ep2',category: 'Thriller', rating: '9.6', img: '/portrait/DARKCITYFILES.jpg' },
  { id: '10', title: 'Dangerous Destination Ep3',category: 'Thriller', rating: '9.5', img: '/portrait/DEADENDMISSON.jpg' },
- { id: '11', title: 'Dangerous Destination Ep4',category: 'Thriller', rating: '9.9', img: '/portrait/ESCAPEBEYONDFEAREP1.jpg' },
+ { id: '11', title: 'Dangerous Destination Ep4',category: 'Thriller', rating: '9.9', img: '/portrait/ESCAPEBEYONDFEAREP2.jpg' },
  { id: '12', title: 'Killer Wali Raat', category: 'Crime', rating: '9.7', img: '/portrait/ESCAPEBEYONDFEAREP2.jpg' },
 ];
 

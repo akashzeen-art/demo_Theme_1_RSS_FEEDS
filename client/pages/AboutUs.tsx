@@ -7,7 +7,7 @@ import { ContentCard } from '@/components/ContentCard';
 export default function AboutUs() {
   const navigate = useNavigate();
   return (
-    <PageLayout title="About Us" subtitle="Chalchitra" badge="Welcome">
+    <PageLayout title="About Us" subtitle="StreamNow" badge="Welcome">
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <button
           onClick={() => navigate('/')}
@@ -22,7 +22,7 @@ export default function AboutUs() {
               Welcome – Your Digital Gateway to Premium Entertainment
             </h2>
             <p className="text-gray-100 leading-relaxed text-[15px] mb-5">
-              At Chalchitra, we believe that OTT streaming should be accessible, flexible, and
+              At StreamNow, we believe that OTT streaming should be accessible, flexible, and
               empowering. That&apos;s why we created a modern OTT streaming platform designed to
               bring the joy of OTT streaming directly to your screen anytime, anywhere.
             </p>
@@ -34,10 +34,10 @@ export default function AboutUs() {
               streaming journey, at your own pace.
             </p>
             <p className="text-gray-100 leading-relaxed text-[15px]">
-              As an OTT streaming subscription service, Chalchitra bridges the gap between
-              traditional OTT streaming classes and the demands of today&apos;s digital lifestyle. No
-              more fixed schedules or crowded platforms — just pure, uninterrupted OTT streaming
-              whenever you need it.
+              As a OTT streaming subscription service, StreamNow bridges the gap between traditional
+              OTT streaming classes and the demands of today&apos;s digital lifestyle. No more fixed
+              schedules or crowded platforms — just pure, uninterrupted OTT streaming whenever you
+              need it.
             </p>
           </ContentCard>
 
@@ -51,7 +51,7 @@ export default function AboutUs() {
               skills.
             </p>
             <p className="text-gray-100 leading-relaxed text-[15px]">
-              Join the Chalchitra movement today — and let&apos;s viewer, experience, and grow
+              Join the StreamNow movement today — and let&apos;s viewer, experience, and grow
               together.
             </p>
           </ContentCard>
@@ -62,20 +62,24 @@ export default function AboutUs() {
             </h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
-                'Watch anytime',
-                'Expert Content Curators',
-                'Certified professionals',
-                'Flexible Schedule',
-                'Your own pace',
-                'Entertainment Passion',
-                'Content & entertainment',
+                { title: 'Watch anytime', desc: '' },
+                { title: 'Expert Content Curators', desc: 'Certified professionals' },
+                { title: 'Flexible Schedule', desc: 'Your own pace' },
+                { title: 'Entertainment Passion', desc: 'Content & entertainment' },
               ].map((item) => (
                 <div
-                  key={item}
+                  key={item.title}
                   className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3"
                 >
                   <span className="text-cyan-400 text-lg leading-none mt-0.5">✓</span>
-                  <span className="text-gray-100 text-sm leading-relaxed">{item}</span>
+                  <div>
+                    <span className="text-gray-100 text-sm leading-relaxed font-medium">
+                      {item.title}
+                    </span>
+                    {item.desc ? (
+                      <p className="text-gray-400 text-xs mt-0.5">{item.desc}</p>
+                    ) : null}
+                  </div>
                 </div>
               ))}
             </div>

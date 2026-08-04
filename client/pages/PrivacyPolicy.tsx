@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
             <p className="text-gray-100 leading-relaxed text-[15px] mb-4">
               This Privacy Policy describes how NumeroMobile (&quot;we&quot;, &quot;us&quot;, or
               &quot;our&quot;) collects, uses, discloses, and protects your personal information when
-              you visit or make a purchase from Chalchitra (the &quot;Site&quot;) or use any of our
+              you visit or make a purchase from StreamNow (the &quot;Site&quot;) or use any of our
               services (collectively, the &quot;Services&quot;).
             </p>
             <p className="text-gray-100 leading-relaxed text-[15px]">
@@ -139,12 +139,14 @@ export default function PrivacyPolicy() {
               <li>Request data portability</li>
             </ul>
             <p>
-              To make any such request, please contact us at{' '}
+              To make any such request, please contact us at:
+              <br />
+              📧{' '}
               <a href="mailto:bd@numeromobile.com" className="text-cyan-300 hover:underline">
                 bd@numeromobile.com
               </a>
               <br />
-              NumeroMobile, 417, Tower A1, Sector-49, Gurgaon, Haryana, 122011
+              📧 NumeroMobile, 417, Tower A1, Sector-49, Gurgaon, Haryana, 122011
             </p>
           </PolicySection>
 

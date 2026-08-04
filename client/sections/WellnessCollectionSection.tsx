@@ -6,7 +6,7 @@ import { Heart, Play, X, Star } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 const cards = [
- { id: '1', title: 'The Last Deal', thumbnail: '/portrait/THELASTDEAL.jpg', category: 'Crime', year: '2024', rating: '9.9' },
+ { id: '1', title: 'The Final Dhokha', thumbnail: '/portrait/THEFINALDHOKHA.jpg', category: 'Crime', year: '2024', rating: '9.9' },
  { id: '2', title: 'The Crime Circle', thumbnail: '/portrait/THECRIMECIRCLE.jpg', category: 'Crime', year: '2024', rating: '9.7' },
  { id: '3', title: 'Secret Nights', thumbnail: '/portrait/SECRETNIGHTS.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
  { id: '4', title: 'Mission Darknight', thumbnail: '/portrait/MISSSIONDARKNIGHT.jpg', category: 'Action', year: '2024', rating: '9.6' },
@@ -14,8 +14,8 @@ const cards = [
  { id: '6', title: 'Killer Instinct', thumbnail: '/portrait/KILLERINSTINCT.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
  { id: '7', title: 'Escape Route 21', thumbnail: '/portrait/ESCAPEROUT21.jpg', category: 'Action', year: '2024', rating: '9.9' },
  { id: '8', title: 'Black Signal', thumbnail: '/portrait/BLACKSIGNAL.jpg', category: 'Mystery', year: '2024', rating: '9.8' },
- { id: '9', title: 'Rogue Nation', thumbnail: '/portrait/ROGUEMISSON.jpg', category: 'Action', year: '2024', rating: '9.6' },
- { id: '10', title: 'Silent Witness', thumbnail: '/portrait/BEYONDSUSPICIONEP1.jpg', category: 'Crime', year: '2024', rating: '9.7' },
+ { id: '9', title: 'Rogue Nation', thumbnail: '/portrait/DEADENDMISSON.jpg', category: 'Action', year: '2024', rating: '9.6' },
+ { id: '10', title: 'Silent Witness', thumbnail: '/portrait/BEYONDSUSPICIONEP2.jpg', category: 'Crime', year: '2024', rating: '9.7' },
  { id: '11', title: 'Hidden Fear Ep1', thumbnail: '/portrait/BEYONDSUSPICIONEP2.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
  { id: '12', title: 'Hidden Fear Ep2', thumbnail: '/portrait/BLACKDIARYSECRETSEP1.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
 ];

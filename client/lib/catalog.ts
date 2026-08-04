@@ -18,33 +18,32 @@ export const CATEGORIES = [
   { label: 'Live', path: '/live', icon: 'live' },
   { label: 'Sports', path: '/sports', icon: 'sports' },
   { label: 'Movies', path: '/movies', icon: 'movies' },
-  { label: 'Web Series', path: '/webseries', icon: 'series' },
+  { label: 'Web Series', path: '/webseries', icon: 'series' }
 ] as const;
 
 const THUMB_NAMES = [
-  'ADVENTUREKERAAZ.jpg','BEYONDSUSPICIONEP1.jpg','BEYONDSUSPICIONEP2.jpg',
+  'ADVENTUREKERAAZ.jpg','BEYONDSUSPICIONEP2.jpg',
   'BLACKDIARYSECRETSEP1.jpg','BLACKDIARYSECRETSEP2.jpg','BLACKSIGNAL.jpg',
   'DANGEROUSALLIANCE.jpg','DANGEROUSMINDSEP1.jpg','DANGEROUSMINDSEP2.jpg',
   'DANGEROUSMINDSEP3.jpg','DANGEROUSMINDSEP4.jpg','DANGEROUSTERRITORY.jpg',
-  'DARKCITYFILES.jpg','DEADENDMISSON.jpg','ESCAPEBEYONDFEAREP1.jpg',
-  'ESCAPEBEYONDFEAREP2.jpg','ESCAPEBEYONDFEAREP3.jpg','ESCAPEFROMNOWHERE.jpg',
+  'DARKCITYFILES.jpg','DEADENDMISSON.jpg','ESCAPEBEYONDFEAREP2.jpg','ESCAPEFROMNOWHERE.jpg',
   'ESCAPEPLAN302.jpg','ESCAPEROUT21.jpg','FATALCONNECTIONSEP1.jpg',
   'FATALCONNECTIONSEP2.jpg','FATALCONNECTIONSEP3.jpg','FINALCOUNTDOWN.jpg',
   'FINALWITNESS.jpg','HERSTORY.jpg','KILLERINSTINCT.jpg','LASTMISSIONALIVE.jpg',
   'MIDNIGHTESCAPE.jpg','MISSSIONDARKNIGHT.jpg','MYSTERYJUNCTION.jpg',
   'OPERATIONNIGHTFALL.jpg','RAAZBEYONDFEAR.jpg','RAAZ,REVENGE&MAFIAEP1.jpg',
-  'RAAZ,REVENGE&MAFIAEP2.jpg','ROGUEMISSON.jpg','SCILENTCHASE.jpg',
+  'RAAZ,REVENGE&MAFIAEP2.jpg','SCILENTCHASE.jpg',
   'SCILENTTRIGGER.jpg','SECRETNIGHTS.jpg','SHADOWPROTOCOL.jpg',
   'THECRIMECIRCLE.jpg','THEDARKNETWORK.jpg','THEDIARYSECRETS.jpg',
   'THEFINALDHOKHA.jpg','THEFINALSECRET.jpg','THEFITNESSTRAP.jpg',
   'THEFORBIDDENFILES.jpg','THEHIDDENENEMY.jpg','THEHIDDENTRUTH.jpg',
-  'THELASTDEAL.jpg','THEMISSINGLINK.jpg','THEMISSINGWITNESS.jpg',
+  'THEMISSINGLINK.jpg','THEMISSINGWITNESS.jpg',
   'THESECRETMISSION.jpg','THESECRETORDER.jpg','THESECRETROUTEP1.jpg',
   'THESECRETROUTEP2.jpg','THESECRETSYNDICATE.jpg','THESHADOWGAMEEP1.jpg',
   'THESHADOWGAMEEP2.jpg','THESHADOWGAMEEP3.jpg','THESHADOWGAMEEP4.jpg',
-  'THEUNKNOWNTARGET.jpg','THEWANTEDTARGET.jpg','UNDERGROUNDWARRIORSEP1.jpg',
+  'THEUNKNOWNTARGET.jpg','UNDERGROUNDWARRIORSEP1.jpg',
   'UNDERGROUNDWARRIORSEP2.jpg','UNKNOWNENEMYEP1.jpg','UNKNOWNENEMYEP2.jpg',
-  'UNKNOWNENEMYEP3.jpg','WANTEDBYDARKNESS.jpg','WANTEDFORREVENGE.jpg',
+  'UNKNOWNENEMYEP3.jpg','WANTEDBYDARKNESS.jpg','WANTEDFORREVENGE.jpg'
 ];
 
 export function thumbName(sno: number): string {
@@ -99,7 +98,7 @@ export const MOVIES: ContentItem[] = [
   item(9, 'Desert Kings', 'Action', '4.6', '2h 08m', 9),
   item(10, 'Broken Mirror', 'Drama', '4.8', '1h 44m', 10),
   item(11, 'Cold Justice', 'Crime', '4.7', '2h 15m', 11),
-  item(12, 'Phantom Edge', 'Action', '4.9', '1h 59m', 12, 'NEW'),
+  item(12, 'Phantom Edge', 'Action', '4.9', '1h 59m', 12, 'NEW')
 ];
 
 export const MOVIES_TRENDING = MOVIES.slice(0, 8);
@@ -119,7 +118,7 @@ export const WEBSERIES: ContentItem[] = [
   item(29, 'Dark Corridor', 'Thriller', '4.7', '10 Ep', 23),
   item(30, 'City of Lies', 'Crime', '4.9', '8 Ep', 24, 'TOP'),
   item(31, 'Red Signal', 'Action', '4.6', '7 Ep', 25),
-  item(32, 'Whisper Network', 'Drama', '4.8', '9 Ep', 26),
+  item(32, 'Whisper Network', 'Drama', '4.8', '9 Ep', 26)
 ];
 
 export const WEBSERIES_NEW = WEBSERIES.filter((w) => w.badge === 'NEW' || w.badge === 'HOT' || w.badge === 'S1').concat(WEBSERIES.slice(2, 6));
@@ -136,7 +135,7 @@ export const SPORTS: ContentItem[] = [
   item(47, 'Pro Kabaddi Clash', 'Kabaddi', '4.9', '50 min', 37, 'NEW'),
   item(48, 'Olympic Moments', 'Multi', '4.8', '1h 30m', 38),
   item(49, 'Street Football', 'Football', '4.7', '40 min', 39),
-  item(50, 'Wicket Masterclass', 'Cricket', '4.6', '35 min', 40),
+  item(50, 'Wicket Masterclass', 'Cricket', '4.6', '35 min', 40)
 ];
 
 export const SPORTS_LIVE = SPORTS.filter((s) => s.badge === 'LIVE' || s.badge === 'HOT');
@@ -153,7 +152,7 @@ export const NEWS: ContentItem[] = [
   item(67, 'Weather & Climate', 'Weather', '4.5', '10 min', 47),
   item(68, 'Exclusive Report', 'Investigative', '4.9', '35 min', 48, 'HOT'),
   item(69, 'Morning Digest', 'National', '4.6', '25 min', 49),
-  item(70, 'Culture Hour', 'Lifestyle', '4.5', '30 min', 50),
+  item(70, 'Culture Hour', 'Lifestyle', '4.5', '30 min', 50)
 ];
 
 /* ── Live Stream ────────────────────────────────────── */
@@ -167,7 +166,7 @@ export const LIVE_STREAMS: ContentItem[] = [
   item(87, 'E-Sports Arena', 'Gaming', '4.9', 'LIVE', 57, 'NEW'),
   item(88, 'Fashion Runway', 'Fashion', '4.5', 'LIVE', 58),
   item(89, 'Devotional Hour', 'Spiritual', '4.6', 'LIVE', 59),
-  item(90, 'Late Night Live', 'Entertainment', '4.8', 'LIVE', 60),
+  item(90, 'Late Night Live', 'Entertainment', '4.8', 'LIVE', 60)
 ];
 
 export const LIVE_UPCOMING = LIVE_STREAMS.slice(3, 10);
@@ -181,7 +180,7 @@ export const KIDS: ContentItem[] = [
   item(105, 'Robot Heroes', 'Action Kids', '4.8', '24 min', 65, 'HOT'),
   item(106, 'Fairy Tales', 'Story', '4.7', '15 min', 66),
   item(107, 'Dino World', 'Nature', '4.5', '18 min', 67),
-  item(108, 'Music Makers', 'Music', '4.6', '12 min', 68),
+  item(108, 'Music Makers', 'Music', '4.6', '12 min', 68)
 ];
 
 /* ── Reels (shorts) ─────────────────────────────────── */
@@ -197,7 +196,7 @@ export const REELS: ReelItem[] = [
   { ...item(207, 'Plot Twist', 'Mystery', '4.7', '0:55', 77), views: '890K', creator: '@whodunit' },
   { ...item(208, 'Trailer Drop', 'Movies', '4.9', '0:48', 78), views: '4.1M', creator: '@streamsofficial' },
   { ...item(209, 'BTS Moments', 'Behind Scenes', '4.5', '0:35', 79), views: '760K', creator: '@onsets' },
-  { ...item(210, 'Viral Hook', 'Entertainment', '4.8', '0:22', 80), views: '5.2M', creator: '@viralott' },
+  { ...item(210, 'Viral Hook', 'Entertainment', '4.8', '0:22', 80), views: '5.2M', creator: '@viralott' }
 ];
 
 /* ── Home category spotlight cards ──────────────────── */
@@ -206,5 +205,5 @@ export const HOME_CATEGORIES = [
   { title: 'Live', subtitle: 'Watch now', path: '/live', accent: 'from-red-600 to-rose-700', sno: 51 },
   { title: 'Sports', subtitle: 'Matches & highlights', path: '/sports', accent: 'from-emerald-600 to-teal-500', sno: 31 },
   { title: 'Movies', subtitle: 'Blockbusters & more', path: '/movies', accent: 'from-red-700 to-amber-600', sno: 1 },
-  { title: 'Web Series', subtitle: 'Binge every episode', path: '/webseries', accent: 'from-orange-600 to-red-600', sno: 13 },
+  { title: 'Web Series', subtitle: 'Binge every episode', path: '/webseries', accent: 'from-orange-600 to-red-600', sno: 13 }
 ];

@@ -6,15 +6,15 @@ import { Heart, Play, X, Star } from 'lucide-react';
 import { SubscriptionFlow } from './SubscriptionFlow';
 import { getVideo } from './desiVideos';
 const cards = [
- { id: '1', title: 'Code Red Mafia', thumbnail: '/portrait/ESCAPEBEYONDFEAREP3.jpg', category: 'Crime', year: '2024', rating: '9.9' },
+ { id: '1', title: 'Code Red Mafia', thumbnail: '/portrait/ESCAPEFROMNOWHERE.jpg', category: 'Crime', year: '2024', rating: '9.9' },
  { id: '2', title: 'Blackmail Junction', thumbnail: '/portrait/ESCAPEFROMNOWHERE.jpg', category: 'Thriller', year: '2024', rating: '9.7' },
  { id: '3', title: 'The Unofficial Network', thumbnail: '/portrait/ESCAPEPLAN302.jpg', category: 'Mystery', year: '2024', rating: '9.8' },
- { id: '4', title: 'Shadow Operation', thumbnail: '/portrait/ESCAPEROUT21.jpg', category: 'Action', year: '2024', rating: '9.6' },
+ { id: '4', title: 'Shadow Protocol', thumbnail: '/portrait/ESCAPEROUT21.jpg', category: 'Action', year: '2024', rating: '9.6' },
  { id: '5', title: 'Chase to Danger Ep1', thumbnail: '/portrait/FATALCONNECTIONSEP1.jpg', category: 'Thriller', year: '2024', rating: '9.7' },
  { id: '6', title: 'Chase to Danger Ep2', thumbnail: '/portrait/FATALCONNECTIONSEP2.jpg', category: 'Thriller', year: '2024', rating: '9.5' },
  { id: '7', title: 'Chase to Danger Ep3', thumbnail: '/portrait/FATALCONNECTIONSEP3.jpg', category: 'Thriller', year: '2024', rating: '9.9' },
  { id: '8', title: 'Chase to Danger Ep4', thumbnail: '/portrait/FINALCOUNTDOWN.jpg', category: 'Thriller', year: '2024', rating: '9.8' },
- { id: '9', title: 'Dark Evidence', thumbnail: '/portrait/FINALWITNESS.jpg', category: 'Crime', year: '2024', rating: '9.6' },
+ { id: '9', title: 'Dark Empire', thumbnail: '/portrait/FINALWITNESS.jpg', category: 'Crime', year: '2024', rating: '9.6' },
  { id: '10', title: 'The Last Truth Ep1', thumbnail: '/portrait/HERSTORY.jpg', category: 'Drama', year: '2024', rating: '9.7' },
  { id: '11', title: 'The Last Truth Ep2', thumbnail: '/portrait/KILLERINSTINCT.jpg', category: 'Drama', year: '2024', rating: '9.8' },
  { id: '12', title: 'Crime Syndicate', thumbnail: '/portrait/LASTMISSIONALIVE.jpg', category: 'Crime', year: '2024', rating: '9.5' },

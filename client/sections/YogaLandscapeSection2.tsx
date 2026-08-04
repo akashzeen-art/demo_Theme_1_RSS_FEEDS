@@ -16,7 +16,7 @@ const cards = [
  { id: '7', title: 'Dead End Mission', category: 'Action', duration: '47 min', students: '201K', rating: '9.8', img: '/landscape/DEADENDMISSON.jpg' },
  { id: '8', title: 'Dangerous Alliance', category: 'Crime', duration: '44 min', students: '118K', rating: '9.9', img: '/landscape/DANGEROUSALLIANCE.jpg' },
  { id: '9', title: 'Escape Plan 302', category: 'Thriller', duration: '50 min', students: '96K', rating: '9.6', img: '/landscape/ESCAPEPLAN302.jpg' },
- { id: '10', title: 'Rogue Mission', category: 'Action', duration: '42 min', students: '83K', rating: '9.7', img: '/landscape/ROGUEMISSON.jpg' },
+ { id: '10', title: 'Rogue Nation', category: 'Action', duration: '42 min', students: '83K', rating: '9.7', img: '/landscape/DEADENDMISSON.jpg' },
 ];
 
 const catGrad: Record<string, string> = {

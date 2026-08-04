@@ -8,7 +8,7 @@ import { getYogaVideo } from './yogaVideos';
 // Portrait items 1–10
 const PORTRAIT_1 = [
  { title: 'Morning Vinyasa Flow', genre: 'Yoga', rating: '4.9', duration: '32 min', img: '/portrait/ADVENTUREKERAAZ.jpg', vi: 0 },
- { title: 'Yin & Restore', genre: 'Yoga', rating: '4.8', duration: '45 min', img: '/portrait/BEYONDSUSPICIONEP1.jpg', vi: 1 },
+ { title: 'Yin & Restore', genre: 'Yoga', rating: '4.8', duration: '45 min', img: '/portrait/BEYONDSUSPICIONEP2.jpg', vi: 1 },
  { title: 'Power Core Flow', genre: 'Yoga', rating: '4.9', duration: '40 min', img: '/portrait/BEYONDSUSPICIONEP2.jpg', vi: 2 },
  { title: 'Ashtanga Fundamentals', genre: 'Yoga', rating: '4.7', duration: '50 min', img: '/portrait/BLACKDIARYSECRETSEP1.jpg', vi: 3 },
  { title: 'Breathwork & Pranayama', genre: 'Meditation', rating: '4.9', duration: '30 min', img: '/portrait/BLACKDIARYSECRETSEP2.jpg', vi: 4 },
@@ -25,9 +25,9 @@ const PORTRAIT_2 = [
  { title: 'Deep Yin Flow', genre: 'Yoga', rating: '4.9', duration: '45 min', img: '/portrait/DANGEROUSTERRITORY.jpg', vi: 11 },
  { title: 'Power Core Yoga', genre: 'Yoga', rating: '4.8', duration: '40 min', img: '/portrait/DARKCITYFILES.jpg', vi: 12 },
  { title: 'Breathwork Mastery', genre: 'Meditation', rating: '4.8', duration: '30 min', img: '/portrait/DEADENDMISSON.jpg', vi: 13 },
- { title: 'Ashtanga Series', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/portrait/ESCAPEBEYONDFEAREP1.jpg', vi: 14 },
+ { title: 'Ashtanga Series', genre: 'Yoga', rating: '4.8', duration: '50 min', img: '/portrait/ESCAPEBEYONDFEAREP2.jpg', vi: 14 },
  { title: 'Kundalini Flow', genre: 'Yoga', rating: '4.8', duration: '55 min', img: '/portrait/ESCAPEBEYONDFEAREP2.jpg', vi: 15 },
- { title: 'Breathwork & Pranayama II',genre:'Meditation', rating: '4.7', duration: '30 min', img: '/portrait/ESCAPEBEYONDFEAREP3.jpg', vi: 16 },
+ { title: 'Breathwork & Pranayama II',genre:'Meditation', rating: '4.7', duration: '30 min', img: '/portrait/ESCAPEFROMNOWHERE.jpg', vi: 16 },
  { title: 'Restorative Yoga', genre: 'Yoga', rating: '4.7', duration: '60 min', img: '/portrait/ESCAPEFROMNOWHERE.jpg', vi: 17 },
  { title: 'Ashtanga Advanced', genre: 'Yoga', rating: '4.6', duration: '50 min', img: '/portrait/ESCAPEPLAN302.jpg', vi: 18 },
  { title: 'Morning Meditation', genre: 'Meditation', rating: '4.6', duration: '25 min', img: '/portrait/ESCAPEROUT21.jpg', vi: 19 },

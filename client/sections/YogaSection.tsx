@@ -8,7 +8,7 @@ import { Play, Wind, Clock, Star, Users } from 'lucide-react';
 
 const YOGA_THUMBS = [
  '/landscape/ADVENTUREKERAAZ.jpg',
- '/landscape/BEYONDSUSPICIONEP1.jpg',
+ '/landscape/BEYONDSUSPICIONEP2.jpg',
  '/landscape/BEYONDSUSPICIONEP2.jpg',
 ];
 const YOGA_BG = [
