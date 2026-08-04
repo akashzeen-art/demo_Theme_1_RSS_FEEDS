@@ -30,6 +30,8 @@ export type RssVideoItem = {
   thumbnail: string;
   pubDate: string;
   author: string;
+  /** Short plain-text blurb from the RSS description */
+  description?: string;
   /** Direct media URL or remote embed URL */
   embedUrl: string;
   provider: RssProvider;

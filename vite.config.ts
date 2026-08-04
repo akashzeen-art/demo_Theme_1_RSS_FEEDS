@@ -9,6 +9,7 @@ type RssItem = {
   thumbnail: string;
   pubDate: string;
   author: string;
+  description?: string;
   embedUrl: string;
   provider?: string;
   isLive?: boolean;
@@ -21,6 +22,34 @@ function decodeXml(s: string) {
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'");
+}
+
+function xmlTagText(chunk: string, tag: string) {
+  const cdata = chunk.match(
+    new RegExp(`<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]><\\/${tag}>`, "i")
+  )?.[1];
+  if (cdata != null) return decodeXml(cdata.trim());
+  const plain = chunk.match(new RegExp(`<${tag}[^>]*>([^<]*)<\\/${tag}>`, "i"))?.[1];
+  return plain != null ? decodeXml(plain.trim()) : "";
+}
+
+function stripHtmlToText(html: string) {
+  return decodeXml(String(html || ""))
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<img[^>]*>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractDescription(chunk: string) {
+  const raw =
+    chunk.match(/<description[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i)?.[1] ||
+    chunk.match(/<content:encoded[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/i)?.[1] ||
+    chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i)?.[1] ||
+    "";
+  return stripHtmlToText(raw).slice(0, 280);
 }
 
 function isImageUrl(url: string) {
@@ -129,7 +158,12 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
       "";
     const enclosureRaw =
       chunk.match(/<enclosure[^>]*url="([^"]+)"/)?.[1] ||
-      chunk.match(/<media:content[^>]*url="([^"]+)"/)?.[1] ||
+      chunk.match(
+        /<media:content[^>]*(?:medium="video"|type="video\/[^"]+")[^>]*url="([^"]+)"/i
+      )?.[1] ||
+      chunk.match(
+        /<media:content[^>]*url="([^"]+)"[^>]*(?:medium="video"|type="video\/[^"]+")/i
+      )?.[1] ||
       "";
     const enclosure = decodeXml(enclosureRaw.trim());
     const articleLink = decodeXml(String(link || "").trim());
@@ -139,9 +173,10 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
       chunk.match(/<published>([^<]*)<\/published>/)?.[1] ||
       "";
     const author =
-      chunk.match(/<author>([^<]*)<\/author>/)?.[1] ||
-      chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/)?.[1] ||
+      xmlTagText(chunk, "dc:creator") ||
+      xmlTagText(chunk, "author") ||
       "ChalChitra";
+    const description = extractDescription(chunk);
 
     const ytId =
       articleLink.match(/[?&]v=([\w-]{11})/)?.[1] ||
@@ -154,7 +189,8 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
         link: `https://www.youtube.com/watch?v=${ytId}`,
         thumbnail: `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`,
         pubDate,
-        author: decodeXml(author),
+        author,
+        description,
         embedUrl: `https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=0&autoplay=1&mute=1`,
       });
     } else {
@@ -172,7 +208,8 @@ function parseGenericRss(xml: string, limit = 12): RssItem[] {
         link: articleLink || media,
         thumbnail: thumb,
         pubDate,
-        author: decodeXml(author),
+        author,
+        description,
         embedUrl: media,
         provider: live ? "live" : "rss",
         isLive: live,

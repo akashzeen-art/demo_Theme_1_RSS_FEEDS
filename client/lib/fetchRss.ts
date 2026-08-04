@@ -69,6 +69,37 @@ function decodeXml(s: string) {
     .replace(/&#39;/g, "'");
 }
 
+/** Read tag value whether plain text or CDATA */
+function xmlTagText(chunk: string, tag: string) {
+  const cdata = chunk.match(
+    new RegExp(`<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]><\\/${tag}>`, 'i')
+  )?.[1];
+  if (cdata != null) return decodeXml(cdata.trim());
+  const plain = chunk.match(new RegExp(`<${tag}[^>]*>([^<]*)<\\/${tag}>`, 'i'))?.[1];
+  return plain != null ? decodeXml(plain.trim()) : '';
+}
+
+function stripHtmlToText(html: string) {
+  return decodeXml(String(html || ''))
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<img[^>]*>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function extractDescription(chunk: string) {
+  const raw =
+    chunk.match(/<description[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i)?.[1] ||
+    chunk.match(/<content:encoded[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/i)?.[1] ||
+    chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i)?.[1] ||
+    chunk.match(/<summary[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/summary>/i)?.[1] ||
+    chunk.match(/<summary[^>]*>([\s\S]*?)<\/summary>/i)?.[1] ||
+    '';
+  return stripHtmlToText(raw).slice(0, 280);
+}
+
 function extractThumbFromChunk(chunk: string, enclosure: string) {
   const mediaContent =
     chunk.match(/<media:content[^>]*url="([^"]+)"[^>]*medium="image"[^>]*/i)?.[1] ||
@@ -132,6 +163,7 @@ function normalizeItems(
         thumbnail: ytThumb,
         pubDate: String(x.pubDate || ''),
         author: String(x.author || fallbackAuthor),
+        description: String(x.description || '').trim() || undefined,
         embedUrl: youtubeEmbedUrl(ytId, true),
         provider: 'youtube',
         isLive: false,
@@ -143,7 +175,10 @@ function normalizeItems(
     if (!hasRealThumbnail(thumb)) continue;
 
     const playable = isPlayableMedia(enclosure);
-    const media = playable ? enclosure : link || enclosure;
+    // Prefer article link for news items; never treat an image URL as embed
+    const media = playable
+      ? enclosure
+      : link || (isImageUrl(enclosure) ? '' : enclosure);
     if (!media && !x.id) continue;
 
     const live = Boolean(x.isLive) || isLiveMedia(media);
@@ -157,6 +192,7 @@ function normalizeItems(
       thumbnail: thumb,
       pubDate: String(x.pubDate || ''),
       author: String(x.author || fallbackAuthor),
+      description: String(x.description || '').trim() || undefined,
       embedUrl: media,
       provider: live ? 'live' : 'rss',
       isLive: live,
@@ -188,9 +224,15 @@ export function parseRssXml(
       chunk.match(/<link>([^<]*)<\/link>/)?.[1] ||
       chunk.match(/<guid[^>]*>([^<]*)<\/guid>/)?.[1] ||
       '';
+    // Prefer true media enclosures; media:content images are handled as thumbs
     const enclosureRaw =
       chunk.match(/<enclosure[^>]*url="([^"]+)"/)?.[1] ||
-      chunk.match(/<media:content[^>]*url="([^"]+)"/)?.[1] ||
+      chunk.match(
+        /<media:content[^>]*(?:medium="video"|type="video\/[^"]+")[^>]*url="([^"]+)"/i
+      )?.[1] ||
+      chunk.match(
+        /<media:content[^>]*url="([^"]+)"[^>]*(?:medium="video"|type="video\/[^"]+")/i
+      )?.[1] ||
       '';
     const enclosure = decodeXml(enclosureRaw.trim());
     const articleLink = decodeXml(link.trim());
@@ -200,9 +242,11 @@ export function parseRssXml(
       chunk.match(/<published>([^<]*)<\/published>/)?.[1] ||
       '';
     const author =
-      chunk.match(/<author>([^<]*)<\/author>/)?.[1] ||
-      chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/)?.[1] ||
+      xmlTagText(chunk, 'dc:creator') ||
+      xmlTagText(chunk, 'author') ||
+      xmlTagText(chunk, 'name') ||
       fallbackAuthor;
+    const description = extractDescription(chunk);
     const guid =
       chunk.match(/<guid[^>]*>([^<]*)<\/guid>/)?.[1] ||
       chunk.match(/<yt:videoId>([\w-]{11})<\/yt:videoId>/)?.[1] ||
@@ -220,7 +264,8 @@ export function parseRssXml(
       embedUrl: playable ? enclosure : articleLink || enclosure,
       thumbnail: thumb,
       pubDate,
-      author: decodeXml(author),
+      author,
+      description,
       isLive: mediaLive,
     });
 
@@ -302,6 +347,7 @@ async function fetchViaRss2Json(feedUrl: string, limit: number, author: string) 
       ),
       pubDate: String(item.pubDate || ''),
       author: String(item.author || author),
+      description: stripHtmlToText(desc).slice(0, 280) || undefined,
     };
   });
 

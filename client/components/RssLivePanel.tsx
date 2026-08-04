@@ -99,7 +99,6 @@ export function RssLivePanel({
   // Load immediately so remote RSS appears without waiting to scroll
   const [visible, setVisible] = useState(true);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [frameReady, setFrameReady] = useState(false);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -135,15 +134,19 @@ export function RssLivePanel({
   const selected = items.find((i) => i.id === selectedId) ?? items[0] ?? null;
   const playerSrc = selected?.embedUrl || null;
   const canPlay = isPlayableEmbed(playerSrc);
-  const articleHref = selected?.link || (!canPlay ? playerSrc : null);
-  const articleFrameSrc = articleHref
-    ? `/api/article?url=${encodeURIComponent(articleHref)}`
-    : null;
-  const hasContent = Boolean(selected && (canPlay || articleFrameSrc || selected.thumbnail));
-
-  useEffect(() => {
-    setFrameReady(false);
-  }, [articleFrameSrc]);
+  const articleHref =
+    selected?.link && !isImageUrl(selected.link)
+      ? selected.link
+      : !canPlay && playerSrc && !isImageUrl(playerSrc)
+        ? playerSrc
+        : null;
+  // News sites (THR / Celebuzz) often break inside iframes — show a news card instead
+  const isNewsArticle = Boolean(
+    selected && !canPlay && !selected.isLive && selected.provider === 'rss' && selected.thumbnail
+  );
+  const hasContent = Boolean(
+    selected && (canPlay || isNewsArticle || articleHref || selected.thumbnail)
+  );
 
   return (
     <section
@@ -230,45 +233,37 @@ export function RssLivePanel({
                     className="!rounded-none"
                   />
                 </div>
-              ) : selected && articleFrameSrc ? (
-                <div className="overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-black">
-                  <div className="relative w-full aspect-video min-h-[200px] sm:min-h-0 overflow-hidden bg-black">
-                    {!frameReady && (
-                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-black">
-                        {selected.thumbnail ? (
-                          <img
-                            src={selected.thumbnail}
-                            alt=""
-                            className="absolute inset-0 w-full h-full object-cover opacity-25"
-                            onError={() => {
-                              if (selected?.id) dropBrokenThumb(selected.id);
-                            }}
-                          />
-                        ) : null}
-                        <Loader2 className="relative w-7 h-7 text-[#ff0000] animate-spin" />
-                      </div>
-                    )}
-                    <iframe
-                      key={articleFrameSrc}
-                      src={articleFrameSrc}
-                      title={selected.title || 'Article'}
-                      className="absolute inset-0 w-full h-full border-0 bg-black"
-                      loading="eager"
+              ) : selected && isNewsArticle ? (
+                <div className="overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-[#111827]">
+                  <div className="relative w-full aspect-video min-h-[200px] overflow-hidden bg-black">
+                    <img
+                      src={selected.thumbnail}
+                      alt=""
                       referrerPolicy="no-referrer"
-                      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"
-                      onLoad={() => setFrameReady(true)}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      onError={() => {
+                        if (selected?.id) dropBrokenThumb(selected.id);
+                      }}
                     />
-                    {/* {articleHref ? (
-                      <a
-                        href={articleHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/70 border border-white/15 text-[10px] font-medium uppercase tracking-wider text-white hover:border-cyan-400/50 hover:text-cyan-200 transition-colors"
-                      >
-                        Open original
-                        <ExternalLink size={12} />
-                      </a>
-                    ) : null} */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                      {selected.description ? (
+                        <p className="text-sm sm:text-[15px] text-white/85 leading-snug line-clamp-3 max-w-2xl">
+                          {selected.description}
+                        </p>
+                      ) : null}
+                      {articleHref ? (
+                        <a
+                          href={articleHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#ff0000] text-white text-[10px] font-medium uppercase tracking-wider hover:bg-[#cc0000] transition-colors"
+                        >
+                          Read article
+                          <ExternalLink size={12} />
+                        </a>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               ) : selected ? (
@@ -276,6 +271,7 @@ export function RssLivePanel({
                   <img
                     src={selected.thumbnail}
                     alt=""
+                    referrerPolicy="no-referrer"
                     className="absolute inset-0 w-full h-full object-cover"
                     onError={() => {
                       if (selected?.id) dropBrokenThumb(selected.id);
@@ -293,11 +289,10 @@ export function RssLivePanel({
                     {selected?.isLive || selected?.provider === 'live'
                       ? 'On air · Live stream'
                       : selected
-                        ? `${formatDate(selected.pubDate)} · ${selected.author || category.channelName}`
+                        ? `${formatDate(selected.pubDate)}${
+                            selected.author ? ` · ${selected.author}` : ''
+                          }`
                         : 'Live feed'}
-                  </p>
-                  <p className="mt-2 text-[10px] leading-relaxed text-white/30 max-w-xl">
-                    {category.subtitle}. Powered by rss.app · {category.channelName}.
                   </p>
                 </div>
               </div>
@@ -348,6 +343,7 @@ export function RssLivePanel({
                             <img
                               src={item.thumbnail}
                               alt=""
+                              referrerPolicy="no-referrer"
                               className="w-full h-full object-cover object-center"
                               loading="lazy"
                               onError={() => dropBrokenThumb(item.id)}
@@ -379,11 +375,8 @@ export function RssLivePanel({
                             <p className="text-[10px] text-white/40 mt-1">
                               {live
                                 ? 'On air'
-                                : item.provider === 'platform'
-                                  ? 'ChalChitra'
-                                  : item.provider === 'youtube' || item.provider === 'rss'
-                                    ? 'Live RSS'
-                                    : formatDate(item.pubDate)}
+                                : formatDate(item.pubDate) ||
+                                  (item.provider === 'platform' ? 'ChalChitra' : 'RSS')}
                             </p>
                           </div>
                         </button>

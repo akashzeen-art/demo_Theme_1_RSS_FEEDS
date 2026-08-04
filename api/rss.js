@@ -28,6 +28,34 @@ function isVideoUrl(url) {
   );
 }
 
+function xmlTagText(chunk, tag) {
+  const cdata = chunk.match(
+    new RegExp(`<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]><\\/${tag}>`, 'i')
+  );
+  if (cdata && cdata[1] != null) return decodeXml(cdata[1].trim());
+  const plain = chunk.match(new RegExp(`<${tag}[^>]*>([^<]*)<\\/${tag}>`, 'i'));
+  return plain && plain[1] != null ? decodeXml(plain[1].trim()) : '';
+}
+
+function stripHtmlToText(html) {
+  return decodeXml(String(html || ''))
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<img[^>]*>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function extractDescription(chunk) {
+  const raw =
+    (chunk.match(/<description[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i) || [])[1] ||
+    (chunk.match(/<content:encoded[^>]*><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/i) || [])[1] ||
+    (chunk.match(/<description[^>]*>([\s\S]*?)<\/description>/i) || [])[1] ||
+    '';
+  return stripHtmlToText(raw).slice(0, 280);
+}
+
 function extractThumb(chunk, enclosure) {
   const mediaContent =
     (chunk.match(/<media:content[^>]*url="([^"]+)"[^>]*medium="image"[^>]*/i) || [])[1] ||
@@ -125,7 +153,12 @@ function parseGenericRss(xml, limit = 12) {
       '';
     const enclosureRaw =
       (chunk.match(/<enclosure[^>]*url="([^"]+)"/i) || [])[1] ||
-      (chunk.match(/<media:content[^>]*url="([^"]+)"/i) || [])[1] ||
+      (chunk.match(
+        /<media:content[^>]*(?:medium="video"|type="video\/[^"]+")[^>]*url="([^"]+)"/i
+      ) || [])[1] ||
+      (chunk.match(
+        /<media:content[^>]*url="([^"]+)"[^>]*(?:medium="video"|type="video\/[^"]+")/i
+      ) || [])[1] ||
       '';
     const enclosure = decodeXml(enclosureRaw.trim());
     const articleLink = decodeXml(String(link || '').trim());
@@ -135,9 +168,10 @@ function parseGenericRss(xml, limit = 12) {
       (chunk.match(/<published>([^<]*)<\/published>/i) || [])[1] ||
       '';
     const author =
-      (chunk.match(/<author>([^<]*)<\/author>/i) || [])[1] ||
-      (chunk.match(/<dc:creator[^>]*>([^<]*)<\/dc:creator>/i) || [])[1] ||
+      xmlTagText(chunk, 'dc:creator') ||
+      xmlTagText(chunk, 'author') ||
       'ChalChitra';
+    const description = extractDescription(chunk);
 
     const ytId =
       (articleLink.match(/[?&]v=([\w-]{11})/) || [])[1] ||
@@ -150,7 +184,8 @@ function parseGenericRss(xml, limit = 12) {
         link: `https://www.youtube.com/watch?v=${ytId}`,
         thumbnail: `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`,
         pubDate,
-        author: decodeXml(author),
+        author,
+        description,
         embedUrl: `https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=1&autoplay=1&mute=1`,
       });
     } else {
@@ -169,7 +204,8 @@ function parseGenericRss(xml, limit = 12) {
         link: articleLink || media,
         thumbnail: thumb,
         pubDate,
-        author: decodeXml(author),
+        author,
+        description,
         embedUrl: media,
         provider: live ? 'live' : 'rss',
         isLive: live,
