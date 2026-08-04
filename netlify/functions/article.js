@@ -31,11 +31,45 @@ function rewriteHtml(html, sourceUrl) {
     /<meta[^>]+http-equiv=["']?X-Frame-Options["']?[^>]*>/gi,
     ''
   );
+  out = out.replace(
+    /if\s*\(\s*(?:top|parent|self)\s*[!=]==?\s*(?:self|top|parent|window)/gi,
+    'if(false && top'
+  );
+  out = out.replace(
+    /(?:top|parent)\.location(?:\.href)?\s*=/gi,
+    'window.__chalKeepFrame='
+  );
 
   const inject = [
-    `<base href="${origin}/">`,
+    `<base href="${origin}/" target="_self">`,
     '<meta name="referrer" content="no-referrer">',
-    '<style>html,body{scroll-behavior:smooth}</style>',
+    `<style>
+      html,body{margin:0;background:#0b1728!important;color:#e8eef7!important;scroll-behavior:smooth}
+      img,video{max-width:100%!important;height:auto!important}
+      a{color:#67e8f9!important}
+      header,nav,[role="banner"],.site-header,.global-nav,.ad,.ads,[class*="cookie"],[id*="cookie"]{display:none!important}
+      main,article,.article,.content,.post,.entry-content{max-width:48rem;margin:0 auto;padding:16px!important}
+    </style>`,
+    `<script>
+      (function(){
+        try {
+          Object.defineProperty(window, 'top', { get: function(){ return window; } });
+        } catch(e) {}
+        document.addEventListener('click', function(ev){
+          var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+          if(!a) return;
+          var href = a.getAttribute('href') || '';
+          if(!href || href.charAt(0)==='#' || href.indexOf('javascript:')===0) return;
+          try {
+            var abs = new URL(href, ${JSON.stringify(origin + '/')});
+            if (abs.protocol === 'http:' || abs.protocol === 'https:') {
+              ev.preventDefault();
+              window.location.href = window.location.origin + '/api/article?url=' + encodeURIComponent(abs.toString());
+            }
+          } catch(e) {}
+        }, true);
+      })();
+    </script>`,
   ].join('');
 
   if (/<head[^>]*>/i.test(out)) {

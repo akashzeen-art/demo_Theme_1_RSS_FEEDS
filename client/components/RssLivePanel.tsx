@@ -7,7 +7,6 @@ import {
   AlertCircle,
   ChevronRight,
   RefreshCw,
-  ExternalLink,
 } from 'lucide-react';
 import { type RssFeedConfig, type RssVideoItem } from '@/lib/rssFeeds';
 import { fetchCategoryRss } from '@/lib/fetchRss';
@@ -99,6 +98,8 @@ export function RssLivePanel({
   // Load immediately so remote RSS appears without waiting to scroll
   const [visible, setVisible] = useState(true);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [frameReady, setFrameReady] = useState(false);
+  const [frameFailed, setFrameFailed] = useState(false);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -140,13 +141,20 @@ export function RssLivePanel({
       : !canPlay && playerSrc && !isImageUrl(playerSrc)
         ? playerSrc
         : null;
-  // News sites (THR / Celebuzz) often break inside iframes — show a news card instead
-  const isNewsArticle = Boolean(
-    selected && !canPlay && !selected.isLive && selected.provider === 'rss' && selected.thumbnail
+  const articleFrameSrc = articleHref
+    ? `/api/article?url=${encodeURIComponent(articleHref)}`
+    : null;
+  const showArticleFrame = Boolean(
+    selected && !canPlay && !selected.isLive && articleFrameSrc
   );
   const hasContent = Boolean(
-    selected && (canPlay || isNewsArticle || articleHref || selected.thumbnail)
+    selected && (canPlay || showArticleFrame || selected.thumbnail)
   );
+
+  useEffect(() => {
+    setFrameReady(false);
+    setFrameFailed(false);
+  }, [articleFrameSrc]);
 
   return (
     <section
@@ -233,37 +241,72 @@ export function RssLivePanel({
                     className="!rounded-none"
                   />
                 </div>
-              ) : selected && isNewsArticle ? (
-                <div className="overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-[#111827]">
-                  <div className="relative w-full aspect-video min-h-[200px] overflow-hidden bg-black">
-                    <img
-                      src={selected.thumbnail}
-                      alt=""
-                      referrerPolicy="no-referrer"
-                      className="absolute inset-0 w-full h-full object-cover"
-                      onError={() => {
-                        if (selected?.id) dropBrokenThumb(selected.id);
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-                      {selected.description ? (
-                        <p className="text-sm sm:text-[15px] text-white/85 leading-snug line-clamp-3 max-w-2xl">
-                          {selected.description}
-                        </p>
-                      ) : null}
-                      {articleHref ? (
-                        <a
-                          href={articleHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-3 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#ff0000] text-white text-[10px] font-medium uppercase tracking-wider hover:bg-[#cc0000] transition-colors"
-                        >
-                          Read article
-                          <ExternalLink size={12} />
-                        </a>
-                      ) : null}
-                    </div>
+              ) : selected && showArticleFrame && articleFrameSrc ? (
+                <div className="overflow-hidden border-0 sm:border sm:border-white/10 sm:rounded-xl bg-black">
+                  <div className="relative w-full min-h-[280px] sm:min-h-[360px] lg:min-h-[480px] h-[55vh] max-h-[560px] overflow-hidden bg-[#0b1728]">
+                    {!frameReady && !frameFailed && (
+                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#0b1728]">
+                        {selected.thumbnail ? (
+                          <img
+                            src={selected.thumbnail}
+                            alt=""
+                            referrerPolicy="no-referrer"
+                            className="absolute inset-0 w-full h-full object-cover opacity-20"
+                          />
+                        ) : null}
+                        <Loader2 className="relative w-7 h-7 text-[#ff0000] animate-spin" />
+                      </div>
+                    )}
+                    {frameFailed ? (
+                      <div className="absolute inset-0 z-10 flex flex-col justify-end p-4 sm:p-5 bg-[#0b1728]">
+                        {selected.thumbnail ? (
+                          <img
+                            src={selected.thumbnail}
+                            alt=""
+                            referrerPolicy="no-referrer"
+                            className="absolute inset-0 w-full h-full object-cover opacity-35"
+                          />
+                        ) : null}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-transparent" />
+                        <div className="relative z-10">
+                          {selected.description ? (
+                            <p className="text-sm sm:text-[15px] text-white/85 leading-snug line-clamp-5 max-w-2xl">
+                              {selected.description}
+                            </p>
+                          ) : (
+                            <p className="text-sm text-white/70">
+                              Preview unavailable for this publisher. Select another story from the feed.
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <iframe
+                        key={articleFrameSrc}
+                        src={articleFrameSrc}
+                        title={selected.title || 'Article'}
+                        className="absolute inset-0 w-full h-full border-0 bg-[#0b1728]"
+                        loading="eager"
+                        referrerPolicy="no-referrer"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                        onLoad={(e) => {
+                          setFrameReady(true);
+                          try {
+                            const doc = e.currentTarget.contentDocument;
+                            const text = (doc?.body?.innerText || '').trim();
+                            if (
+                              text.toLowerCase().includes('unable to load article') ||
+                              text.toLowerCase().includes('publisher returned')
+                            ) {
+                              setFrameFailed(true);
+                            }
+                          } catch {
+                            // cross-origin — treat as loaded
+                          }
+                        }}
+                        onError={() => setFrameFailed(true)}
+                      />
+                    )}
                   </div>
                 </div>
               ) : selected ? (
